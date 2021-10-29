@@ -1,7 +1,12 @@
-const Navrbar = () => {
+import { Image } from "@chakra-ui/image";
+import { Box } from "@chakra-ui/layout";
+import logo from "../assets/Logo.png";
+const Navbar = () => {
     return ( 
-        <h1>Tes</h1>
+        <Box bg='black' p={20} color="white">
+            <Image src={logo} htmlWidth="150px" objectFit="cover" />
+        </Box>
     );
 }
  
-export default Navrbar;
+export default Navbar;
