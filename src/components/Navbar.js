@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/layout";
 import logo from "../assets/Logo.png";
 const Navbar = () => {
     return ( 
-        <Box bg='black' p={20} color="white">
+        <Box className="navBar" bg='black' px={8} py={5} color="white" w="100%">
             <Image src={logo} htmlWidth="150px" objectFit="cover" />
         </Box>
     );
