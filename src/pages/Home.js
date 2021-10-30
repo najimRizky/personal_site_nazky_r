@@ -6,6 +6,7 @@ import Me from "../assets/Me2.png";
 import { Button, ButtonGroup, IconButton } from "@chakra-ui/button";
 import '../App.css';
 import { motion } from "framer-motion";
+import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
 
 const MotionBox = motion(Box)
 const MotionHeading = motion(Heading)
@@ -62,6 +63,27 @@ const NextVariants2 = {
 }
 
 const Home = () => {
+
+    const openSocMed = (val) => {
+        let url = '';
+        switch (val) {
+            case 'Github':
+                url = 'https://github.com/najimRizky'
+                break;
+            case 'Linkedin':
+                url = 'https://www.linkedin.com/in/najim-rizky/'
+                break;
+            case 'Instagram':
+                url = 'https://instagram.com/najim_80'
+                break;
+            case 'Twitter':
+                url = 'https://twitter.com/erSySz'
+                break;
+            default:
+        }
+        window.open(url, "_blank");
+    }
+
     return (
         <>
             <MotionBox backgroundImage={bgBox} px="75px" pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate="visible">
@@ -85,18 +107,42 @@ const Home = () => {
                     </MotionFlex>
                 </SimpleGrid>
             </MotionBox>
-            <Box px="75px" pb={[10, 10, 60, 60]} pt={70}>
-                <Heading mb={10} fontWeight={700} fontSize={50} fontFamily="Raleway">
+            <Box px="75px" pb={[10, 10, 60, 60]} pt={70} fontFamily="Raleway">
+                <Heading mb={10} fontWeight={400} fontSize={50} >
                     About
                 </Heading>
                 <Text w="50%">
                     Currently I'm still a third year student majoring in <b>Informatics</b> at <b>Multimedia Nusantara University</b>. Even though I'm still a student, I have some ability in web development, machine learning, android apps, etc. To find out what I can do, see my Portfolio.
                 </Text>
-                <Text>Contact Me</Text>
+                <Heading size="md" my="5" fontWeight={400} >Contact Me</Heading>
                 <Text>Najim Rizky</Text>
                 <Text>(+62)895604565752</Text>
                 <ButtonGroup>
-                    <IconButton   fontSize="xl" bg="#615953" color="#5B7BEA" isRound _hover={{ bg: "#6D645C", color: 'white' }} ></IconButton>
+                    <IconButton
+                        bgGradient="linear(to-r, #000000, #000000, #000000,  #7407f1, #196ad4)"
+                        transition="0.4s"
+                        bgSize="350%"
+                        _hover={{
+                            bgPosition: "right"
+                        }} my={[10]} color="black" onClick={() => { openSocMed('Github') }} icon={< FiGithub />} fontSize="xl" color="#ffffff" isRound></IconButton>
+                    <IconButton bgGradient="linear(to-r, #000000, #000000, #000000,  #7407f1, #196ad4)"
+                        transition="0.4s"
+                        bgSize="350%"
+                        _hover={{
+                            bgPosition: "right"
+                        }} my={[10]} onClick={() => { openSocMed('Linkedin') }} icon={< FiLinkedin />} fontSize="xl" color="#ffffff" isRound></IconButton>
+                    <IconButton bgGradient="linear(to-r, #000000, #000000, #000000,  #7407f1, #196ad4)"
+                        transition="0.4s"
+                        bgSize="350%"
+                        _hover={{
+                            bgPosition: "right"
+                        }} my={[10]} onClick={() => { openSocMed('Instagram') }} icon={< FiInstagram />} fontSize="xl" color="#ffffff" isRound></IconButton>
+                    <IconButton bgGradient="linear(to-r, #000000, #000000, #000000,  #7407f1, #196ad4)"
+                        transition="0.4s"
+                        bgSize="350%"
+                        _hover={{
+                            bgPosition: "right"
+                        }} my={[10]} onClick={() => { openSocMed('Twitter') }} icon={< FiTwitter />} fontSize="xl" color="#ffffff" isRound></IconButton>
                 </ButtonGroup>
             </Box>
         </>

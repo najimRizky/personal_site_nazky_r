@@ -16,3 +16,16 @@
   background-color: brown;
 }
 
+.btnSocial{
+  /* background-image: linear-gradient(to left, #000000, #000000, #000000,#000000,#000000,#000000,#ff00d4, #7407f1, #196ad4) !important; */
+  background-image:linear-gradient(to left, #000000, #000000, #000000);
+  background-size: 200%;
+  background-position: left;
+  transition: 0.4s !important;
+}
+
+.btnSocial:hover{
+  /* background-position: right; */
+  background-image: linear-gradient(to left, #000000, #000000, #000000,#000000,#000000,#000000,#ff00d4, #7407f1, #196ad4) !important;
+}
+
