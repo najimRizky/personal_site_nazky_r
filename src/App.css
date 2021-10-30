@@ -2,17 +2,17 @@
   margin: 0;
 }
 
-/* .App-Content {
-  max-height: 210vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
+.App {
 
-.greeting{
-  font-size: 72px;
-  background: -webkit-linear-gradient(rgb(0, 88, 202), rgb(0, 174, 187));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+}
+
+
+.loading{
+  position:fixed;
+  z-index: 2;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: brown;
 }
 
