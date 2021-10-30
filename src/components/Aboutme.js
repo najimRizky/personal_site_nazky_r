@@ -44,7 +44,7 @@ const openSocMed = (val) => {
 
 const Aboutme = () => {
     return (
-        <Box bgImage={BgWave} bgSize="120%" bgPosition="center" px="75px" pb={[10, 10, 0, 0]} pt={70} fontFamily="Raleway">
+        <Box bgImage={BgWave} bgSize="1500px" bgPosition="center" px="75px" pb={[0, 0, 0, 0]} pt={70} fontFamily="Raleway">
             <Heading mb={10} fontWeight={400} fontSize={50} >
                 About
             </Heading>
