@@ -3,33 +3,33 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import { ChakraProvider } from "@chakra-ui/react"
 import React from 'react'
-import { Box, Center, Heading } from '@chakra-ui/layout';
-import { motion } from 'framer-motion';
+// import { Box, Center, Heading } from '@chakra-ui/layout';
+// import { motion } from 'framer-motion';
 
-const MotionBox = motion(Box)
-const MotionHeading = motion(Heading)
+// const MotionBox = motion(Box)
+// const MotionHeading = motion(Heading)
 
-const LoadingVariants = {
-  hidden: {
-    x: 0,
-  },
-  visible: {
-    x: "-100%",
-    transition:{
-      type: "linear",
-      delay: 3,
-      duration: 0.5,
-      when: "afterChildren"
-    }
-  }
-}
+// const LoadingVariants = {
+//   hidden: {
+//     x: 0,
+//   },
+//   visible: {
+//     x: "-100%",
+//     transition:{
+//       type: "linear",
+//       delay: 3,
+//       duration: 0.5,
+//       when: "afterChildren"
+//     }
+//   }
+// }
 
 
 
 function App() {
   return (
     <ChakraProvider>
-      <MotionBox 
+      {/* <MotionBox 
       variants={LoadingVariants} initial="hidden" animate="visible" 
       className="loading"
       >
@@ -38,11 +38,10 @@ function App() {
             Welcome
           </MotionHeading>
         </Center>
-
-      </MotionBox>
+      </MotionBox> */}
       <div className="App">
         <Navbar />
-        <div className="App-Content">
+        <div className="App_Content">
           <Home />
         </div>
       </div>

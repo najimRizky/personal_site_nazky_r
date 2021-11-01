@@ -3,7 +3,6 @@
 }
 
 
-
 .loading{
   position:fixed;
   z-index: 2;
@@ -26,3 +25,13 @@
   background-image: linear-gradient(to left, #000000, #000000, #000000,#000000,#000000,#000000,#ff00d4, #7407f1, #196ad4) !important;
 }
 
+.navBar{
+  position:fixed;
+  z-index: 2;
+  margin-top: 0px;
+  max-width: 1250px;
+}
+
+.App_Content{
+  padding-top: 75px;
+}

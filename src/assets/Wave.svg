@@ -22,9 +22,9 @@
           transform: translate(0, 0)
         }
       }
-      .wave1 {
+      <!-- .wave1 {
         animation: gelombang 10s infinite;
-      }
+      } -->
 
        @keyframes gelombang2 {
         0% {
@@ -39,9 +39,9 @@
           transform: translate(0, 0)
         }
       }
-      .wave2 {
+      <!-- .wave2 {
         animation: gelombang2 8s infinite;
-      }
+      } -->
     </style>
   </defs>
 </svg>

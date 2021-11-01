@@ -14,17 +14,15 @@ const MotionFlex = motion(Flex)
 
 const BaseVariants = {
     hidden: {
-        y: -500,
-        opacity: 0
+        // y: -500,
+        opacity: 1
     },
     visible: {
-        y: 0,
+        // y: 0,
         opacity: 1,
         transition: {
-            delay: 3.5,
-            type: "linear",
             duration: 0.5,
-            delayChildren: 3
+            delayChildren: 0
         }
     }
 }
@@ -39,8 +37,6 @@ const NextVariants = {
         y: 0,
         transition: {
             type: "spring",
-            damping: 3,
-            // delay: 0.8
         }
     }
 }
@@ -55,15 +51,13 @@ const NextVariants2 = {
         y: 0,
         transition: {
             type: "spring",
-            damping: 3,
-            // delay: 0.8
         }
     }
 }
 
 const Greetings = () => {
     return (
-        <MotionBox backgroundImage={bgBox} px="75px" pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate="visible">
+        <MotionBox id="home" backgroundImage={bgBox} px={[5,5,20,20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate="visible">
             <SimpleGrid columns={[1, null, 2]}>
                 <MotionBox variants={NextVariants} color="white" w="100%">
                     <MotionHeading bgGradient="linear(to-r, #FF0075, #172774, #FF0075)" bgClip="text" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >Hi I'm <br /> Najim <br />Rizky</MotionHeading>
@@ -80,7 +74,7 @@ const Greetings = () => {
                         }} my={[10]} color="black">Download CV</Button>
                 </MotionBox>
                 <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
-                    <Image src={Me} objectFit="cover" htmlWidth={["350px", "350px", "100%", "100%"]} />
+                    <Image src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["sm"]} />
                 </MotionFlex>
             </SimpleGrid>
         </MotionBox>
