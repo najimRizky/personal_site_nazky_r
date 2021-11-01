@@ -10,8 +10,12 @@ const Navbar = () => {
     
     // const executeScroll = () => myRef.current.scrollIntoView();
     const executeScroll = (value) => {
+        const yOffset = -70; 
         const myRef = document.getElementById(value);
-        myRef.scrollIntoView({ top: -4050,behavior: "smooth" });
+        const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({top: y, behavior: 'smooth'});
+        // myRef.scrollIntoView({ block: "start",behavior: "smooth" });
+
     }
 
     
