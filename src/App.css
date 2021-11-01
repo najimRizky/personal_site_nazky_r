@@ -35,3 +35,7 @@
 .App_Content{
   padding-top: 75px;
 }
+
+*:focus{
+  box-shadow: none !important;
+}
