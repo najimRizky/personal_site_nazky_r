@@ -12,8 +12,8 @@
   background-color: brown;
 }
 
-.btnSocial{
-  /* background-image: linear-gradient(to left, #000000, #000000, #000000,#000000,#000000,#000000,#ff00d4, #7407f1, #196ad4) !important; */
+/* .btnSocial{
+  background-image: linear-gradient(to left, #000000, #000000, #000000,#000000,#000000,#000000,#ff00d4, #7407f1, #196ad4) !important;
   background-image:linear-gradient(to left, #000000, #000000, #000000);
   background-size: 200%;
   background-position: left;
@@ -21,9 +21,9 @@
 }
 
 .btnSocial:hover{
-  /* background-position: right; */
+  background-position: right;
   background-image: linear-gradient(to left, #000000, #000000, #000000,#000000,#000000,#000000,#ff00d4, #7407f1, #196ad4) !important;
-}
+} */
 
 .navBar{
   position:fixed;
@@ -38,4 +38,16 @@
 
 *:focus{
   box-shadow: none !important;
+}
+
+.upDownNav{
+  padding: 10px;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  right: 0;
+}
+
+.upDownBtn:active{
+  color: black !important;
 }

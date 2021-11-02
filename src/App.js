@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import { ChakraProvider } from "@chakra-ui/react"
 import React from 'react'
+import UpDownNav from './components/UpDownNav';
 // import { Box, Center, Heading } from '@chakra-ui/layout';
 // import { motion } from 'framer-motion';
 
@@ -41,6 +42,7 @@ function App() {
       </MotionBox> */}
       <div className="App">
         <Navbar />
+        <UpDownNav/>
         <div className="App_Content">
           <Home />
         </div>
