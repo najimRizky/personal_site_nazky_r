@@ -5,12 +5,15 @@ import { motion } from "framer-motion";
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/react"
-
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const MotionBox = motion(Box)
 const MotionHeading = motion(Heading)
 const MotionText = motion(Text)
 const MotionFlex = motion(Flex)
+
+
 
 const BaseVariants = {
     hidden: {
@@ -56,11 +59,19 @@ const NextVariants2 = {
 }
 
 const Greetings = () => {
+    const { ref, inView } = useInView();
+    const id = "home"
+
+    useEffect(() => {
+        if (inView) {
+            window.history.replaceState(null, "", "http://localhost:3000/#"+id);
+        }
+    }, [inView]);
     return (
-        <MotionBox id="home" backgroundImage={bgBox} px={[5,5,20,20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate="visible">
+        <MotionBox id={id}  backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate="visible">
             <SimpleGrid columns={[1, null, 2]}>
                 <MotionBox variants={NextVariants} color="white" w="100%">
-                    <MotionHeading bgGradient="linear(to-r, #FF0075, #172774, #FF0075)" bgClip="text" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >Hi I'm <br /> Najim <br />Rizky</MotionHeading>
+                    <MotionHeading ref={ref}  bgGradient="linear(to-r, #FF0075, #172774, #FF0075)" bgClip="text" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >Hi I'm <br /> Najim <br />Rizky</MotionHeading>
                     <MotionText mt={[10]} lineHeight="30px" fontFamily="Raleway" fontWeight="thin" fontSize="14">
                         A <i><b>Junior IT Programmer</b></i> who is currently<br /> studying at Multimedia Nusantara University
                     </MotionText>

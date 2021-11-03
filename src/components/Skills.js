@@ -1,4 +1,4 @@
-import { Box,Flex, Heading, HStack, Spacer, Text } from "@chakra-ui/layout";
+import { Box, Flex, Heading, HStack, Spacer, Text } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
 import bgBox from "../assets/bgBoxHome.svg";
 import { useInView } from "react-intersection-observer";
@@ -30,10 +30,10 @@ const programming = ([
 
 const BaseVariants = {
     hidden: {
-        y:-100
+        y: 0
     },
     visible: {
-        y:0,
+        y: 0,
         transition: {
             when: "beforeChildren",
             staggerChildren: 0.1
@@ -92,41 +92,43 @@ const NextVariants3 = {
 }
 
 const Skills = () => {
-    const {ref, inView} = useInView();
+    const { ref, inView } = useInView();
     const animation = useAnimation();
+    const id = "skills"
 
     useEffect(() => {
-        if(inView){
+        if (inView) {
             animation.start("visible");
-            console.log("sini")
+            window.history.replaceState(null, "", "http://localhost:3000/#"+id);
         }
         // eslint-disable-next-line
     }, [inView]);
+
     return (
-        <MotionBox  id="skills" color="white" backgroundImage={bgBox} px={[1,1,20,20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
-            <Heading mb={10} px={[5,5,0,0]} fontWeight={400} fontSize={50} >
+        <MotionBox  id={id} color="white" backgroundImage={bgBox} px={[1, 1, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
+            <Heading ref={ref} mb={10} px={[5, 5, 0, 0]} fontWeight={400} fontSize={50} >
                 Skills
             </Heading>
             <AnimatePresence >
-                    <motion.div ref={ref} variants={BaseVariants} initial="hidden" animate={animation} >
+                <motion.div variants={BaseVariants} initial="hidden" animate={animation} >
                     {programming.length && programming.map((item) => (
-                        <MotionFlex alignItems="center"  overflow="hidden" my={7} w="100%" key={item.id}>
-                            <MotionHStack w="90%" color="white" alignItems="center" spacing={[2,2,8,8]} overflow="hidden">
-                                <MotionBox zIndex="1"  variants={NextVariants} bg="white" w={item.levelSkil} h="40px" p="2" color="black" >
+                        <MotionFlex alignItems="center" overflow="hidden" my={7} w="100%" key={item.id}>
+                            <MotionHStack w="90%" color="white" alignItems="center" spacing={[2, 2, 8, 8]} overflow="hidden">
+                                <MotionBox zIndex="1" variants={NextVariants} bg="white" w={item.levelSkil} h="40px" p="2" color="black" >
                                     <Flex>
                                         <Text fontWeight="bold">{item.lang}</Text>
-                                        <Spacer/>
+                                        <Spacer />
                                         <Text fontWeight="bold">{item.levelSkil}</Text>
                                     </Flex>
                                     {/* {item.lang} */}
                                 </MotionBox>
                                 <MotionBox variants={NextVariants2} w={item.levelIdx} h="3px" bg="gray"></MotionBox>
                             </MotionHStack>
-                            <MotionText variants={NextVariants3} w="100px" ml={[2,2,8,8]} >{item.rank}</MotionText>
+                            <MotionText variants={NextVariants3} w="100px" ml={[2, 2, 8, 8]} >{item.rank}</MotionText>
                         </MotionFlex>
                     ))}
-                    </motion.div>
-                    </AnimatePresence>
+                </motion.div>
+            </AnimatePresence>
         </MotionBox>
     );
 }

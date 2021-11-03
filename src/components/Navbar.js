@@ -30,7 +30,7 @@ const Navbar = () => {
                 <Box className="navDesktop">
                     <Flex fontSize="sm" mt={2}>
                         <Text className="underlineHover" onClick={() => executeScroll("home")} mr="7" cursor="pointer" >Home</Text>
-                        <Text className="underlineHover" onClick={() => executeScroll("aboutme")} mr="7" cursor="pointer" >About Me</Text>
+                        <Text className="underlineHover" onClick={() => executeScroll("about")} mr="7" cursor="pointer" >About Me</Text>
                         <Text className="underlineHover" onClick={() => executeScroll("skills")} mr="7" cursor="pointer" >Skills</Text>
                     </Flex>
                 </Box >

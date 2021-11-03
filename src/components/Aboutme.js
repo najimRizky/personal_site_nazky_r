@@ -4,6 +4,8 @@ import { ButtonGroup, IconButton } from "@chakra-ui/button";
 import '../App.css';
 import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
 import BgWave from "../assets/Wave.svg";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 
 const AttributeBtnSocmed = {
@@ -43,9 +45,18 @@ const openSocMed = (val) => {
 }
 
 const Aboutme = () => {
+    const { ref, inView } = useInView();
+    const id = "about"
+
+    useEffect(() => {
+        if (inView) {
+            window.history.replaceState(null, "", "http://localhost:3000/#"+id);
+        }
+    }, [inView]);
+
     return (
-        <Box id="aboutme" bgColor="white" bgImage={BgWave} bgSize={[1700,1700,1700,1500]} px={[5,5,20,20]}  pt={70} fontFamily="Raleway">
-            <Heading mb={10} fontWeight={400} fontSize={50} >
+        <Box id={id} bgColor="white" bgImage={BgWave} bgSize={[1700,1700,1700,1500]} px={[5,5,20,20]}  pt={70} fontFamily="Raleway">
+            <Heading ref={ref}  mb={10} fontWeight={400} fontSize={50} >
                 About
             </Heading>
             <Text w={["100%","100%","50%","50%"]}>

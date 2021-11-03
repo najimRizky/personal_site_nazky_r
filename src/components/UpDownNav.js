@@ -17,43 +17,42 @@ const Attribute = {
     _active: { color: "white" }
 }
 
-const executeScroll = () => {
-    const yOffset = -70;
-    const myRef = document.getElementById("home");
-    const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-    // myRef.scrollIntoView({ block: "start",behavior: "smooth" });
 
+const calculateDir = (direction) => {
+    const segmentList = ["#home", "#about", "#skills"];
+    let currentPos = window.location.hash;
+    let currentIndex = segmentList.indexOf(currentPos);
+    let nextIndex;
+    
+    if (direction === "up" && currentIndex > 0) {
+        nextIndex = currentIndex - 1;
+        return segmentList[nextIndex];
+    } else if (direction === "down" && currentIndex < (segmentList.length-1)) {
+        nextIndex = currentIndex + 1;
+        return segmentList[nextIndex];  
+    } else {
+        return "skip";
+    }
 }
 
-// function isInViewport(el) {
-//     console.log(el);
-//     const rect = el.getBoundingClientRect();
-//     return (
-//         rect.top >= 0 &&
-//         rect.left >= 0 &&
-//         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-//         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-//     );
-// }
-
-
-// const box = document.getElementById("#skills");
-
-// document.addEventListener('scroll', function () {
-//     if (isInViewport(box)) {
-//         console.log("Skill");
-//     }
-// }, {
-//     passive: true
-// });
+const executeScroll = (direction) => {
+    let id = calculateDir(direction);
+    
+    if(id !== "skip") {
+        const yOffset = -70; 
+        const myRef = document.querySelector(id);
+        const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({top: y, behavior: 'smooth'});
+        window.history.replaceState(null, "", "http://localhost:3000/" + id);
+    }
+}
 
 const UpDownNav = () => {
     return (
         <Box className="upDownNav" w="100px">
             <VStack>
-                <IconButton className="upDownBtn" onClick={() => executeScroll()} {...Attribute} icon={< FiArrowUp />}  ></IconButton>
-                <IconButton className="upDownBtn" onClick={() => executeScroll()} {...Attribute} icon={< FiArrowDown />}  ></IconButton>
+                <IconButton className="upDownBtn" onClick={() => executeScroll("up")} {...Attribute} icon={< FiArrowUp />}  ></IconButton>
+                <IconButton className="upDownBtn" onClick={() => executeScroll("down")} {...Attribute} icon={< FiArrowDown />}  ></IconButton>
             </VStack>
         </Box>
     );
