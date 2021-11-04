@@ -46,18 +46,18 @@ const openSocMed = (val) => {
 
 const Aboutme = () => {
     const { ref, inView } = useInView();
-    const id = "about"
+    const id = "profile"
 
     useEffect(() => {
         if (inView) {
-            window.history.replaceState(null, "", "http://localhost:3000/#"+id);
+        window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
     }, [inView]);
 
     return (
         <Box id={id} bgColor="white" bgImage={BgWave} bgSize={[1700,1700,1700,1500]} px={[5,5,20,20]}  pt={70} fontFamily="Raleway">
             <Heading ref={ref}  mb={10} fontWeight={400} fontSize={50} >
-                About
+                Profile
             </Heading>
             <Text w={["100%","100%","50%","50%"]}>
                 Currently I'm still a third year student majoring in <b>Informatics</b> at <b>Multimedia Nusantara University</b>. Even though I'm still a student, I have some ability in web development, machine learning, android apps, etc. To find out what I can do, see my Portfolio.

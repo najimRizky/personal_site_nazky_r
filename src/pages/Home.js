@@ -1,6 +1,7 @@
 import Greetings from "../components/Greetings";
 import Aboutme from "../components/Aboutme";
 import Skills from "../components/Skills";
+import Portfolio from "../components/Portfolio";
 
 const Home = () => {
     return (
@@ -8,6 +9,7 @@ const Home = () => {
             <Greetings />
             <Aboutme/>
             <Skills/>
+            <Portfolio/>
         </>
     );
 }

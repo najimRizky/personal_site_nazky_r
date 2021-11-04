@@ -25,13 +25,14 @@ const Navbar = () => {
     return (
         <Box className="navBar" bg='black' px={8} py={5} color="white" w="100%">
             <Flex>
-                <Image src={logo} htmlWidth="150px" objectFit="cover" />
+                <Image onClick={() => executeScroll("home")} cursor="pointer"  src={logo} htmlWidth="150px" objectFit="cover" />
                 <Spacer />
                 <Box className="navDesktop">
                     <Flex fontSize="sm" mt={2}>
-                        <Text className="underlineHover" onClick={() => executeScroll("home")} mr="7" cursor="pointer" >Home</Text>
-                        <Text className="underlineHover" onClick={() => executeScroll("about")} mr="7" cursor="pointer" >About Me</Text>
-                        <Text className="underlineHover" onClick={() => executeScroll("skills")} mr="7" cursor="pointer" >Skills</Text>
+                        <Text onClick={() => executeScroll("home")} mr="7" cursor="pointer" >Home</Text>
+                        <Text onClick={() => executeScroll("profile")} mr="7" cursor="pointer" >Profile</Text>
+                        <Text onClick={() => executeScroll("skills")} mr="7" cursor="pointer" >Skills</Text>
+                        <Text onClick={() => executeScroll("portfolio")} mr="7" cursor="pointer" >Portfolio</Text>
                     </Flex>
                 </Box >
                 {/* <Box className="navMobile">  

@@ -13,16 +13,17 @@ const Attribute = {
     fontSize: "md",
     size: "md",
     color: "#ffffff",
-    isRound: true,
+    isRound: false,
     _active: { color: "white" }
 }
 
 
 const calculateDir = (direction) => {
-    const segmentList = ["#home", "#about", "#skills"];
+    const segmentList = ["#home", "#profile", "#skills", "#portfolio"];
     let currentPos = window.location.hash;
     let currentIndex = segmentList.indexOf(currentPos);
     let nextIndex;
+    // console.log(window.location)
     
     if (direction === "up" && currentIndex > 0) {
         nextIndex = currentIndex - 1;
@@ -43,7 +44,7 @@ const executeScroll = (direction) => {
         const myRef = document.querySelector(id);
         const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({top: y, behavior: 'smooth'});
-        window.history.replaceState(null, "", "http://localhost:3000/" + id);
+        window.history.replaceState(null, "", window.location.origin + "/" + id);
     }
 }
 

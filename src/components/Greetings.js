@@ -64,7 +64,7 @@ const Greetings = () => {
 
     useEffect(() => {
         if (inView) {
-            window.history.replaceState(null, "", "http://localhost:3000/#"+id);
+        window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
     }, [inView]);
     return (
@@ -85,7 +85,7 @@ const Greetings = () => {
                         }} my={[10]} color="black">Download CV</Button>
                 </MotionBox>
                 <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
-                    <Image src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["sm"]} />
+                    <Image borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["sm"]} />
                 </MotionFlex>
             </SimpleGrid>
         </MotionBox>
