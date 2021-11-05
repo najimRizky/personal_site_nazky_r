@@ -15,18 +15,18 @@ const Portfolio = () => {
 
     useEffect(() => {
         if (inView) {
-        window.history.replaceState(null, "", window.location.origin + "/#" + id);
+            window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
     }, [inView]);
 
 
-    return ( 
-        <Box id={id} bgColor="white" bgImage={BgShape} bgSize="100%" px={[5,5,20,20]}  pt={70} fontFamily="Raleway">
-            <Heading ref={ref}  mb={10} fontWeight={400} fontSize={50} >
+    return (
+        <Box id={id} bgColor="white" bgImage={BgShape} bgSize="100%" px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
+            <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
                 Portfolio
             </Heading>
-            <SimpleGrid columns={[1,1,1,2]} justifyItems="center">
-                <MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+            <SimpleGrid columns={[1, 1, 1, 2]} justifyItems="center">
+                <MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -43,7 +43,7 @@ const Portfolio = () => {
                         </Box>
                     </HStack>
                 </MotionBox>
-                <MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+                <MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -59,7 +59,7 @@ const Portfolio = () => {
                             </Button>
                         </Box>
                     </HStack>
-                </MotionBox><MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+                </MotionBox><MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -75,7 +75,7 @@ const Portfolio = () => {
                             </Button>
                         </Box>
                     </HStack>
-                </MotionBox><MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+                </MotionBox><MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -91,7 +91,7 @@ const Portfolio = () => {
                             </Button>
                         </Box>
                     </HStack>
-                </MotionBox><MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+                </MotionBox><MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -107,7 +107,7 @@ const Portfolio = () => {
                             </Button>
                         </Box>
                     </HStack>
-                </MotionBox><MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+                </MotionBox><MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -123,7 +123,7 @@ const Portfolio = () => {
                             </Button>
                         </Box>
                     </HStack>
-                </MotionBox><MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+                </MotionBox><MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -139,7 +139,7 @@ const Portfolio = () => {
                             </Button>
                         </Box>
                     </HStack>
-                </MotionBox><MotionBox  w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300"  transition="0.3s">
+                </MotionBox><MotionBox w="90%" my={5} borderRadius="15px" overflow="hidden" bg="blackAlpha.300" transition="0.3s">
                     <HStack>
                         <Box p={2} w="30%" >
                             <Center>
@@ -160,5 +160,5 @@ const Portfolio = () => {
         </Box>
     );
 }
- 
+
 export default Portfolio;

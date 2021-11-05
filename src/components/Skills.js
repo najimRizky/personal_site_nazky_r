@@ -78,7 +78,7 @@ const NextVariants = {
         x: 0,
         opacity: 1,
         transition: {
-            type: "spring",
+            type: "linear",
             duration: 0.6,
         }
     },
@@ -148,7 +148,7 @@ const Skills = () => {
                         {programming.length && programming.map((item) => (
                             <MotionBox variants={NextVariants} alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
                                 <MotionText  fontWeight="bold">{item.lang}</MotionText>
-                                <MotionHStack whileHover={{ x: 4, y:-4, transition:{yoyo: Infinity, duration: 0.5}}} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
+                                <MotionHStack whileHover={{ x: 4, y:-4, transition:{ duration: 0.5}}} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
                                     <MotionBox zIndex="1"  bg="white" w={item.levelSkil} h="20px" pr={1} color="black" >
                                         <Flex>
                                             <Spacer />
@@ -170,7 +170,7 @@ const Skills = () => {
                         {framework_library.length && framework_library.map((item) => (
                             <MotionBox  variants={NextVariants}   alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
                                 <MotionText    fontWeight="bold">{item.lang}</MotionText>
-                                <MotionHStack whileHover={{ x: 4, y:-4, transition:{yoyo: Infinity, duration: 0.5}}} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
+                                <MotionHStack whileHover={{ x: 4, y:-4, transition:{duration: 0.5}}} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
                                     <MotionBox
                                         zIndex="1" bg="white" w={item.levelSkil} h="20px" pr={1} color="black" >
                                         <Flex>
