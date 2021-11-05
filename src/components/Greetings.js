@@ -1,7 +1,7 @@
 import bgBox from "../assets/bgBoxHome.svg";
 import { Image } from "@chakra-ui/image";
 import Me from "../assets/Me2.png";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/react"
@@ -61,17 +61,21 @@ const NextVariants2 = {
 const Greetings = () => {
     const { ref, inView } = useInView();
     const id = "home"
+    const animation = useAnimation();
 
+    setTimeout(() => {
+        animation.start("visible");
+    },8100)
     useEffect(() => {
         if (inView) {
-        window.history.replaceState(null, "", window.location.origin + "/#" + id);
+            window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
     }, [inView]);
     return (
-        <MotionBox id={id}  backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate="visible">
+        <MotionBox id={id} backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate={animation}>
             <SimpleGrid columns={[1, null, 2]}>
                 <MotionBox variants={NextVariants} color="white" w="100%">
-                    <MotionHeading ref={ref}  bgGradient="linear(to-r, #FF0075, #172774, #FF0075)" bgClip="text" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >Hi I'm <br /> Najim <br />Rizky</MotionHeading>
+                    <MotionHeading ref={ref} bgGradient="linear(to-r, #FF0075, #172774, #FF0075)" bgClip="text" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >Hi I'm <br /> Najim <br />Rizky</MotionHeading>
                     <MotionText mt={[10]} lineHeight="30px" fontFamily="Raleway" fontWeight="thin" fontSize="14">
                         A <i><b>Junior IT Programmer</b></i> who is currently<br /> studying at Multimedia Nusantara University
                     </MotionText>
