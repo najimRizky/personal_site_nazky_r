@@ -81,7 +81,27 @@
 }
 
 .portfolioCard{
-  box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+  box-shadow: none;
   border-radius: 8px;
   backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.432);
+  background: rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
 }
+
+.portfolioCard:hover{
+  box-shadow: 5px 5px 50px rgba(0,0,0,0.5);
+  transform: scale(1.01);
+}
+
+.tiltCard{
+  padding: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
+  width: 100% !important;
+}
+
+.tiltCard:hover{
+  box-shadow: none;
+}
+
