@@ -57,11 +57,11 @@ const subVariant = {
 const attributes = {
     fontWeight: 500,
     my: 5,
-    whileHover: { scale: 0.8 },
+    // whileHover: { scale: 0.8 },
     cursor: "pointer",
-    fontStyle: "italic",
+    fontStyle: "normal",
     fontSize: 40,
-
+    className:"navBarItem"
 }
 
 const Navbar = () => {
@@ -92,10 +92,10 @@ const Navbar = () => {
                 <Spacer />
                 <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
                     <Flex fontSize="sm" mt={2}>
-                        <Text  onClick={() => executeScroll("home")} mr="7" cursor="pointer" >Home</Text>
-                        <Text onClick={() => executeScroll("profile")} mr="7" cursor="pointer" >Profile</Text>
-                        <Text onClick={() => executeScroll("skills")} mr="7" cursor="pointer" >Skills</Text>
-                        <Text onClick={() => executeScroll("portfolio")} mr="7" cursor="pointer" >Portfolio</Text>
+                        <Text className="navBarItem" id="navItemHome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
+                        <Text className="navBarItem" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
+                        <Text className="navBarItem" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
+                        <Text className="navBarItem" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
                     </Flex>
                 </Box >
 
