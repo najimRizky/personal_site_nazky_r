@@ -47,19 +47,19 @@ const Portfolio = () => {
             <SimpleGrid columns={[1, 1, 2, 2]} >
                 {dataPortfolio.map((item) => (
                     <Tilt className="tiltCard" key={item.id} >
-                        <Box onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w={["100%","450px","320px","405px"]} overflow="hidden" height={["170px","255px","185px","230px"]} bgSize="100%" bgImage={item.background} className="portfolioCard" >
+                        <Box onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w={["100%", "450px", "320px", "405px"]} overflow="hidden" height={["170px", "255px", "185px", "230px"]} bgSize="100%" bgImage={item.background} className="portfolioCard" >
                             <AnimatePresence>
                                 {detail === item.id && (
                                     <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -240 }} exit={{ y: -200, transition: { type: "linear" } }} color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
-                                        <Text fontSize={[16,26,20,24]} fontWeight={700}>
+                                        <Text fontSize={[16, 26, 20, 24]} fontWeight={700}>
                                             {item.name}
                                         </Text>
                                         <Box ml={0}>
-                                            <Text fontSize={[8,14,10,12]}>
+                                            <Text fontSize={[8, 14, 10, 12]}>
                                                 {item.desc}
                                             </Text>
                                             {item.status.map((item) => (
-                                                <Badge mr={1} fontSize={["0.4rem","0.6rem","0.5rem","0.6rem"]} variant="solid" colorScheme={item.color} key={item.id}>
+                                                <Badge mr={1} fontSize={["0.4rem", "0.6rem", "0.5rem", "0.6rem"]} variant="solid" colorScheme={item.color} key={item.id}>
                                                     {item.name}
                                                 </Badge>
                                             ))}
@@ -67,7 +67,7 @@ const Portfolio = () => {
                                                 <TimeIcon h={3} mb={1} /> {item.time}
                                             </Text>
                                             <HStack>
-                                                <Text fontSize={[8,16,12,14]} >
+                                                <Text fontSize={[8, 16, 12, 14]} >
                                                     Build with:
                                                 </Text>
                                                 {item.tool.map((item) => (
@@ -76,8 +76,14 @@ const Portfolio = () => {
                                                     </Tooltip>
                                                 ))}
                                             </HStack>
-                                            <Button w="100%" mb={[2,4,2,4]} mt={[2,4,2,4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</Button>
-                                            <Button w="100%" size="xs" colorScheme="teal" onClick={() =>goToLink(item.urlSite)} >Visit Repo</Button>
+                                            <Button className="downloadCVBtn"
+                                                bgGradient="linear(to-r, #ff00d4, #7407f1, #196ad4)"
+                                                transition="0.4s"
+                                                bgSize="200%"
+                                                _hover={{
+                                                    bgPosition: "right"
+                                                }} my={[10]} w="100%" mb={[2, 4, 2, 4]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</Button>
+                                            <Button w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlSite)} >Visit Repo</Button>
                                         </Box>
                                     </MotionBox>
                                 )}
