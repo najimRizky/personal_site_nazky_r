@@ -27,7 +27,7 @@
 
 .navBar{
   position:fixed;
-  z-index: 2;
+  z-index: 3;
   margin-top: 0px;
   max-width: 1250px;
 }
@@ -90,7 +90,7 @@
 }
 
 .portfolioCard:hover{
-  box-shadow: 5px 5px 50px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 20px rgba(0,0,0,0.5);
   transform: scale(1.01);
 }
 

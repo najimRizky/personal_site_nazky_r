@@ -1,5 +1,5 @@
 import { IconButton } from "@chakra-ui/button";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Heading, SimpleGrid, Spacer, Text } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
@@ -7,9 +7,13 @@ import logo from "../assets/Logo.png";
 import '../App.css';
 // import React, { useEffect } from "react";
 import { useState } from "react";
+import { transition } from "@chakra-ui/styled-system";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
+const MotionText = motion(Text);
+const MotionHamburgerIcon = motion(HamburgerIcon);
+const MotionArrowForwardIcon = motion(ArrowBackIcon);
 
 const mobileNavVariants = {
     hidden: {
@@ -20,10 +24,10 @@ const mobileNavVariants = {
         x: 0,
         opacity: 1,
         transition: {
-            type: "spring",
-            damping: 10,
+            type: "linear",
+            // damping: 10,
             staggerChildren: 0.1,
-            delayChildren: 0.5,
+            delayChildren: 0.1,
             // when:"beforeChildren",
             duration: 0.5
         }
@@ -38,14 +42,15 @@ const mobileNavVariants = {
 
 const subVariant = {
     hidden: {
-        y: -100,
+        x: -200,
         opacity: 0
     },
     visible: {
-        y: 0,
+        x: 0,
         opacity: 1,
         transition: {
-            type: "spring"
+            type: "linear"
+
         }
     },
     dismount: {
@@ -53,15 +58,33 @@ const subVariant = {
     }
 }
 
+const MenuIconVariants = {
+    hidden: {
+        opacity: 0,
+        rotate: 0
+    },
+    visible: {
+        opacity: 1,
+        rotate: 180
+    },
+    dismount: {
+        rotate: 180,
+        opacity: 0
+    }
+}
+
 const attributes = {
-    fontWeight: 500,
-    my: 5,
+    fontWeight: 700,
+    mt: 1,
     // whileHover: { scale: 0.8 },
     cursor: "pointer",
-    fontStyle: "normal",
-    fontSize: 40,
-    className: "navBarItem"
+    fontStyle: 'normal',
+    fontSize: 37,
+    className: "navBarItem",
+    fontFamily: "Raleway"
+    
 }
+
 
 const Navbar = () => {
     const [nav, showNav] = useState(false);
@@ -75,7 +98,20 @@ const Navbar = () => {
     const toggleNav = () => {
         showNav(nav ? false : true);
     }
-
+    const attributesIconMenu = {
+        variants: MenuIconVariants, 
+        animate: "visible", 
+        initial: "hidden", 
+        exit: "dismount", 
+        position: "fixed", 
+        mt: 2 ,
+        onClick :  toggleNav,
+        zIndex : "3" ,
+        right : "4" ,
+        cursor:"pointer" ,
+        w: 6,
+        h: 6,
+    } 
 
     const executeMobilenav = (value) => {
         toggleNav();
@@ -84,38 +120,38 @@ const Navbar = () => {
         }, 700)
     }
 
-    // const [hash, setHash] = useState(window.location.hash);
+    /*const [hash, setHash] = useState(window.location.hash);
 
-    // document.addEventListener("scroll", () => {
-    //     if (hash !== window.location.hash) {
-    //         let tmp = window.location.hash;
-    //         document.querySelector(".navItemhome").setAttribute("id", "");
-    //         document.querySelector(".navItemprofile").setAttribute("id", "");
-    //         document.querySelector(".navItemskills").setAttribute("id", "");
-    //         document.querySelector(".navItemportfolio").setAttribute("id", "");
-    //         switch (tmp) {
-    //             case "#home":
-    //                 setHash("#home");
-    //                 document.querySelector(".navItemhome").setAttribute("id", "navBarItemActive");
-    //                 break;
-    //             case "#profile":
-    //                 setHash("#profile");
-    //                 document.querySelector(".navItemprofile").setAttribute("id", "navBarItemActive");
-    //                 break;
-    //             case "#skills":
-    //                 setHash("#skills");
-    //                 document.querySelector(".navItemskills").setAttribute("id", "navBarItemActive");
-    //                 break;
-    //             case "#portfolio":
-    //                 setHash("#portfolio");
-    //                 document.querySelector(".navItemportfolio").setAttribute("id", "navBarItemActive");
-    //                 break;
+    document.addEventListener("scroll", () => {
+        if (hash !== window.location.hash) {
+            let tmp = window.location.hash;
+            document.querySelector(".navItemhome").setAttribute("id", "");
+            document.querySelector(".navItemprofile").setAttribute("id", "");
+            document.querySelector(".navItemskills").setAttribute("id", "");
+            document.querySelector(".navItemportfolio").setAttribute("id", "");
+            switch (tmp) {
+                case "#home":
+                    setHash("#home");
+                    document.querySelector(".navItemhome").setAttribute("id", "navBarItemActive");
+                    break;
+                case "#profile":
+                    setHash("#profile");
+                    document.querySelector(".navItemprofile").setAttribute("id", "navBarItemActive");
+                    break;
+                case "#skills":
+                    setHash("#skills");
+                    document.querySelector(".navItemskills").setAttribute("id", "navBarItemActive");
+                    break;
+                case "#portfolio":
+                    setHash("#portfolio");
+                    document.querySelector(".navItemportfolio").setAttribute("id", "navBarItemActive");
+                    break;
 
-    //         }
-    //         // console.log(".navItem"+window.location.hash);
-    //         // console.log(hash);
-    //     }
-    // });
+            }
+            // console.log(".navItem"+window.location.hash);
+            // console.log(hash);
+        }
+    });*/
 
     return (
         <Box className="navBar" bg='black' px={8} py={5} color="white" w="100%">
@@ -132,18 +168,25 @@ const Navbar = () => {
                 </Box >
 
                 <Box className="navMobile" display={["block", "block", "none", "none"]} >
-                    <IconButton position="fixed" onClick={toggleNav} zIndex="3" right="4" size="sm" variant="ghost" _hover={{ bg: "#304078" }} icon={<HamburgerIcon />}></IconButton>
+                    <AnimatePresence>                    
+                    {!nav ? (
+                        <MotionHamburgerIcon {...attributesIconMenu} />
+                    ): ( 
+                        <MotionArrowForwardIcon {...attributesIconMenu}/>
+                    )}
+                    </AnimatePresence>
                 </Box>
             </Flex>
 
             <AnimatePresence>
                 {nav && (
-                    <MotionBox fontFamily="Raleway" p={10} color="white" variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="0" left="0" bg="black" zIndex="2" pos="fixed" w="100%" h="100%">
-                        <SimpleGrid justifyItems="center">
-                            <MotionHeading onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
-                            <MotionHeading onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
-                            <MotionHeading onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
-                            <MotionHeading onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
+                    <MotionBox fontFamily="Raleway" py={10} px={6} color="white" variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg="black" zIndex="-3" pos="fixed" w="100%" h="100%">
+                        <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
+                        <SimpleGrid justifyItems="left">
+                            <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
+                            <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
+                            <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
+                            <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
                         </SimpleGrid>
                     </MotionBox>
                 )}
