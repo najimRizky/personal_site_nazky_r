@@ -40,14 +40,14 @@ const Portfolio = () => {
     }
 
     return (
-        <Box id={id} bgColor="white" bgImage={bgPortfolio} bgSize="70%" px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
+        <Box id={id} bgColor="white" bgImage={bgPortfolio} bgSize="70%" px={[5, 5, 10, 20]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
                 Portfolio
             </Heading>
-            <SimpleGrid columns={[1, 1, 1, 2]} justifyItems="center">
+            <SimpleGrid columns={[1, 1, 2, 2]} >
                 {dataPortfolio.map((item) => (
                     <Tilt className="tiltCard" key={item.id} >
-                        <Box onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w="405px" overflow="hidden" height="230px" bgSize="100%" bgImage={item.background} className="portfolioCard" >
+                        <Box onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w={["100%","450px","320px","405px"]} overflow="hidden" height={["170px","255px","185px","230px"]} bgSize="100%" bgImage={item.background} className="portfolioCard" >
                             <AnimatePresence>
                                 {detail === item.id && (
                                     <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -240 }} exit={{ y: -200, transition: { type: "linear" } }} color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
