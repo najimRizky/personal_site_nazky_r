@@ -1,21 +1,25 @@
-import { Badge, Box, Center, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/layout";
+import { Badge, Box, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/layout";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import bgPortfolio from "../assets/large-triangles.svg"
 import { Image } from "@chakra-ui/image";
-import imgNYLCinema21 from "../assets/NYL Cinema21.png"
-// import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Tilt from "react-vanilla-tilt"
+import { Button } from "@chakra-ui/button";
 
-import vueLogo from "../assets/logoPortfolio/vue.png"
-import vuetifyLogo from "../assets/logoPortfolio/vuetify.png"
+import { allPortfolio } from "../dataStorage/portfolioData";
+
 import { Tooltip } from "@chakra-ui/react";
+import { TimeIcon } from "@chakra-ui/icons";
 
-// const MotionBox = motion(Box);
+const MotionBox = motion(Box);
+
+const dataPortfolio = allPortfolio;
 
 const Portfolio = () => {
     const { ref, inView } = useInView();
     const id = "portfolio"
+    const [detail, showDetail] = useState(0);
 
     useEffect(() => {
         if (inView) {
@@ -23,6 +27,17 @@ const Portfolio = () => {
         }
     }, [inView]);
 
+    const showdetail = (val) => {
+        showDetail(val);
+    }
+
+    const hidedetail = () => {
+        showDetail(0);
+    }
+
+    const goToLink = (url) => {
+        window.open(url, "_blank");
+    }
 
     return (
         <Box id={id} bgColor="white" bgImage={bgPortfolio} bgSize="70%" px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
@@ -30,38 +45,46 @@ const Portfolio = () => {
                 Portfolio
             </Heading>
             <SimpleGrid columns={[1, 1, 1, 2]} justifyItems="center">
-                <Tilt className="tiltCard" >
-                    <Box my={5} w={["100%", "100%", "90%", "90%"]} className="portfolioCard" >
-                        <HStack>
-                            <Box p={2} w="30%" >
-                                <Center>
-                                    <Image boxSize={20} alignSelf="center" src={imgNYLCinema21} />
-                                </Center>
-                            </Box>
-                            <Box w="70%" p={2} h="150px">
-                                <Heading size="md">NYL Cinema 21
-                                    <Badge ml="1" fontSize="0.7rem" variant="subtle" colorScheme="red">
-                                        Team Project
-                                    </Badge>
-                                </Heading>
-                                <Text mt={0} fontWeight={700}>Movie Information Site</Text>
-                                <Text mt={0} fontSize={12} fontWeight={1000}>December 19</Text>
-                                <HStack>
-                                    <Text>
-
-                                    Build with: 
-                                    </Text>
-                                    <Tooltip label="Vue js">
-                                        <Image src={vueLogo} w={5}></Image>
-                                    </Tooltip>
-                                    <Tooltip label="Vuetify">
-                                        <Image src={vuetifyLogo} w={4}></Image>
-                                    </Tooltip>
-                                </HStack>
-                            </Box>
-                        </HStack>
-                    </Box>
-                </Tilt>
+                {dataPortfolio.map((item) => (
+                    <Tilt className="tiltCard" key={item.id} >
+                        <Box onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w="405px" overflow="hidden" height="230px" bgSize="100%" bgImage={item.background} className="portfolioCard" >
+                            <AnimatePresence>
+                                {detail === item.id && (
+                                    <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -240 }} exit={{ y: -200, transition: { type: "linear" } }} color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
+                                        <Text fontSize={24} fontWeight={700}>
+                                            {item.name}
+                                        </Text>
+                                        <Box ml={0}>
+                                            <Text fontSize={12}>
+                                                {item.desc}
+                                            </Text>
+                                            {item.status.map((item) => (
+                                                <Badge mr={1} fontSize="0.6rem" variant="solid" colorScheme={item.color} key={item.id}>
+                                                    {item.name}
+                                                </Badge>
+                                            ))}
+                                            <Text position="fixed" top="-2" right="3" mt={4} fontSize={12}>
+                                                <TimeIcon h={3} mb={1} /> {item.time}
+                                            </Text>
+                                            <HStack>
+                                                <Text>
+                                                    Build with:
+                                                </Text>
+                                                {item.tool.map((item) => (
+                                                    <Tooltip label={item.name}>
+                                                        <Image src={item.logo} w={4} h={4}></Image>
+                                                    </Tooltip>
+                                                ))}
+                                            </HStack>
+                                            <Button w="100%" mb={4} mt={4} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</Button>
+                                            <Button w="100%" size="xs" colorScheme="teal" onClick={() =>goToLink(item.urlSite)} >Visit Repo</Button>
+                                        </Box>
+                                    </MotionBox>
+                                )}
+                            </AnimatePresence>
+                        </Box>
+                    </Tilt>
+                ))}
             </SimpleGrid>
         </Box>
     );
