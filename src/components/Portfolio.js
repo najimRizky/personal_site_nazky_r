@@ -51,15 +51,15 @@ const Portfolio = () => {
                             <AnimatePresence>
                                 {detail === item.id && (
                                     <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -240 }} exit={{ y: -200, transition: { type: "linear" } }} color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
-                                        <Text fontSize={24} fontWeight={700}>
+                                        <Text fontSize={[16,26,20,24]} fontWeight={700}>
                                             {item.name}
                                         </Text>
                                         <Box ml={0}>
-                                            <Text fontSize={12}>
+                                            <Text fontSize={[8,14,10,12]}>
                                                 {item.desc}
                                             </Text>
                                             {item.status.map((item) => (
-                                                <Badge mr={1} fontSize="0.6rem" variant="solid" colorScheme={item.color} key={item.id}>
+                                                <Badge mr={1} fontSize={["0.4rem","0.6rem","0.5rem","0.6rem"]} variant="solid" colorScheme={item.color} key={item.id}>
                                                     {item.name}
                                                 </Badge>
                                             ))}
@@ -67,7 +67,7 @@ const Portfolio = () => {
                                                 <TimeIcon h={3} mb={1} /> {item.time}
                                             </Text>
                                             <HStack>
-                                                <Text>
+                                                <Text fontSize={[8,16,12,14]} >
                                                     Build with:
                                                 </Text>
                                                 {item.tool.map((item) => (
@@ -76,7 +76,7 @@ const Portfolio = () => {
                                                     </Tooltip>
                                                 ))}
                                             </HStack>
-                                            <Button w="100%" mb={4} mt={4} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</Button>
+                                            <Button w="100%" mb={[2,4,2,4]} mt={[2,4,2,4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</Button>
                                             <Button w="100%" size="xs" colorScheme="teal" onClick={() =>goToLink(item.urlSite)} >Visit Repo</Button>
                                         </Box>
                                     </MotionBox>
