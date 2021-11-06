@@ -1,5 +1,4 @@
-import { IconButton } from "@chakra-ui/button";
-import { ArrowBackIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, SmallCloseIcon } from "@chakra-ui/icons";
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Heading, SimpleGrid, Spacer, Text } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
@@ -7,13 +6,12 @@ import logo from "../assets/Logo.png";
 import '../App.css';
 // import React, { useEffect } from "react";
 import { useState } from "react";
-import { transition } from "@chakra-ui/styled-system";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionHamburgerIcon = motion(HamburgerIcon);
-const MotionArrowForwardIcon = motion(ArrowBackIcon);
+const MotionArrowForwardIcon = motion(SmallCloseIcon);
 
 const mobileNavVariants = {
     hidden: {
