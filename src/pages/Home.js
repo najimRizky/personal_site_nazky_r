@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 const Home = () => {
     return (
         <>
-            <Greetings />
+            <Greetings/>
             <Aboutme/>
             <Skills/>
             <Portfolio/>
