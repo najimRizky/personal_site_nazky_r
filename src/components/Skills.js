@@ -29,7 +29,7 @@ const programming = ([
 
 const framework_library = ([
     { lang: "Vue js", rank: "Intermediate", levelSkil: "60%", levelIdx: "40%", id: 1 },
-    { lang: "React js", rank: "Intermediate", levelSkil: "40%", levelIdx: "40%", id: 2 },
+    { lang: "React js", rank: "Intermediate", levelSkil: "40%", levelIdx: "60%", id: 2 },
     { lang: "Laravel", rank: "Intermediate", levelSkil: "50%", levelIdx: "50%", id: 3 },
     { lang: "Codeigniter", rank: "Intermediate", levelSkil: "60%", levelIdx: "40%", id: 4 },
     { lang: "Semantic UI", rank: "Intermediate", levelSkil: "70%", levelIdx: "30%", id: 5 },
@@ -71,15 +71,30 @@ const BaseVariants = {
 
 const NextVariants = {
     hidden: {
-        x: -700,
-        opacity: 0
+        x: -200,
+        // opacity: 0
     },
     visible: {
         x: 0,
-        opacity: 1,
+        // opacity: 1,
         transition: {
             type: "linear",
             duration: 0.6,
+        }
+    },
+    exit: {
+        opacity: 0
+    }
+}
+const NextVariants2 = {
+    hidden: {
+       scaleX: 5
+    },
+    visible: {
+        scaleX : 1,
+        transition: {
+            type: "linear",
+            duration: 0.5,
         }
     },
     exit: {
@@ -146,16 +161,16 @@ const Skills = () => {
                     </Center>
                     <SimpleGrid columns={[1, null, 2]} justifyItems="center">
                         {programming.length && programming.map((item) => (
-                            <MotionBox variants={NextVariants} alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
+                            <MotionBox  alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
                                 <MotionText  fontWeight="bold">{item.lang}</MotionText>
-                                <MotionHStack whileHover={{ x: 4, y:-4, transition:{ duration: 0.5}}} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
-                                    <MotionBox zIndex="1"  bg="white" w={item.levelSkil} h="20px" pr={1} color="black" >
+                                <MotionHStack  whileHover={{ x: 4, y:-4, transition:{ duration: 0.5}}} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
+                                    <MotionBox variants={NextVariants} zIndex="1"  bg="white" w={item.levelSkil} h="20px" pr={1} color="black" >
                                         <Flex>
                                             <Spacer />
                                             <Text fontWeight="bold" fontSize={13}>{item.levelSkil}</Text>
                                         </Flex>
                                     </MotionBox>
-                                    <MotionBox  w={item.levelIdx} h="3px" bg="gray"></MotionBox>
+                                    <MotionBox variants={NextVariants2} w={item.levelIdx} h="3px" bg="gray"></MotionBox>
                                 </MotionHStack>
                                 {/* <MotionText variants={NextVariants3} w="100px" ml={[2, 2, 8, 8]} >{item.rank}</MotionText> */}
                             </MotionBox>
@@ -168,17 +183,17 @@ const Skills = () => {
                     </Center>
                     <SimpleGrid columns={[1, null, 2]} justifyItems="center">
                         {framework_library.length && framework_library.map((item) => (
-                            <MotionBox  variants={NextVariants}   alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
+                            <MotionBox   alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
                                 <MotionText    fontWeight="bold">{item.lang}</MotionText>
                                 <MotionHStack whileHover={{ x: 4, y:-4, transition:{duration: 0.5}}} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
-                                    <MotionBox
+                                    <MotionBox variants={NextVariants}  
                                         zIndex="1" bg="white" w={item.levelSkil} h="20px" pr={1} color="black" >
                                         <Flex>
                                             <Spacer />
                                             <Text fontWeight="bold" fontSize={13}>{item.levelSkil}</Text>
                                         </Flex>
                                     </MotionBox>
-                                    <MotionBox w={item.levelIdx} h="3px" bg="gray"></MotionBox>
+                                    <MotionBox variants={NextVariants2}   w={item.levelIdx} h="3px" bg="gray"></MotionBox>
                                 </MotionHStack>
                             </MotionBox>
                         ))}
