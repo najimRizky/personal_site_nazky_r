@@ -105,3 +105,13 @@
   box-shadow: none;
 }
 
+.downloadCVBtn{
+  /* background-image: "linear(to-r, #ff00d4, #7407f1, #196ad4)"; */
+  background-image: linear-gradient(to right, #ff00d4, #7407f1, #196ad4) !important;
+  background-size: 200% !important;
+  transition: 0.4s !important;
+}
+
+.downloadCVBtn:hover{
+  background-position: right !important;
+}
