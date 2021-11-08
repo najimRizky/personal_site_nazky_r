@@ -23,4 +23,16 @@ code {
   max-width: 1250px;
   width: 100%;
 }
+
+@font-face {
+  font-family: "Lequire";
+  src: local("Lequire"),url("./fonts/Lequire.otf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Ubiquitos";
+  src: local("Lequire"),url("./fonts/Ubiquitous.otf") format("truetype");
+  font-weight: normal;
+}
   

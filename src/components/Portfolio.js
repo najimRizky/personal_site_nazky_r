@@ -42,7 +42,7 @@ const Portfolio = () => {
     return (
         <Box id={id} bgColor="white" bgImage={bgPortfolio} bgSize="70%" pb={10} px={[5, 5, 10, 20]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
-                Portfolio
+                PORTOFOLIO
             </Heading>
             <SimpleGrid columns={[1, 1, 2, 2]} >
                 {dataPortfolio.map((item) => (

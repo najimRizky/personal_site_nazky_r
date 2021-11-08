@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Box, Center, SimpleGrid, Text } from '@chakra-ui/layout';
+import { Box, Center, HStack, SimpleGrid, Text } from '@chakra-ui/layout';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Image } from "@chakra-ui/image";
 import Nazky from "../assets/nazky_black.png";
 const MotionBox = motion(Box)
 const MotionText = motion(Text)
 const MotionImage = motion(Image)
+const MotionHStack = motion(HStack)
 
 
 
@@ -49,6 +50,20 @@ const LineVariants = {
   }
 }
 
+const tes = {
+  hidden: {
+
+  },
+  visible: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  exit: {
+
+  },
+}
+
 const NazkyVariants = {
   hidden: {
     // y: 100,
@@ -77,11 +92,19 @@ const Intro = () => {
     return ( 
         <AnimatePresence>
         {intro && (
-          <MotionBox variants={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
+          <MotionBox animate={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
             <Center h="100%">
               <MotionBox mr={3} variants={LineVariants} width={1} className="introLine" height="65px" bg="#1a202c" />
               <SimpleGrid columns="1">
-                <MotionImage width="170px" variants={NazkyVariants} src={Nazky} />
+                {/* <MotionImage width="170px" variants={NazkyVariants} src={Nazky} /> */}
+                <MotionHStack variants={tes} fontSize="5xl" ml="0" mb="-4" spacing="0" fontFamily="lequire">
+                  <MotionText variants={NazkyVariants}>n</MotionText>
+                  <MotionText variants={NazkyVariants}>a</MotionText>
+                  <MotionText variants={NazkyVariants}>z</MotionText>
+                  <MotionText variants={NazkyVariants}>k</MotionText>
+                  <MotionText variants={NazkyVariants}>y</MotionText>
+                </MotionHStack>
+                {/* <Text variants={NazkyVariants} fontSize="5xl" ml="0" mb="-4" fontFamily="Lequire">nazky</Text> */}
                 <MotionText ml={1} variants={NazkyVariants}>Present</MotionText>
               </SimpleGrid>
             </Center>

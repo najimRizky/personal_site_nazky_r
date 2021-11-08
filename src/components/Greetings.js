@@ -75,7 +75,7 @@ const Greetings = () => {
         <MotionBox id={id} backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate={animation}>
             <SimpleGrid columns={[1, null, 2]}>
                 <MotionBox variants={NextVariants} color="white" w="100%">
-                    <MotionHeading ref={ref} bgGradient="linear(to-r, #FF0075, #172774, #FF0075)" bgClip="text" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >Hi I'm <br /> Najim <br />Rizky</MotionHeading>
+                    <MotionHeading ref={ref}  fontFamily="Ubiquitos" bgGradient="linear(to-r, #FF0075, #172774, #FF0075)" bgClip="text" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >Hi I'm <br /> Najim <br />Rizky</MotionHeading>
                     <MotionText mt={[10]} lineHeight="30px" fontFamily="Raleway" fontWeight="thin" fontSize="14">
                         A <i><b>Junior IT Programmer</b></i> who is currently<br /> studying at Multimedia Nusantara University
                     </MotionText>
@@ -86,7 +86,10 @@ const Greetings = () => {
                         bgSize="200%"
                         _hover={{
                             bgPosition: "right"
-                        }} my={[10]} color="black">Download CV</Button>
+                        }} my={[10]} 
+                        color="black">
+                        Download CV
+                    </Button>
                 </MotionBox>
                 <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
                         <Image borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["sm"]} />

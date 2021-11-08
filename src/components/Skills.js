@@ -137,7 +137,7 @@ const Skills = () => {
     return (
         <MotionBox id={id} color="white" backgroundImage={bgBox} px={[4, 4, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} px={[5, 5, 0, 0]} fontWeight={400} fontSize={50} >
-                Skills
+                SKILLS
             </Heading>
             <AnimatePresence >
                 <motion.div variants={BaseVariants} initial="hidden" animate={animation} >

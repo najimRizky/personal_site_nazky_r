@@ -7,7 +7,6 @@ import semanticUI from "../assets/logoPortfolio/semanticUI.png"
 import react from "../assets/logoPortfolio/react.png"
 import materialUI from "../assets/logoPortfolio/materialUI.png"
 
-
 import nyl from '../assets/logoPortfolio/nyl.png'
 import findumois from "../assets/logoPortfolio/findumois.png"
 import gema from "../assets/logoPortfolio/gema.png"
