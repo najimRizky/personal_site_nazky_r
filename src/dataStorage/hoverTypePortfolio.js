@@ -5,13 +5,16 @@ export const hoverY = {
     visible: { 
         y: 0, 
         transition: { 
-            type: "linear" 
+            type: "linear",
+            staggerChildren: 0.1,
+            when: "beforeChildren",
         }
     }, 
     exit: { 
         y: -200, 
         transition: { 
-            type: "linear" 
+            type: "linear" ,
+            when: "afterChildren",
         }
     }  
 }
@@ -23,13 +26,16 @@ export const hoverX = {
     visible: { 
         x: 0, 
         transition: { 
-            type: "linear" 
+            type: "linear" ,
+            staggerChildren: 0.1,
+            when: "beforeChildren",
         }
     }, 
     exit: { 
         x: -400, 
         transition: { 
-            type: "linear" 
+            type: "linear" ,
+            when: "afterChildren",
         }
     }  
 }
@@ -41,13 +47,16 @@ export const hoverOpac = {
     visible: { 
         opacity: 1,
         transition: { 
-            type: "linear" 
+            type: "linear" ,
+            staggerChildren: 0.1,
+            when: "beforeChildren",
         }
     }, 
     exit: { 
         opacity: 0, 
         transition: { 
-            type: "linear" 
+            type: "linear" ,
+            when: "afterChildren",
         }
     }  
 }
@@ -59,13 +68,16 @@ export const hoverScale = {
     visible: { 
         scale: 1,
         transition: { 
-            type: "linear" 
+            type: "linear",
+            staggerChildren: 0.1,
+            when: "beforeChildren",
         }
     }, 
     exit: { 
         opacity: 0, 
         transition: { 
-            type: "linear" 
+            type: "linear" ,
+            when: "afterChildren", 
         }
     }  
 }

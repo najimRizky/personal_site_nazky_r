@@ -14,8 +14,28 @@ import { TimeIcon } from "@chakra-ui/icons";
 import { hoverOpac, hoverScale, hoverX, hoverY } from "../dataStorage/hoverTypePortfolio";
 
 const MotionBox = motion(Box);
+const MotionText = motion(Text);
+const MotionBadge = motion(Badge);
+const MotionButton = motion(Button);
+const MotionHStack = motion(HStack);
 
-var arrVariantHover = [hoverY, hoverX, hoverOpac, hoverScale]
+const arrVariantHover = [hoverY, hoverX, hoverOpac, hoverScale]
+
+const childVariant = {
+    hidden: {
+        scaleY:0
+    },
+    visible: {
+        scaleY: 1,
+        transition: {
+            type: "spring",
+            duration: 0.2
+        }
+    },
+    exit: {
+        opacity: 0,
+    }
+}
 
 const Portfolio = () => {
     const { ref, inView } = useInView();
@@ -52,22 +72,22 @@ const Portfolio = () => {
                             <AnimatePresence>
                                 {detail === item.id && (
                                     <MotionBox variants={arrVariantHover[Math.floor(Math.random()*arrVariantHover.length)]} initial="hidden" animate="visible" exit="exit" color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
-                                        <Text fontSize={[16, 26, 20, 24]} fontWeight={700}>
+                                        <MotionText variants={childVariant} fontSize={[16, 26, 20, 24]} fontWeight={700}>
                                             {item.name}
-                                        </Text>
+                                        </MotionText>
                                         <Box ml={0}>
-                                            <Text fontSize={[8, 14, 10, 12]}>
+                                            <MotionText variants={childVariant} fontSize={[8, 14, 10, 12]}>
                                                 {item.desc}
-                                            </Text>
+                                            </MotionText>
                                             {item.status.map((item) => (
-                                                <Badge mr={1} fontSize={["0.4rem", "0.6rem", "0.5rem", "0.6rem"]} variant="solid" colorScheme={item.color} key={item.id}>
+                                                <MotionBadge variants={childVariant} mr={1} fontSize={["0.4rem", "0.6rem", "0.5rem", "0.6rem"]} variant="solid" colorScheme={item.color} key={item.id}>
                                                     {item.name}
-                                                </Badge>
+                                                </MotionBadge>
                                             ))}
-                                            <Text position="fixed" top="-2" right="3" mt={4} fontSize={12}>
+                                            <MotionText variants={childVariant} position="fixed" top="-2" right="3" mt={4} fontSize={12}>
                                                 <TimeIcon h={3} mb={1} /> {item.time}
-                                            </Text>
-                                            <HStack>
+                                            </MotionText>
+                                            <MotionHStack  variants={childVariant}>
                                                 <Text fontSize={[8, 16, 12, 14]} >
                                                     Build with:
                                                 </Text>
@@ -76,15 +96,15 @@ const Portfolio = () => {
                                                         <Image src={item.logo} w={4} h={4}></Image>
                                                     </Tooltip>
                                                 ))}
-                                            </HStack>
-                                            <Button className="downloadCVBtn"
+                                            </MotionHStack>
+                                            <MotionButton  variants={childVariant} className="downloadCVBtn"
                                                 bgGradient="linear(to-r, #ff00d4, #7407f1, #196ad4)"
                                                 transition="0.4s"
                                                 bgSize="200%"
                                                 _hover={{
                                                     bgPosition: "right"
-                                                }} my={[10]} w="100%" mb={[2, 4, 2, 4]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</Button>
-                                            <Button w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlSite)} >Visit Repo</Button>
+                                                }} my={[10]} w="100%" mb={[2, 4, 2, 4]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</MotionButton>
+                                            <MotionButton  variants={childVariant} w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlSite)} >Visit Repo</MotionButton>
                                         </Box>
                                     </MotionBox>
                                 )}
