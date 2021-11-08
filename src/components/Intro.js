@@ -98,11 +98,11 @@ const Intro = () => {
               <SimpleGrid columns="1">
                 {/* <MotionImage width="170px" variants={NazkyVariants} src={Nazky} /> */}
                 <MotionHStack variants={tes} fontSize="5xl" ml="0" mb="-4" spacing="0" fontFamily="lequire">
-                  <MotionText variants={NazkyVariants}>n</MotionText>
-                  <MotionText variants={NazkyVariants}>a</MotionText>
-                  <MotionText variants={NazkyVariants}>z</MotionText>
-                  <MotionText variants={NazkyVariants}>k</MotionText>
-                  <MotionText variants={NazkyVariants}>y</MotionText>
+                  <motion.span variants={NazkyVariants}>n</motion.span>
+                  <motion.span variants={NazkyVariants}>a</motion.span>
+                  <motion.span variants={NazkyVariants}>z</motion.span>
+                  <motion.span variants={NazkyVariants}>k</motion.span>
+                  <motion.span variants={NazkyVariants}>y</motion.span>
                 </MotionHStack>
                 {/* <Text variants={NazkyVariants} fontSize="5xl" ml="0" mb="-4" fontFamily="Lequire">nazky</Text> */}
                 <MotionText ml={1} variants={NazkyVariants}>Present</MotionText>
