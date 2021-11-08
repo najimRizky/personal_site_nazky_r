@@ -51,10 +51,10 @@ const bridge2 = {
 const NextVariants = {
     hidden: {
         opacity: 0,
-        x:-100
+        x: -100
     },
     visible: {
-        x:0,
+        x: 0,
         opacity: 1,
         transition: {
             duration: 0.3,
@@ -91,10 +91,10 @@ const NextVariants3 = {
 
 const NextVariants4 = {
     hidden: {
-        opacity: 0, 
+        opacity: 0,
     },
     visible: {
-        opacity: [0,1],
+        opacity: [0, 1],
         transition: {
             duration: 0.5,
             yoyo: Infinity
@@ -131,8 +131,8 @@ const Greetings = () => {
                         {[...introduction].map((char) => (
                             <motion.span variants={NextVariants3}>{char}</motion.span>
                         ))}
-                        <motion.span variants={NextVariants4}>_</motion.span>
-                    <MotionButton variants={NextVariants} className="downloadCVBtn" my={[10]} >Download CV</MotionButton>
+                        <motion.span variants={NextVariants4}>_</motion.span> <br/>
+                        <MotionButton variants={NextVariants} className="downloadCVBtn" my={[10]} >Download CV</MotionButton>
                     </MotionText>
                 </MotionBox>
                 <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >

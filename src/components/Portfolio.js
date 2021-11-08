@@ -11,10 +11,11 @@ import { allPortfolio } from "../dataStorage/portfolioData";
 
 import { Tooltip } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
+import { hoverOpac, hoverScale, hoverX, hoverY } from "../dataStorage/hoverTypePortfolio";
 
 const MotionBox = motion(Box);
 
-const dataPortfolio = allPortfolio;
+var arrVariantHover = [hoverY, hoverX, hoverOpac, hoverScale]
 
 const Portfolio = () => {
     const { ref, inView } = useInView();
@@ -42,15 +43,15 @@ const Portfolio = () => {
     return (
         <Box id={id} bgColor="white" bgImage={bgPortfolio} bgSize="70%" pb={10} px={[5, 5, 10, 20]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
-                PORTOFOLIO
+                PORTFOLIO
             </Heading>
             <SimpleGrid columns={[1, 1, 2, 2]} >
-                {dataPortfolio.map((item) => (
+                {allPortfolio.map((item) => (
                     <Tilt className="tiltCard" key={item.id} >
                         <Box onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w={["100%", "450px", "320px", "405px"]} overflow="hidden" height={["170px", "255px", "185px", "230px"]} bgSize="100%" bgImage={item.background} className="portfolioCard" >
                             <AnimatePresence>
                                 {detail === item.id && (
-                                    <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -240 }} exit={{ y: -200, transition: { type: "linear" } }} color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
+                                    <MotionBox variants={arrVariantHover[Math.floor(Math.random()*arrVariantHover.length)]} initial="hidden" animate="visible" exit="exit" color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
                                         <Text fontSize={[16, 26, 20, 24]} fontWeight={700}>
                                             {item.name}
                                         </Text>
