@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Box, Center, HStack, SimpleGrid, Text } from '@chakra-ui/layout';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Image } from "@chakra-ui/image";
-import Nazky from "../assets/nazky_black.png";
+// import { Image } from "@chakra-ui/image";
+// import Nazky from "../assets/nazky_black.png";
 const MotionBox = motion(Box)
 const MotionText = motion(Text)
-const MotionImage = motion(Image)
+// const MotionImage = motion(Image)
 const MotionHStack = motion(HStack)
 
 
@@ -92,7 +92,7 @@ const Intro = () => {
     return ( 
         <AnimatePresence>
         {intro && (
-          <MotionBox animate={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
+          <MotionBox variants={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
             <Center h="100%">
               <MotionBox mr={3} variants={LineVariants} width={1} className="introLine" height="65px" bg="#1a202c" />
               <SimpleGrid columns="1">

@@ -11,7 +11,7 @@ import Intro from './components/Intro';
 function App() {
   return (
     <ChakraProvider>
-      {/* <Intro/> */}
+      <Intro/>
       <div className="App">
         <Navbar />
         <UpDownNav />
