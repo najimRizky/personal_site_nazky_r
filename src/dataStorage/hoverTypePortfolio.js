@@ -6,7 +6,7 @@ export const hoverY = {
         y: 0, 
         transition: { 
             type: "linear",
-            staggerChildren: 0.1,
+            staggerChildren: 0.15,
             when: "beforeChildren",
         }
     }, 
@@ -27,7 +27,7 @@ export const hoverX = {
         x: 0, 
         transition: { 
             type: "linear" ,
-            staggerChildren: 0.1,
+            staggerChildren: 0.15,
             when: "beforeChildren",
         }
     }, 
@@ -48,7 +48,7 @@ export const hoverOpac = {
         opacity: 1,
         transition: { 
             type: "linear" ,
-            staggerChildren: 0.1,
+            staggerChildren: 0.15,
             when: "beforeChildren",
         }
     }, 
@@ -69,7 +69,7 @@ export const hoverScale = {
         scale: 1,
         transition: { 
             type: "linear",
-            staggerChildren: 0.1,
+            staggerChildren: 0.15,
             when: "beforeChildren",
         }
     }, 

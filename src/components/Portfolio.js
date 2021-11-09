@@ -23,17 +23,20 @@ const arrVariantHover = [hoverY, hoverX, hoverOpac, hoverScale]
 
 const childVariant = {
     hidden: {
-        scaleY:0
+        scaleY:0,
+        y:-10
     },
     visible: {
+        y:0,
         scaleY: 1,
-        transition: {
-            type: "spring",
-            duration: 0.2
-        }
+        // transition: {
+        //     type: "spring",
+        //     duration: 0.2
+        // }
     },
     exit: {
-        opacity: 0,
+        y: -10,
+        scaleY: 0
     }
 }
 
@@ -97,13 +100,7 @@ const Portfolio = () => {
                                                     </Tooltip>
                                                 ))}
                                             </MotionHStack>
-                                            <MotionButton  variants={childVariant} className="downloadCVBtn"
-                                                bgGradient="linear(to-r, #ff00d4, #7407f1, #196ad4)"
-                                                transition="0.4s"
-                                                bgSize="200%"
-                                                _hover={{
-                                                    bgPosition: "right"
-                                                }} my={[10]} w="100%" mb={[2, 4, 2, 4]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</MotionButton>
+                                            <MotionButton  variants={childVariant} className="downloadCVBtn"my={[10]} w="100%" mb={[2, 4, 2, 4]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</MotionButton>
                                             <MotionButton  variants={childVariant} w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlSite)} >Visit Repo</MotionButton>
                                         </Box>
                                     </MotionBox>
