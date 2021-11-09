@@ -128,8 +128,8 @@ const Greetings = () => {
                         <motion.span variants={NextVariants}>Rizky</motion.span>
                     </MotionHeading>
                     <MotionText w={["100%", "100%", "70%", "70%"]} variants={bridge2} mt={[10]} lineHeight="30px" fontFamily="Raleway" fontWeight="thin" fontSize="14">
-                        {[...introduction].map((char) => (
-                            <motion.span variants={NextVariants3}>{char}</motion.span>
+                        {[...introduction].map((char, i) => (
+                            <motion.span key={i} variants={NextVariants3}>{char}</motion.span>
                         ))}
                         <motion.span variants={NextVariants4}>_</motion.span> <br/>
                         <MotionButton variants={NextVariants} className="downloadCVBtn" my={[10]} >Download CV</MotionButton>

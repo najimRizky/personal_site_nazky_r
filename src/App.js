@@ -5,7 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 import React from 'react'
 import UpDownNav from './components/UpDownNav';
 import Intro from './components/Intro';
-import SmoothScroll from './components/SmoothScroll/SmoothScroll';
+// import SmoothScroll from './components/SmoothScroll/SmoothScroll';
 
 
 
@@ -17,9 +17,7 @@ function App() {
         <Navbar />
         <UpDownNav />
         <div className="App_Content">
-        <SmoothScroll>
           <Home />
-        </SmoothScroll>
         </div>
       </div>
     </ChakraProvider>
