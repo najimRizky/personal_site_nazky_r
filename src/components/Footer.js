@@ -71,7 +71,7 @@ const Footer = () => {
                     <ModalHeader>Disclaimer</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        This website design is not original by me. I used many sources to create this design. My main ability is implement the existing designs into a code/script.
+                        This website design is not original by me. I used many reference to create this website design. My main ability is implement the existing designs into a code/script.
                     </ModalBody>
 
                     <ModalFooter>
