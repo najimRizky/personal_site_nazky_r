@@ -40,7 +40,7 @@ const executeScroll = (direction) => {
     let id = calculateDir(direction);
     
     if(id !== "skip") {
-        const yOffset = -70; 
+        const yOffset = -40; 
         const myRef = document.querySelector(id);
         const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({top: y, behavior: 'smooth'});

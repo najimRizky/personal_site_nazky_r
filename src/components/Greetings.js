@@ -51,14 +51,14 @@ const bridge2 = {
 const NextVariants = {
     hidden: {
         opacity: 0,
-        x: -100
+        x: -200
     },
     visible: {
         x: 0,
         opacity: 1,
         transition: {
             duration: 0.3,
-            type: "string"
+            // type: "spring"
         }
     }
 }

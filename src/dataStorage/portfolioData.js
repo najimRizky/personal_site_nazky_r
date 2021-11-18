@@ -98,7 +98,7 @@ export const allPortfolio = ([
             { id: 2, name: "Vuetify", logo: vuetifyLogo },
         ],
         background: countdown,
-        urlSite: "countdowntimer-week13-najimrizky-git-main-najimrizky.vercel.app",
+        urlSite: "https://countdowntimer-week13-najimrizky-git-main-najimrizky.vercel.app",
         urlRepo: "https://github.com/najimRizky/Countdown-Timer"
     },
     {

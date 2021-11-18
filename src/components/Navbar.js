@@ -87,7 +87,7 @@ const attributes = {
 const Navbar = () => {
     const [nav, showNav] = useState(false);
     const executeScroll = (value) => {
-        const yOffset = -70;
+        const yOffset = -40;
         const myRef = document.getElementById(value);
         const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
