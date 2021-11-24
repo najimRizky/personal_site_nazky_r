@@ -6,6 +6,7 @@ import logo from "../assets/Logo.png";
 import '../App.css';
 // import React, { useEffect } from "react";
 import { useState } from "react";
+import $ from 'jquery';
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -87,10 +88,9 @@ const attributes = {
 const Navbar = () => {
     const [nav, showNav] = useState(false);
     const executeScroll = (value) => {
-        const yOffset = -40;
-        const myRef = document.getElementById(value);
-        const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        $('html, body').animate({
+            scrollTop: $("#"+value).offset().top-35
+        }, 1000);
     }
 
     const toggleNav = () => {

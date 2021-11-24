@@ -119,9 +119,9 @@ const Greetings = () => {
     }, [inView]);
     return (
         <MotionBox id={id} backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate={animation}>
-            <SimpleGrid ref={ref} variants={bridge} columns={[1, null, 2]}>
-                <MotionBox variants={bridge} color="white" w="100%">
-                    <MotionHeading fontFamily="Ubiquitos" color="white" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
+            <SimpleGrid variants={bridge} columns={[1, null, 2]}>
+                <MotionBox   variants={bridge} color="white" w="100%">
+                    <MotionHeading ref={ref}  fontFamily="Ubiquitos" color="white" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
                         <motion.span variants={NextVariants}>Hi </motion.span>
                         <motion.span variants={NextVariants}>I'm </motion.span> <br />
                         <motion.span variants={NextVariants}>Najim </motion.span> <br />

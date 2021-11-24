@@ -1,6 +1,7 @@
 import { IconButton } from "@chakra-ui/button";
 import { Box, VStack } from "@chakra-ui/layout";
 import { FiArrowDown, FiArrowUp } from "react-icons/fi";
+import $ from 'jquery';
 
 const Attribute = {
     bgGradient: "linear(to-l, #242424, #242424, #242424,  #7407f1, #196ad4)",
@@ -19,7 +20,7 @@ const Attribute = {
 
 
 const calculateDir = (direction) => {
-    const segmentList = ["#home", "#profile", "#skills", "#portfolio"];
+    const segmentList = ["#home", "#profile", "#skills", "#portfolio", "#footer"];
     let currentPos = window.location.hash;
     let currentIndex = segmentList.indexOf(currentPos);
     let nextIndex;
@@ -40,10 +41,9 @@ const executeScroll = (direction) => {
     let id = calculateDir(direction);
     
     if(id !== "skip") {
-        const yOffset = -40; 
-        const myRef = document.querySelector(id);
-        const y = myRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({top: y, behavior: 'smooth'});
+        $('html, body').animate({
+            scrollTop: $(id).offset().top-35
+        }, 800);
         window.history.replaceState(null, "", window.location.origin + "/" + id);
     }
 }
