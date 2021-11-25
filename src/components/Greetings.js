@@ -132,7 +132,7 @@ const Greetings = () => {
                             <motion.span key={i} variants={NextVariants3}>{char}</motion.span>
                         ))}
                         <motion.span variants={NextVariants4}>_</motion.span> <br/>
-                        <Button variants={NextVariants} className="downloadCVBtn" onClick={() => window.open("https://bit.ly/najimCv", "_blank")} my={[10]} >Download CV</Button>
+                        <MotionButton variants={NextVariants} className="downloadCVBtn" onClick={() => window.open("https://bit.ly/najimCv", "_blank")} my={[10]} >Download CV</MotionButton>
                     </MotionText>
                 </MotionBox>
                 <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
