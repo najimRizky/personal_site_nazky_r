@@ -7,6 +7,8 @@ import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/react"
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Tilt from "react-vanilla-tilt"
+
 
 const MotionBox = motion(Box)
 const MotionHeading = motion(Heading)
@@ -118,10 +120,10 @@ const Greetings = () => {
         }
     }, [inView]);
     return (
-        <MotionBox id={id} backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={70} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate={animation}>
+        <MotionBox id={id} backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={[20]} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate={animation}>
             <SimpleGrid variants={bridge} columns={[1, null, 2]}>
-                <MotionBox   variants={bridge} color="white" w="100%">
-                    <MotionHeading ref={ref}  fontFamily="Ubiquitos" color="white" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
+                <MotionBox variants={bridge} color="white" w="100%">
+                    <MotionHeading ref={ref} fontFamily="Ubiquitos" color="white" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
                         <motion.span variants={NextVariants}>Hi </motion.span>
                         <motion.span variants={NextVariants}>I'm </motion.span> <br />
                         <motion.span variants={NextVariants}>Najim </motion.span> <br />
@@ -131,12 +133,14 @@ const Greetings = () => {
                         {[...introduction].map((char, i) => (
                             <motion.span key={i} variants={NextVariants3}>{char}</motion.span>
                         ))}
-                        <motion.span variants={NextVariants4}>_</motion.span> <br/>
+                        <motion.span variants={NextVariants4}>_</motion.span> <br />
                         <MotionButton variants={NextVariants} className="downloadCVBtn" onClick={() => window.open("https://bit.ly/najimCv", "_blank")} my={[10]} >Download CV</MotionButton>
                     </MotionText>
                 </MotionBox>
                 <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
-                    <Image borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["sm"]} />
+                    <Tilt className="tiltCard"  justify={['left', "left", "end", "center"]}>
+                        <Image borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["xs", "xs", "sm", "sm"]} />
+                    </Tilt>
                 </MotionFlex>
             </SimpleGrid>
         </MotionBox>

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import bgPortfolio from "../assets/large-triangles.svg"
 import { Image } from "@chakra-ui/image";
 import { AnimatePresence, motion } from "framer-motion";
-import Tilt from "react-vanilla-tilt"
 import { Button } from "@chakra-ui/button";
 
 import { allPortfolio } from "../dataStorage/portfolioData";
@@ -70,8 +69,8 @@ const Portfolio = () => {
             </Heading>
             <SimpleGrid columns={[1, 1, 2, 2]} >
                 {allPortfolio.map((item) => (
-                    <Tilt className="tiltCard" key={item.id} >
-                        <Box onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w={["100%", "450px", "320px", "405px"]} overflow="hidden" height={["170px", "255px", "185px", "230px"]} bgSize="100%" bgImage={item.background} className="portfolioCard" >
+                    // <Tilt className="tiltCard" key={item.id} >
+                        <Box key={item.id} onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} my={5} w={["100%", "450px", "320px", "405px"]} overflow="hidden" height={["170px", "255px", "185px", "230px"]} bgSize="100%" bgImage={item.background} className="portfolioCard" >
                             <AnimatePresence>
                                 {detail === item.id && (
                                     <MotionBox variants={arrVariantHover[Math.floor(Math.random()*arrVariantHover.length)]} initial="hidden" animate="visible" exit="exit" color="white" p={4} w="100%" h="100%" bg="blackAlpha.700">
@@ -107,7 +106,7 @@ const Portfolio = () => {
                                 )}
                             </AnimatePresence>
                         </Box>
-                    </Tilt>
+                    // </Tilt>
                 ))}
             </SimpleGrid>
         </Box>
