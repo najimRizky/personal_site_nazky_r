@@ -113,7 +113,7 @@ const Greetings = () => {
 
     setTimeout(() => {
         animation.start("visible");
-    }, 8100)
+    }, 9100)
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);

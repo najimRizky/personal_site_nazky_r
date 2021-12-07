@@ -1,7 +1,10 @@
 *{
   margin: 0;
 }
-
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
 
 .loading{
   position:fixed;
@@ -9,7 +12,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(50deg,   #000000, #1b1b1b);
 }
 
 /* .btnSocial{

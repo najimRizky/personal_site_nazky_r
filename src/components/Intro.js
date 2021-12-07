@@ -19,7 +19,7 @@ const BaseVariants = {
     // x: "-100%",
     transition: {
       // type: "linear",
-      delayChildren: 0.3,
+      delayChildren: 1.5,
       // duration: 0.5,
       when: "beforeChildren",
       staggerChildren: 0.1
@@ -88,13 +88,13 @@ const Intro = () => {
     const [intro, setIntro] = useState(true);
   setTimeout(() => {
     setIntro(false)
-  },7800)
+  },8800)
     return ( 
         <AnimatePresence>
         {intro && (
-          <MotionBox variants={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
+          <MotionBox color="white"  variants={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
             <Center h="100%">
-              <MotionBox mr={3} variants={LineVariants} width={1} className="introLine" height="65px" bg="#1a202c" />
+              <MotionBox mr={3} variants={LineVariants} width={["4px"]} className="introLine" height="65px" bg="#FFFFFF" />
               <SimpleGrid columns="1">
                 {/* <MotionImage width="170px" variants={NazkyVariants} src={Nazky} /> */}
                 <MotionHStack variants={tes} fontSize="5xl" ml="0" mb="-4" spacing="0" fontFamily="lequire">
