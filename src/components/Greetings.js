@@ -1,7 +1,7 @@
 import bgBox from "../assets/bgBoxHome.svg";
 import { Image } from "@chakra-ui/image";
 import Me from "../assets/Me2.jpg";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useTransform, useViewportScroll } from "framer-motion";
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/react"
@@ -15,8 +15,7 @@ const MotionHeading = motion(Heading)
 const MotionText = motion(Text)
 const MotionFlex = motion(Flex)
 const MotionButton = motion(Button)
-
-
+const MotionImage = motion(Image)
 
 const BaseVariants = {
     hidden: {
@@ -104,7 +103,7 @@ const NextVariants4 = {
     }
 }
 
-const introduction = "A 5th semester student of Informatics at Universitas Multimedia Nusantara."
+const introduction = "A 5th semester of Informatics student at Universitas Multimedia Nusantara."
 
 const Greetings = () => {
     const { ref, inView } = useInView();
@@ -119,6 +118,9 @@ const Greetings = () => {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
     }, [inView]);
+
+    const { scrollY } = useViewportScroll();
+    const y2 = useTransform(scrollY, [0, 1000], [0, 200]);
     return (
         <MotionBox id={id} backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={[20]} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate={animation}>
             <SimpleGrid variants={bridge} columns={[1, null, 2]}>
@@ -139,7 +141,7 @@ const Greetings = () => {
                 </MotionBox>
                 <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
                     <Tilt className="tiltCard"  justify={['left', "left", "end", "center"]}>
-                        <Image borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["xs", "xs", "sm", "sm"]} />
+                        <MotionImage style={{ y: window.innerWidth > 768 ? y2 : 10}}  borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["xs", "xs", "sm", "sm"]} />
                     </Tilt>
                 </MotionFlex>
             </SimpleGrid>
