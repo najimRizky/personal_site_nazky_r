@@ -81,41 +81,56 @@ const attributes = {
     fontSize: 37,
     className: "navBarItem",
     fontFamily: "Raleway"
-    
+
 }
 
 
 const Navbar = () => {
     const [nav, showNav] = useState(false);
-    const executeScroll = (value) => {
-        $('html, body').animate({
-            scrollTop: $("#"+value).offset().top-35
-        }, 1000);
+    const executeScroll = (id) => {
+        if (id === "home") {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 1000);
+        } else {
+            $('html, body').animate({
+                scrollTop: $("#" + id).offset().top - 35
+            }, 1000);
+        }
     }
 
     const toggleNav = () => {
         showNav(nav ? false : true);
     }
     const attributesIconMenu = {
-        variants: MenuIconVariants, 
-        animate: "visible", 
-        initial: "hidden", 
-        exit: "dismount", 
-        position: "fixed", 
-        mt: 2 ,
-        onClick :  toggleNav,
-        zIndex : "3" ,
-        right : "4" ,
-        cursor:"pointer" ,
+        variants: MenuIconVariants,
+        animate: "visible",
+        initial: "hidden",
+        exit: "dismount",
+        position: "fixed",
+        mt: 2,
+        onClick: toggleNav,
+        zIndex: "3",
+        right: "4",
+        cursor: "pointer",
         w: 6,
         h: 6,
-    } 
+    }
 
     const executeMobilenav = (value) => {
         toggleNav();
         setTimeout(() => {
             executeScroll(value);
         }, 700)
+    }
+
+    window.onscroll = function () { myFunction() };
+
+    function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myBar").style.width = scrolled + "%";
     }
 
     /*const [hash, setHash] = useState(window.location.hash);
@@ -152,44 +167,51 @@ const Navbar = () => {
     });*/
 
     return (
-        <Box className="navBar" bg='black' px={8} py={5} color="white" w="100%">
-            <Flex>
-                <Image onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" />
-                <Spacer />
-                <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
-                    <Flex fontSize="sm" mt={2}>
-                        <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
-                        <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
-                        <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
-                        <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
-                    </Flex>
-                </Box >
+        <>
+            <Box className="navBar" bg='black' px={8} py={5} color="white" w="100%">
+                <Flex>
+                    <Image onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" />
+                    <Spacer />
+                    <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
+                        <Flex fontSize="sm" mt={2}>
+                            <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
+                            <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
+                            <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
+                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
+                        </Flex>
+                    </Box >
 
-                <Box className="navMobile" display={["block", "block", "none", "none"]} >
-                    <AnimatePresence>                    
-                    {!nav ? (
-                        <MotionHamburgerIcon {...attributesIconMenu} />
-                    ): ( 
-                        <MotionArrowForwardIcon {...attributesIconMenu}/>
+                    <Box className="navMobile" display={["block", "block", "none", "none"]} >
+                        <AnimatePresence>
+                            {!nav ? (
+                                <MotionHamburgerIcon {...attributesIconMenu} />
+                            ) : (
+                                <MotionArrowForwardIcon {...attributesIconMenu} />
+                            )}
+                        </AnimatePresence>
+                    </Box>
+                </Flex>
+
+                <AnimatePresence>
+                    {nav && (
+                        <MotionBox fontFamily="Raleway" py={10} px={6} color="white" variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg="black" zIndex="-3" pos="fixed" w="100%" h="100%">
+                            <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
+                            <SimpleGrid justifyItems="left">
+                                <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
+                            </SimpleGrid>
+                        </MotionBox>
                     )}
-                    </AnimatePresence>
-                </Box>
-            </Flex>
-
-            <AnimatePresence>
-                {nav && (
-                    <MotionBox fontFamily="Raleway" py={10} px={6} color="white" variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg="black" zIndex="-3" pos="fixed" w="100%" h="100%">
-                        <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
-                        <SimpleGrid justifyItems="left">
-                            <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
-                            <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
-                            <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
-                            <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
-                        </SimpleGrid>
-                    </MotionBox>
-                )}
-            </AnimatePresence>
-        </Box>
+                </AnimatePresence>
+            </Box>
+            <div class="header">
+                <div class="progress-container">
+                    <div class="progress-bar" id="myBar"></div>
+                </div>
+            </div>
+        </>
     );
 }
 

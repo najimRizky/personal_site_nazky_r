@@ -20,9 +20,9 @@ const Attribute = {
 
 
 const calculateDir = (direction) => {
-    const segmentList = ["#home", "#profile", "#skills", "#portfolio", "#footer"];
+    const segmentList = ["home", "profile", "skills", "portfolio", "footer"];
     let currentPos = window.location.hash;
-    let currentIndex = segmentList.indexOf(currentPos);
+    let currentIndex = segmentList.indexOf(currentPos.substring(1));
     let nextIndex;
     // console.log(window.location)
     
@@ -41,10 +41,16 @@ const executeScroll = (direction) => {
     let id = calculateDir(direction);
     
     if(id !== "skip") {
-        $('html, body').animate({
-            scrollTop: $(id).offset().top-35
-        }, 800);
-        window.history.replaceState(null, "", window.location.origin + "/" + id);
+        if(id === "home"){
+            $('html, body').animate({
+                scrollTop: 0
+            }, 1000);
+        }else{
+            $('html, body').animate({
+                scrollTop: $("#"+id).offset().top-35
+            }, 1000);
+        }
+        window.history.replaceState(null, "", window.location.origin + "/#" + id);
     }
 }
 
