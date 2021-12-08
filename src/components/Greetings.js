@@ -1,6 +1,6 @@
 import bgBox from "../assets/bgBoxHome.svg";
 import { Image } from "@chakra-ui/image";
-import Me from "../assets/Me2.png";
+import Me from "../assets/Me2.jpg";
 import { motion, useAnimation } from "framer-motion";
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
