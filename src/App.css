@@ -2,8 +2,8 @@
   margin: 0;
 }
 ::-webkit-scrollbar {
-  /* width: 0; 
-  background: transparent;  */
+  width: 0; 
+  /* background: transparent;  */
 }
 
 .loading{

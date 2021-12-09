@@ -120,7 +120,7 @@ const Greetings = () => {
     }, [inView]);
 
     const { scrollY } = useViewportScroll();
-    const y2 = useTransform(scrollY, [0, 1000], [0, 200]);
+    const y2 = useTransform(scrollY, [0, 600], [50, 400]);
     return (
         <MotionBox id={id} backgroundImage={bgBox} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={[20]} h={["100%", "100%", "500px", "500px"]} variants={BaseVariants} initial="hidden" animate={animation}>
             <SimpleGrid variants={bridge} columns={[1, null, 2]}>
