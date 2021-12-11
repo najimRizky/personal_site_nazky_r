@@ -3,24 +3,12 @@ import { Heading } from "@chakra-ui/react"
 import { ButtonGroup, IconButton } from "@chakra-ui/button";
 import '../App.css';
 import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
-import BgWave from "../assets/Wave.svg";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { connect } from "react-redux";
 
 
-const AttributeBtnSocmed = {
-    bgGradient: "linear(to-l, #000000, #000000, #000000,  #7407f1, #196ad4)",
-    transition: "0.4s",
-    bgSize: "350%",
-    bgPosition: "right",
-    _hover: {
-        bgPosition: "left",
-        boxShadow: "2px 2px 2px #888888"
-    },
-    fontSize: "xl",
-    color: "#ffffff",
-    isRound: true,
-}
+
 
 // const MotionIconButton = motion(IconButton)
 
@@ -44,7 +32,21 @@ const openSocMed = (val) => {
     window.open(url, "_blank");
 }
 
-const Aboutme = () => {
+const Aboutme = (props) => {
+    const AttributeBtnSocmed = {
+        bgGradient: `linear(to-l, ${props.theme}, ${props.theme}, ${props.theme}, #7407f1, #196ad4)`,
+        transition: "0.4s",
+        bgSize: "350%",
+        bgPosition: "right",
+        _hover: {
+            bgPosition: "left",
+            boxShadow: "2px 2px 2px #888888"
+        },
+        fontSize: "xl",
+        color: "#ffffff",
+        isRound: true,
+    }
+
     const { ref, inView } = useInView();
     const id = "profile"
 
@@ -55,7 +57,7 @@ const Aboutme = () => {
     }, [inView]);
 
     return (
-        <Box id={id} bgColor="white" bgImage={BgWave} bgSize={[1700, 1700, 1700, 1500]} px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
+        <Box id={id} bgColor="white" color={props.theme} transition={props.transition} bgImage={props.bgWave} bgSize={[1700, 1700, 1700, 1500]} px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
                 PROFILE
             </Heading>
@@ -82,4 +84,12 @@ const Aboutme = () => {
     );
 }
 
-export default Aboutme;
+const getRedux = (state) => {
+    return {
+        theme: state.theme,
+        transition: state.transition,
+        bgWave: state.bgWave
+    }
+}
+
+export default connect(getRedux)(Aboutme);

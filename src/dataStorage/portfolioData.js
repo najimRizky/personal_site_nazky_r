@@ -126,7 +126,7 @@ export const allPortfolio = ([
         time: "January 2021",
         tool: [
             { id: 1, name: "React js", logo:  react},
-            { id: 1, name: "Material UI", logo:  materialUI},
+            { id: 2, name: "Material UI", logo:  materialUI},
         ],
         background: covid19,
         urlSite: "https://covid-19-indonesia.vercel.app/",
@@ -143,7 +143,7 @@ export const allPortfolio = ([
         time: "June 2021",
         tool: [
             { id: 1, name: "Codeigniter", logo: codeigniter},
-            { id: 1, name: "Bootstrap", logo: bootstrap},
+            { id: 2, name: "Bootstrap", logo: bootstrap},
         ],
         background: lemo,
         urlSite: "http://lemobeta.000webhostapp.com/",
@@ -160,7 +160,7 @@ export const allPortfolio = ([
         time: "August 2021",
         tool: [
             { id: 1, name: "React", logo: react},
-            { id: 1, name: "Semantic UI", logo: semanticUI},
+            { id: 2, name: "Semantic UI", logo: semanticUI},
         ],
         background: myWeather,
         urlSite: "https://my-weather-three.vercel.app/",

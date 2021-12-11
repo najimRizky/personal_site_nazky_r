@@ -1,9 +1,9 @@
 import { Box, Center, Flex, Heading, HStack, SimpleGrid, Spacer, Text } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
-import bgBox from "../assets/bgBoxHome.svg";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { useAnimation } from "framer-motion";
+import { connect } from "react-redux";
 // import Icon from "@chakra-ui/icon";
 
 // import { DiJavascript1, DiCss3, DiPython, DiHtml5, DiReact, DiJava } from "react-icons/di";
@@ -136,7 +136,7 @@ const NextVariants3 = {
     }
 }
 */
-const Skills = () => {
+const Skills = (props) => {
     const { ref, inView } = useInView();
     const animation = useAnimation();
     const id = "skills"
@@ -150,7 +150,7 @@ const Skills = () => {
     }, [inView]);
 
     return (
-        <MotionBox id={id} color="white" backgroundImage={bgBox} px={[4, 4, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
+        <Box id={id} color="white" bg={props.theme} backgroundImage={props.bgBox} transition={props.transition} px={[4, 4, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} px={[5, 5, 0, 0]} fontWeight={400} fontSize={50} >
                 SKILLS
             </Heading>
@@ -200,7 +200,14 @@ const Skills = () => {
                     </SimpleGrid>
                 </motion.div>
             </AnimatePresence>
-        </MotionBox>
+        </Box>
     );
 }
-export default Skills;
+const getRedux = (state) => {
+    return {
+        theme: state.theme,
+        bgBox: state.bgBox,
+        transition: state.transition
+    }
+}
+export default connect(getRedux)(Skills);

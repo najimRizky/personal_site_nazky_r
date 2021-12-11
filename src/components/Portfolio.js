@@ -94,7 +94,7 @@ const Portfolio = () => {
                                                     Build with:
                                                 </Text>
                                                 {item.tool.map((item) => (
-                                                    <Tooltip label={item.name}>
+                                                    <Tooltip key={item.id} label={item.name}>
                                                         <Image src={item.logo} w={4} h={4}></Image>
                                                     </Tooltip>
                                                 ))}

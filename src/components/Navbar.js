@@ -7,6 +7,7 @@ import '../App.css';
 // import React, { useEffect } from "react";
 import { useState } from "react";
 import $ from 'jquery';
+import { connect } from "react-redux";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -85,7 +86,7 @@ const attributes = {
 }
 
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [nav, showNav] = useState(false);
     const executeScroll = (id) => {
         if (id === "home") {
@@ -131,8 +132,66 @@ const Navbar = () => {
         var scrolled = (winScroll / height) * 100;
         document.getElementById("myBar").style.width = scrolled + "%";
     }
+    
+    return (
+        <>
+            <Box className="navBar" bg={props.theme} transition={props.transition} px={8} py={5} color="white" w="100%">
+                <Flex>
+                    <Image onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" />
+                    <Spacer />
+                    <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
+                        <Flex fontSize="sm" mt={2}>
+                            <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
+                            <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
+                            <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
+                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
+                        </Flex>
+                    </Box >
 
-    /*const [hash, setHash] = useState(window.location.hash);
+                    <Box className="navMobile" display={["block", "block", "none", "none"]} >
+                        <AnimatePresence>
+                            {!nav ? (
+                                <MotionHamburgerIcon {...attributesIconMenu} />
+                            ) : (
+                                <MotionArrowForwardIcon {...attributesIconMenu} />
+                            )}
+                        </AnimatePresence>
+                    </Box>
+                </Flex>
+
+                <AnimatePresence>
+                    {nav && (
+                        <MotionBox fontFamily="Raleway" py={10} px={6} color="white" variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
+                            <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
+                            <SimpleGrid justifyItems="left">
+                                <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
+                            </SimpleGrid>
+                        </MotionBox>
+                    )}
+                </AnimatePresence>
+            </Box>
+            <div className="header">
+                <div className="progress-container" style={{backgroundColor: props.theme, transition: props.transition}}>
+                    <div className="progress-bar" id="myBar"></div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+const getRedux = (state) => {
+    return {
+        theme: state.theme,
+        transition: state.transition
+    }
+}
+
+export default connect(getRedux)(Navbar);
+
+/*const [hash, setHash] = useState(window.location.hash);
 
     document.addEventListener("scroll", () => {
         if (hash !== window.location.hash) {
@@ -164,54 +223,3 @@ const Navbar = () => {
             // console.log(hash);
         }
     });*/
-
-    return (
-        <>
-            <Box className="navBar" bg='black' px={8} py={5} color="white" w="100%">
-                <Flex>
-                    <Image onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" />
-                    <Spacer />
-                    <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
-                        <Flex fontSize="sm" mt={2}>
-                            <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
-                            <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
-                            <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
-                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
-                        </Flex>
-                    </Box >
-
-                    <Box className="navMobile" display={["block", "block", "none", "none"]} >
-                        <AnimatePresence>
-                            {!nav ? (
-                                <MotionHamburgerIcon {...attributesIconMenu} />
-                            ) : (
-                                <MotionArrowForwardIcon {...attributesIconMenu} />
-                            )}
-                        </AnimatePresence>
-                    </Box>
-                </Flex>
-
-                <AnimatePresence>
-                    {nav && (
-                        <MotionBox fontFamily="Raleway" py={10} px={6} color="white" variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg="black" zIndex="-3" pos="fixed" w="100%" h="100%">
-                            <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
-                            <SimpleGrid justifyItems="left">
-                                <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
-                            </SimpleGrid>
-                        </MotionBox>
-                    )}
-                </AnimatePresence>
-            </Box>
-            <div class="header">
-                <div class="progress-container">
-                    <div class="progress-bar" id="myBar"></div>
-                </div>
-            </div>
-        </>
-    );
-}
-
-export default Navbar;

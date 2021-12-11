@@ -2,9 +2,10 @@ import { IconButton } from "@chakra-ui/button";
 import { Box, VStack } from "@chakra-ui/layout";
 import { FiArrowDown, FiArrowUp } from "react-icons/fi";
 import $ from 'jquery';
+import { connect } from "react-redux";
 
 const Attribute = {
-    bgGradient: "linear(to-l, #242424, #242424, #242424,  #7407f1, #196ad4)",
+    bgGradient: "linear(to-l, #525252, #525252, #525252,  #757575, #757575)",
     transition: "0.4s",
     bgSize: "350%",
     bgPosition: "right",
@@ -14,7 +15,6 @@ const Attribute = {
     fontSize: "md",
     size: "md",
     color: "#ffffff",
-    isRound: false,
     _active: { color: "white" }
 }
 
@@ -25,13 +25,13 @@ const calculateDir = (direction) => {
     let currentIndex = segmentList.indexOf(currentPos.substring(1));
     let nextIndex;
     // console.log(window.location)
-    
+
     if (direction === "up" && currentIndex > 0) {
         nextIndex = currentIndex - 1;
         return segmentList[nextIndex];
-    } else if (direction === "down" && currentIndex < (segmentList.length-1)) {
+    } else if (direction === "down" && currentIndex < (segmentList.length - 1)) {
         nextIndex = currentIndex + 1;
-        return segmentList[nextIndex];  
+        return segmentList[nextIndex];
     } else {
         return "skip";
     }
@@ -39,30 +39,47 @@ const calculateDir = (direction) => {
 
 const executeScroll = (direction) => {
     let id = calculateDir(direction);
-    
-    if(id !== "skip") {
-        if(id === "home"){
+
+    if (id !== "skip") {
+        if (id === "home") {
             $('html, body').animate({
                 scrollTop: 0
             }, 1000);
-        }else{
+        } else {
             $('html, body').animate({
-                scrollTop: $("#"+id).offset().top-35
+                scrollTop: $("#" + id).offset().top - 35
             }, 1000);
         }
         window.history.replaceState(null, "", window.location.origin + "/#" + id);
     }
 }
 
-const UpDownNav = () => {
+const UpDownNav = (props) => {
+    const toggleTheme = () => {
+        props.changeTheme(props.theme);
+    }
     return (
         <Box className="upDownNav" w="100px">
             <VStack>
-                <IconButton className="upDownBtn" onClick={() => executeScroll("up")} {...Attribute} icon={< FiArrowUp />}  ></IconButton>
-                <IconButton className="upDownBtn" onClick={() => executeScroll("down")} {...Attribute} icon={< FiArrowDown />}  ></IconButton>
+                <IconButton  onClick={() => executeScroll("up")} {...Attribute} icon={< FiArrowUp />}  ></IconButton>
+                <Box p="5px" cursor="pointer" w={10} h={10} {...Attribute} borderRadius={5} onClick={toggleTheme}  ><Box w="100%" h="100%" borderRadius={5} bg={props.theme} transition={props.transition} /></Box>
+                <IconButton  onClick={() => executeScroll("down")} {...Attribute} icon={< FiArrowDown />}  ></IconButton>
             </VStack>
         </Box>
     );
 }
 
-export default UpDownNav;
+const getRedux = (state) => {
+    return {
+        theme: state.theme,
+        transition: state.transition
+    }
+}
+
+const setDispatchRedux = (dispatch) => {
+    return {
+        changeTheme: (newTheme) => { dispatch({ type: 'CHANGE_THEME', newTheme: newTheme }) }
+    }
+}
+
+export default connect(getRedux, setDispatchRedux)(UpDownNav);

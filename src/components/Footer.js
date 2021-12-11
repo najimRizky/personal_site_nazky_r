@@ -5,21 +5,7 @@ import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHea
 import { useEffect } from "react";
 import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { useInView } from "react-intersection-observer";
-
-
-
-const AttributeBtnSocmed = {
-    bgGradient: "linear(to-l, #000000, #000000, #000000,  #7407f1, #196ad4)",
-    transition: "0.4s",
-    bgSize: "350%",
-    bgPosition: "right",
-    _hover: {
-        bgPosition: "left",
-    },
-    fontSize: "xl",
-    color: "#ffffff",
-    isRound: true,
-}
+import { connect } from "react-redux";
 
 // const MotionIconButton = motion(IconButton)
 
@@ -43,7 +29,7 @@ const openSocMed = (val) => {
     window.open(url, "_blank");
 }
 
-const Footer = () => {
+const Footer = (props) => {
     const { ref, inView } = useInView();
     const id = "footer"
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -52,8 +38,23 @@ const Footer = () => {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
     }, [inView]);
+
+    const AttributeBtnSocmed = {
+        bgGradient: `linear(to-l, ${props.theme}, ${props.theme}, ${props.theme}, #7407f1, #196ad4)`,
+        transition: "all ease 0.4s",
+        bgSize: "350%",
+        bgPosition: "right",
+        _hover: {
+            bgPosition: "left",
+            // boxShadow: "2px 2px 2px #888888"
+        },
+        fontSize: "xl",
+        color: "#ffffff",
+        isRound: true,
+    }
+
     return (
-        <Box id="footer" color="rgba(255,255,255,0.8)" ref={ref} bgColor="white" bg="black" px={[5, 5, 40, 40]} pb={1} pt={50} textAlign="center" w="100%" fontFamily="Raleway">
+        <Box id="footer" color="rgba(255,255,255,0.8)" ref={ref} bg={props.theme} transition={props.transition} px={[5, 5, 40, 40]} pb={1} pt={50} textAlign="center" w="100%" fontFamily="Raleway">
             <Text textAlign="center" mb={6} fontWeight={1000} fontSize={30} >
                 Thank You for Coming Here
             </Text>
@@ -95,4 +96,10 @@ const Footer = () => {
     );
 }
 
-export default Footer;
+const getRedux = (state) => {
+    return {
+        theme: state.theme,
+        transition: state.transition
+    }
+}
+export default connect(getRedux)(Footer);
