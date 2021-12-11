@@ -1,8 +1,6 @@
 import { HamburgerIcon, SmallCloseIcon } from "@chakra-ui/icons";
-import { Image } from "@chakra-ui/image";
 import { Box, Flex, Heading, SimpleGrid, Spacer, Text } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
-import logo from "../assets/Logo.png";
 import '../App.css';
 // import React, { useEffect } from "react";
 import { useState } from "react";
@@ -135,9 +133,10 @@ const Navbar = (props) => {
     
     return (
         <>
-            <Box className="navBar" bg={props.theme} transition={props.transition} px={8} py={5} color="white" w="100%">
+            <Box boxShadow='lg' className="navBar" bg={props.theme} transition={props.transition} px={8} py={3} color={props.color} w="100%">
                 <Flex>
-                    <Image onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" />
+                    <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
+                    {/* <Image  onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" /> */}
                     <Spacer />
                     <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
                         <Flex fontSize="sm" mt={2}>
@@ -161,7 +160,7 @@ const Navbar = (props) => {
 
                 <AnimatePresence>
                     {nav && (
-                        <MotionBox fontFamily="Raleway" py={10} px={6} color="white" variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
+                        <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
                             <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
                             <SimpleGrid justifyItems="left">
                                 <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
@@ -185,7 +184,8 @@ const Navbar = (props) => {
 const getRedux = (state) => {
     return {
         theme: state.theme,
-        transition: state.transition
+        transition: state.transition,
+        color: state.color
     }
 }
 

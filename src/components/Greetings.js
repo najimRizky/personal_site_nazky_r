@@ -122,11 +122,11 @@ const Greetings = (props) => {
     const y2 = useTransform(scrollY, [0, 600], [50, 400]);
 
     return (
-        <Box bg={props.theme} transition={props.transition}  backgroundImage={props.bgBox} id={id} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={[20]} h={["100%", "100%", "500px", "500px"]}>
+        <Box color={props.color} bg={props.theme} transition={props.transition}  backgroundImage={props.bgBox} id={id} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={[20]} h={["100%", "100%", "500px", "500px"]}>
             <MotionBox  variants={BaseVariants} initial="hidden" animate={animation}>
                 <SimpleGrid variants={bridge} columns={[1, null, 2]}>
-                    <MotionBox variants={bridge} color="white" w="100%">
-                        <MotionHeading ref={ref} fontFamily="Ubiquitos" color="white" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
+                    <MotionBox variants={bridge} w="100%">
+                        <MotionHeading ref={ref} fontFamily="Ubiquitos" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
                             <motion.span variants={NextVariants}>Hi </motion.span>
                             <motion.span variants={NextVariants}>I'm </motion.span> <br />
                             <motion.span variants={NextVariants}>Najim </motion.span> <br />
@@ -137,7 +137,7 @@ const Greetings = (props) => {
                                 <motion.span key={i} variants={NextVariants3}>{char}</motion.span>
                             ))}
                             <motion.span variants={NextVariants4}>_</motion.span> <br />
-                            <MotionButton variants={NextVariants} className="downloadCVBtn" onClick={() => window.open("https://bit.ly/najimCv", "_blank")} my={[10]} >Download CV</MotionButton>
+                            <MotionButton variants={NextVariants} className="downloadCVBtn" color="white" onClick={() => window.open("https://bit.ly/najimCv", "_blank")} my={[10]} >Download CV</MotionButton>
                         </MotionText>
                     </MotionBox>
                     <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
@@ -155,7 +155,8 @@ const getRedux = (state) => {
     return {
         theme: state.theme,
         bgBox: state.bgBox,
-        transition: state.transition
+        transition: state.transition,
+        color: state.color
     }
 }
 export default connect(getRedux)(Greetings);

@@ -34,16 +34,17 @@ const openSocMed = (val) => {
 
 const Aboutme = (props) => {
     const AttributeBtnSocmed = {
-        bgGradient: `linear(to-l, ${props.theme}, ${props.theme}, ${props.theme}, #7407f1, #196ad4)`,
+        bgGradient: `linear(to-l, ${props.color}, ${props.color}, ${props.color}, #7407f1, #196ad4)`,
         transition: "0.4s",
         bgSize: "350%",
         bgPosition: "right",
         _hover: {
             bgPosition: "left",
-            boxShadow: "2px 2px 2px #888888"
+            boxShadow: `2px 2px 2px ${props.color}`,
+            color: props.color
         },
         fontSize: "xl",
-        color: "#ffffff",
+        color: props.theme,
         isRound: true,
     }
 
@@ -57,7 +58,7 @@ const Aboutme = (props) => {
     }, [inView]);
 
     return (
-        <Box id={id} bgColor="white" color={props.theme} transition={props.transition} bgImage={props.bgWave} bgSize={[1700, 1700, 1700, 1500]} px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
+        <Box id={id} bgColor="white" color={props.color} transition={props.transition} bgImage={props.bgWave} bgSize={[1700, 1700, 1700, 1500]} px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
                 PROFILE
             </Heading>
@@ -88,7 +89,8 @@ const getRedux = (state) => {
     return {
         theme: state.theme,
         transition: state.transition,
-        bgWave: state.bgWave
+        bgWave: state.bgWave,
+        color: state.color
     }
 }
 

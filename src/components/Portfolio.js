@@ -1,7 +1,6 @@
 import { Badge, Box, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/layout";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import bgPortfolio from "../assets/large-triangles.svg"
 import { Image } from "@chakra-ui/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@chakra-ui/button";
@@ -11,6 +10,7 @@ import { allPortfolio } from "../dataStorage/portfolioData";
 import { Tooltip } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
 import { hoverOpac, hoverScale, hoverX, hoverY } from "../dataStorage/hoverTypePortfolio";
+import { connect } from "react-redux";
 
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
@@ -39,7 +39,7 @@ const childVariant = {
     }
 }
 
-const Portfolio = () => {
+const Portfolio = (props) => {
     const { ref, inView } = useInView();
     const id = "portfolio"
     const [detail, showDetail] = useState(0);
@@ -63,8 +63,8 @@ const Portfolio = () => {
     }
 
     return (
-        <Box id={id} bgColor="white" bgImage={bgPortfolio} bgSize="70%" pb={10} px={[5, 5, 10, 20]} pt={70} fontFamily="Raleway">
-            <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
+        <Box id={id} bgImage={props.bgWave} bgSize="100%" pb={10} px={[5, 5, 10, 20]} pt={70} fontFamily="Raleway">
+            <Heading color={props.color} ref={ref} mb={10} fontWeight={400} fontSize={50} >
                 PORTFOLIO
             </Heading>
             <SimpleGrid columns={[1, 1, 2, 2]} >
@@ -113,4 +113,13 @@ const Portfolio = () => {
     );
 }
 
-export default Portfolio;
+const getRedux = (state) => {
+    return {
+        theme: state.theme,
+        bgWave: state.bgWave,
+        transition: state.transition,
+        color: state.color
+    }
+}
+
+export default connect(getRedux)(Portfolio);

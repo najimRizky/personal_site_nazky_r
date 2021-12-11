@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { useAnimation } from "framer-motion";
 import { connect } from "react-redux";
+import { Divider } from "@chakra-ui/react";
 // import Icon from "@chakra-ui/icon";
 
 // import { DiJavascript1, DiCss3, DiPython, DiHtml5, DiReact, DiJava } from "react-icons/di";
@@ -150,21 +151,21 @@ const Skills = (props) => {
     }, [inView]);
 
     return (
-        <Box id={id} color="white" bg={props.theme} backgroundImage={props.bgBox} transition={props.transition} px={[4, 4, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
+        <Box id={id} color={props.color} bg={props.theme} backgroundImage={props.bgBox} transition={props.transition} px={[4, 4, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} px={[5, 5, 0, 0]} fontWeight={400} fontSize={50} >
                 SKILLS
             </Heading>
             <AnimatePresence >
                 <motion.div variants={BaseVariants} initial="hidden" animate={animation} >
                     <Center my={5}>
-                        <Text>Programming Language</Text>
+                        <Heading fontWeight={500}>Programming Language</Heading>
                     </Center>
                     <SimpleGrid columns={[1, null, 2]} justifyItems="center">
                         {programming.length && programming.map((item) => (
                             <MotionBox alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
                                 <MotionText fontWeight="bold">{item.lang}</MotionText>
-                                <MotionHStack whileHover={{ x: 4, y: -4, transition: { duration: 0.5 } }} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
-                                    <MotionBox variants={NextVariants} zIndex="1" bg="white" w={item.levelSkil} h="20px" pr={1} color="black" >
+                                <MotionHStack whileHover={{ x: 4, y: -4, transition: { duration: 0.5 } }} w="90%" color={props.color} alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
+                                    <MotionBox variants={NextVariants} zIndex="1" bg={props.color} w={item.levelSkil} h="20px" pr={1} color={props.theme} >
                                         <Flex>
                                             <Spacer />
                                             <Text fontWeight="bold" fontSize={13}>{item.levelSkil}</Text>
@@ -176,18 +177,18 @@ const Skills = (props) => {
                             </MotionBox>
                         ))}
                     </SimpleGrid>
-                    <hr />
+                    <Divider bg={props.color} />
 
                     <Center my={5}>
-                        <Text>Framework and Library</Text>
+                        <Heading fontWeight={500}>Framework and Library</Heading>
                     </Center>
                     <SimpleGrid columns={[1, null, 2]} justifyItems="center">
                         {framework_library.length && framework_library.map((item) => (
                             <MotionBox alignItems="center" overflow="hidden" my={3} w="100%" key={item.id}>
                                 <MotionText fontWeight="bold">{item.lang}</MotionText>
-                                <MotionHStack whileHover={{ x: 4, y: -4, transition: { duration: 0.5 } }} w="90%" color="white" alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
+                                <MotionHStack whileHover={{ x: 4, y: -4, transition: { duration: 0.5 } }} w="90%" color={props.color}alignItems="center" spacing={[2, 2, 4, 4]} overflow="hidden">
                                     <MotionBox variants={NextVariants}
-                                        zIndex="1" bg="white" w={item.levelSkil} h="20px" pr={1} color="black" >
+                                        zIndex="1" bg={props.color}w={item.levelSkil} h="20px" pr={1} color={props.theme} >
                                         <Flex>
                                             <Spacer />
                                             <Text fontWeight="bold" fontSize={13}>{item.levelSkil}</Text>
@@ -207,7 +208,8 @@ const getRedux = (state) => {
     return {
         theme: state.theme,
         bgBox: state.bgBox,
-        transition: state.transition
+        transition: state.transition,
+        color: state.color
     }
 }
 export default connect(getRedux)(Skills);

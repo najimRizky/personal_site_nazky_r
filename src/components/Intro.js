@@ -92,7 +92,7 @@ const Intro = () => {
     return ( 
         <AnimatePresence>
         {intro && (
-          <MotionBox color="white"  variants={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
+          <MotionBox color="white" variants={BaseVariants} animate="visible" initial="hidden" exit="dismount" className="loading">
             <Center h="100%">
               <MotionBox mr={3} variants={LineVariants} width={["4px"]} className="introLine" height="65px" bg="#FFFFFF" />
               <SimpleGrid columns="1">

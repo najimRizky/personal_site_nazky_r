@@ -1,41 +1,34 @@
-import bgBoxBlack from "../assets/bgBoxHomeBlack.svg";
-import bgBoxGreen from "../assets/bgBoxHomeGreen.svg";
-import bgBoxBlue from "../assets/bgBoxHomeBlue.svg";
+import bgBoxDark from "../assets/bgBoxHomeDark.svg";
+import bgBoxLight from "../assets/bgBoxHomeLight.svg";
+import WaveDark from "../assets/WaveDark.svg";
+import WaveLight from "../assets/WaveLight.svg";
 import { MoonIcon } from "@chakra-ui/icons";
-import WaveBlack from "../assets/WaveBlack.svg";
-import WaveGreen from "../assets/WaveGreen.svg";
-import WaveBlue from "../assets/WaveBlue.svg";
 
 const initState = {
-    theme: "#000000",
-    bgBox: bgBoxBlack,
-    transition: "all ease 0.2s",
+    theme: "#1A202C",
+    bgBox: bgBoxDark,
+    transition: "all ease 0.4s",
     icon: MoonIcon,
-    bgWave: WaveBlack
+    bgWave: WaveDark,
+    color: "#FFFFFF"
 }
 
 const rootReducer = (state = initState, action) => {
     if(action.type === "CHANGE_THEME"){
-        let newBgBox;
-        let newTheme;
-        let newBgWave;
+        let newBgBox, newTheme, newBgWave, newColor;
         switch (action.newTheme) {
-            case "#000000":
-                newBgBox = bgBoxGreen;
-                newTheme = "#002324";
-                newBgWave = WaveGreen;
+            case "#FFFFFF":
+                newTheme = "#1A202C"; // Dark
+                newBgBox = bgBoxDark;
+                newBgWave = WaveDark;
+                newColor = "#FFFFFF";
                 break;
 
-            case "#002324":
-                newBgBox = bgBoxBlue;
-                newTheme = "#00102b";
-                newBgWave = WaveBlue;
-                break;
-
-            case "#00102b":
-                newBgBox = bgBoxBlack;
-                newTheme = "#000000";
-                newBgWave = WaveBlack;
+            case "#1A202C":
+                newTheme = "#FFFFFF"; // Light
+                newBgBox = bgBoxLight;
+                newBgWave = WaveLight;
+                newColor = "#1A202C";
                 break;
 
             default:
@@ -45,7 +38,8 @@ const rootReducer = (state = initState, action) => {
             ...state,
             theme: newTheme,
             bgBox: newBgBox,
-            bgWave: newBgWave
+            bgWave: newBgWave,
+            color: newColor
         }
     }
     return state;
