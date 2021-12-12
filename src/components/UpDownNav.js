@@ -4,6 +4,7 @@ import { FiArrowDown, FiArrowUp } from "react-icons/fi";
 import $ from 'jquery';
 import { connect } from "react-redux";
 import { FaMoon, FaSun } from "react-icons/fa";
+import "jquery-ui-bundle"
 
 
 
@@ -33,11 +34,11 @@ const executeScroll = (direction) => {
         if (id === "home") {
             $('html, body').animate({
                 scrollTop: 0
-            }, 1000);
+            }, 1500, "easeInOutExpo");
         } else {
             $('html, body').animate({
                 scrollTop: $("#" + id).offset().top - 35
-            }, 1000);
+            }, 1500, "easeInOutExpo");
         }
         window.history.replaceState(null, "", window.location.origin + "/#" + id);
     }
@@ -45,18 +46,21 @@ const executeScroll = (direction) => {
 
 const UpDownNav = (props) => {
     const Attribute = {
-        bgGradient: `linear(to-l, ${props.theme}, ${props.theme},${props.theme},  #7407f1, #196ad4)`,
+        bgGradient: `linear(to-r,  ${props.theme}, ${props.theme}, ${props.theme}, #196ad4, , #196ad4)`,
         transition: "0.4s",
-        bgSize: "350%",
-        bgPosition: "right",
+        bgSize: "200% 105%",
+        bgPosition: "2%",
         _hover: {
-            bgPosition: "left",
+            bgPosition: "60%",
         },
         fontSize: "md",
         size: "md",
-        border: `1px solid #888888`,
+        // border: `1px solid rgba(136, 136, 136, 0.8)`,
         color: props.color,
-        _active: { color: "white" }
+        _active: { 
+            color: props.theme ,
+        },
+        p: 0
     }
 
     const toggleTheme = () => {
@@ -65,10 +69,10 @@ const UpDownNav = (props) => {
     return (
         <Box className="upDownNav" w="100px">
             <VStack>
-                <IconButton  onClick={() => executeScroll("up")} {...Attribute} icon={< FiArrowUp />}  ></IconButton>
-                <IconButton  onClick={toggleTheme} {...Attribute} icon={props.color !== "#FFFFFF" ? < FaSun /> : <FaMoon/>}  ></IconButton>
+                <IconButton className="btnUpDownNav" onClick={() => executeScroll("up")} {...Attribute} icon={< FiArrowUp />}  ></IconButton>
+                <IconButton className="btnUpDownNav" onClick={toggleTheme} {...Attribute} icon={props.color !== "#FFFFFF" ? < FaSun /> : <FaMoon/>}  ></IconButton>
                 {/* <Box p="5px" cursor="pointer" w={10} h={10} {...Attribute} borderRadius={5} onClick={toggleTheme}  ><Box w="100%" h="100%" borderRadius={5} bg={props.theme} transition={props.transition} /></Box> */}
-                <IconButton  onClick={() => executeScroll("down")} {...Attribute} icon={< FiArrowDown />}  ></IconButton>
+                <IconButton className="btnUpDownNav" onClick={() => executeScroll("down")} {...Attribute} icon={< FiArrowDown />}  ></IconButton>
             </VStack>
         </Box>
     );

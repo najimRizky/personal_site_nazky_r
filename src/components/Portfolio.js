@@ -63,7 +63,7 @@ const Portfolio = (props) => {
     }
 
     return (
-        <Box id={id} bgImage={props.bgWave} bgSize="100%" pb={10} px={[5, 5, 10, 20]} pt={70} fontFamily="Raleway">
+        <Box id={id} transition={props.transition} bgImage={props.bgWave} bgSize="cover" pb={10} px={[5, 5, 10, 20]} pt={70} fontFamily="Raleway">
             <Heading color={props.color} ref={ref} mb={10} fontWeight={400} fontSize={50} >
                 PORTFOLIO
             </Heading>

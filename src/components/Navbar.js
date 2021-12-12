@@ -2,10 +2,11 @@ import { HamburgerIcon, SmallCloseIcon } from "@chakra-ui/icons";
 import { Box, Flex, Heading, SimpleGrid, Spacer, Text } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
 import '../App.css';
-// import React, { useEffect } from "react";
 import { useState } from "react";
 import $ from 'jquery';
 import { connect } from "react-redux";
+import "jquery-ui-bundle"
+
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -90,11 +91,11 @@ const Navbar = (props) => {
         if (id === "home") {
             $('html, body').animate({
                 scrollTop: 0
-            }, 1000);
+            }, 1500, "easeInOutExpo");
         } else {
             $('html, body').animate({
                 scrollTop: $("#" + id).offset().top - 35
-            }, 1000);
+            }, 1500, "easeInOutExpo");
         }
     }
 

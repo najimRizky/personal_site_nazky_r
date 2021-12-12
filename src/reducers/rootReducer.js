@@ -7,7 +7,7 @@ import { MoonIcon } from "@chakra-ui/icons";
 const initState = {
     theme: "#1A202C",
     bgBox: bgBoxDark,
-    transition: "all ease 0.4s",
+    transition: "all ease 0.2s",
     icon: MoonIcon,
     bgWave: WaveDark,
     color: "#FFFFFF"
