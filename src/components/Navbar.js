@@ -91,11 +91,11 @@ const Navbar = (props) => {
         if (id === "home") {
             $('html, body').animate({
                 scrollTop: 0
-            }, 1500, "easeInOutExpo");
+            }, 1300, "easeInOutExpo");
         } else {
             $('html, body').animate({
                 scrollTop: $("#" + id).offset().top - 35
-            }, 1500, "easeInOutExpo");
+            }, 1300, "easeInOutExpo");
         }
     }
 
