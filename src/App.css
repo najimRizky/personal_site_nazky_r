@@ -36,7 +36,7 @@
 }
 
 .App_Content{
-  padding-top: 70px;
+  padding-top: 65px;
 }
 
 *:focus{
@@ -68,14 +68,19 @@
 
 #navBarItemActive::after{
   /* background-image: linear-gradient(50deg, transparent 50%, transparent 0%,  #7407f1 50%, #196ad4 50%); */
-  background-image: linear-gradient(to right, #7407f1, #196ad4) !important;
+  /* background-image: linear-gradient(to right, #7407f1, #196ad4) !important; */
+  background-color: white;
   background-size: 100%;
   content: '';
   display: block;
-  width: 120%;
-  height: 3px;
+  width: 80%;
+  height: 2px;
   /* background: white; */
   /* background-color: #EFE2BA */
+}
+
+#navBarItemActive{
+  transition: 0.3s;
 }
 
 .navBarItem:hover{
