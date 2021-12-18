@@ -1,8 +1,8 @@
-import Greetings from "../components/Greetings";
-import Aboutme from "../components/Aboutme";
-import Skills from "../components/Skills";
-import Portfolio from "../components/Portfolio";
-import Footer from "../components/Footer";
+import Greetings from "../section/Greetings";
+import Aboutme from "../section/Aboutme";
+import Skills from "../section/Skills";
+import Portfolio from "../section/Portfolio";
+import Footer from "../section/Footer";
 
 const Home = () => {
     return (
