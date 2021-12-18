@@ -87,6 +87,7 @@ const attributes = {
 
 const Navbar = (props) => {
     const [nav, showNav] = useState(false);
+    const [top, setTop] = useState(0);
     const executeScroll = (id) => {
         if (id === "home") {
             $('html, body').animate({
@@ -108,7 +109,7 @@ const Navbar = (props) => {
         initial: "hidden",
         exit: "dismount",
         position: "fixed",
-        mt: 2,
+        mt: 3,
         onClick: toggleNav,
         zIndex: "3",
         right: "4",
@@ -121,7 +122,7 @@ const Navbar = (props) => {
         toggleNav();
         setTimeout(() => {
             executeScroll(value);
-        }, 700)
+        }, 600)
     }
 
     window.onscroll = function () { myFunction() };
@@ -129,12 +130,14 @@ const Navbar = (props) => {
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = (winScroll / height) * 100;
+        setTop(scrolled);
         document.getElementById("myBar").style.width = scrolled + "%";
     }
+    document.body.style.overflow = nav ? "hidden" : "visible "
     
     return (
         <>
-            <Box boxShadow='lg' className="navBar" bg={props.theme} transition={props.transition} px={8} py={3} color={props.color} w="100%">
+            <Box boxShadow={top === 0 ? "none": "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} py={2} color={props.color} w="100%">
                 <Flex>
                     <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
                     {/* <Image  onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" /> */}
@@ -158,10 +161,10 @@ const Navbar = (props) => {
                         </AnimatePresence>
                     </Box>
                 </Flex>
-
+                    
                 <AnimatePresence>
                     {nav && (
-                        <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="75px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
+                        <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="70px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
                             <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
                             <SimpleGrid justifyItems="left">
                                 <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>

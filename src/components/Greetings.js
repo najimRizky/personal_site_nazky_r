@@ -97,7 +97,8 @@ const NextVariants4 = {
         opacity: [0, 1],
         transition: {
             duration: 0.5,
-            yoyo: Infinity
+            repeat: Infinity,
+            repeatType: "reverse",
         }
     }
 }
