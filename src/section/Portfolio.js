@@ -5,11 +5,11 @@ import { Image } from "@chakra-ui/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@chakra-ui/button";
 
-import { allPortfolio } from "../dataStorage/portfolioData";
+import { allPortfolio } from "../extras/portfolioData";
 
 import { Tooltip } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
-import { hoverOpac, hoverScale, hoverX, hoverY } from "../dataStorage/hoverTypePortfolio";
+import { hoverOpac, hoverScale, hoverX, hoverY } from "../extras/hoverTypePortfolio";
 import { connect } from "react-redux";
 
 const MotionBox = motion(Box);

@@ -54,27 +54,27 @@ const Footer = (props) => {
     }
 
     return (
-        <Box boxShadow= "0px -1px 10px 0px #636363" id="footer" color={props.color} ref={ref} bg={props.theme} transition={props.transition} px={[5, 5, 40, 40]} pb={1} pt={50} textAlign="center" w="100%" fontFamily="Raleway">
+        <Box boxShadow= "0px -1px 10px 0px #636363" id="footer" color={props.color} ref={ref} bg={props.theme} transition={props.transition} px={[5, 5, 40, 40]}  pt={10} pb={2} textAlign="center" w="100%" fontFamily="Raleway">
             <Text textAlign="center" mb={6} fontWeight={1000} fontSize={30} >
                 Thank You for Coming Here
             </Text>
             <Text textAlign="center" mb={6} fontSize={16} >
                 “Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.” <br /> -Albert Einstein
             </Text>
-            <Divider colorScheme="gray"/>
             <Center>
-                <ButtonGroup w="100%" mb="0px" pt={2} justifyContent="center">
+                <ButtonGroup w="100%"  my={5} justifyContent="center">
                     <IconButton {...AttributeBtnSocmed} onClick={() => { openSocMed('Github') }} icon={< FiGithub />}  ></IconButton>
                     <IconButton {...AttributeBtnSocmed} onClick={() => { openSocMed('Linkedin') }} icon={< FiLinkedin />} ></IconButton>
                     <IconButton {...AttributeBtnSocmed} onClick={() => { openSocMed('Instagram') }} icon={< FiInstagram />}  ></IconButton>
                     <IconButton {...AttributeBtnSocmed} onClick={() => { openSocMed('Twitter') }} icon={< FiTwitter />} ></IconButton>
                 </ButtonGroup>
             </Center>
-            <Text fontFamily="Roboto" my={4} fontSize="sm">
-                Copyright © {new Date().getFullYear()} NAZKY
-            </Text>
-            <Button size="xs" bg={props.color} color={props.theme} onClick={onOpen}>Disclaimer</Button>
             
+            <Button size="xs" my={5} bg={props.color} color={props.theme} onClick={onOpen}>Disclaimer</Button>
+            <Divider colorScheme="gray"/>
+            <Text fontFamily="Roboto" my={2} fontSize="xs">
+                Copyright © {new Date().getFullYear()} NAZKY &nbsp; || &nbsp; Build using React.js
+            </Text>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent bg="blackAlpha.900" color="white">

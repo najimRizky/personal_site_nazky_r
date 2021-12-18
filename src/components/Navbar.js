@@ -137,7 +137,7 @@ const Navbar = (props) => {
     
     return (
         <>
-            <Box boxShadow={top === 0 ? "none": "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} py={2} color={props.color} w="100%">
+            <Box boxShadow={top === 0 ? "none": "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
                 <Flex>
                     <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
                     {/* <Image  onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" /> */}
