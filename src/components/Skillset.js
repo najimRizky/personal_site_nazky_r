@@ -17,7 +17,6 @@ const BaseVariants = {
         y: 0,
         transition: {
             when: "beforeChildren",
-            staggerChildren: 0.1
         }
     }
 }

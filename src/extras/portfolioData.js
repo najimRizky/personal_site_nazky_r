@@ -7,15 +7,15 @@ import semanticUI from "../assets/logoPortfolio/semanticUI.png"
 import react from "../assets/logoPortfolio/react.png"
 import materialUI from "../assets/logoPortfolio/materialUI.png"
 
-import nyl from '../assets/logoPortfolio/nyl.png'
-import findumois from "../assets/logoPortfolio/findumois.png"
-import gema from "../assets/logoPortfolio/gema.png"
-import converter from "../assets/logoPortfolio/allUCanConvert.png"
-import countdown from "../assets/logoPortfolio/timer.png"
-import simpleCalc from "../assets/logoPortfolio/simpleCalc.png"
-import covid19 from "../assets/logoPortfolio/covidIndo.png"
-import lemo from "../assets/logoPortfolio/lemo.png"
-import myWeather from "../assets/logoPortfolio/myWeather.png"
+import nyl from '../assets/logoPortfolio/pages/nyl.jpg'
+import findumois from "../assets/logoPortfolio/pages/findumois.jpg"
+import gema from "../assets/logoPortfolio/pages/gema.jpg"
+import converter from "../assets/logoPortfolio/pages/allUCanConvert.jpg"
+import countdown from "../assets/logoPortfolio/pages/timer.jpg"
+import simpleCalc from "../assets/logoPortfolio/pages/simpleCalc.jpg"
+import covid19 from "../assets/logoPortfolio/pages/covidIndo.jpg"
+import lemo from "../assets/logoPortfolio/pages/lemo.jpg"
+import myWeather from "../assets/logoPortfolio/pages/myWeather.jpg"
 
 export const allPortfolio = ([
     {

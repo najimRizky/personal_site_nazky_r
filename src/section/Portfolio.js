@@ -28,10 +28,10 @@ const childVariant = {
     visible: {
         y:0,
         scaleY: 1,
-        // transition: {
-        //     type: "spring",
+        transition: {
+            type: "linear",
         //     duration: 0.2
-        // }
+        }
     },
     exit: {
         y: -10,
@@ -100,7 +100,7 @@ const Portfolio = (props) => {
                                                 ))}
                                             </MotionHStack>
                                             <MotionButton  variants={childVariant} className="downloadCVBtn"my={[10]} w="100%" mb={[2, 4, 2, 4]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</MotionButton>
-                                            <MotionButton  variants={childVariant} w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlSite)} >Visit Repo</MotionButton>
+                                            <MotionButton  variants={childVariant} w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlRepo)} >Visit Repo</MotionButton>
                                         </Box>
                                     </MotionBox>
                                 )}
