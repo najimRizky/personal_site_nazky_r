@@ -172,7 +172,7 @@ const Navbar = (props) => {
                                 <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
                                 <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
                                 <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} variants={subVariant} >Experiences</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#experiences" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} variants={subVariant} >Experiences</MotionHeading>
                             </SimpleGrid>
                         </MotionBox>
                     )}
