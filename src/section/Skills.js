@@ -29,7 +29,7 @@ const Skills = (props) => {
                     </Center>
                     <SimpleGrid columns={[1, null, 2]} justifyItems="center">
                         {programming.length && programming.map((item) => (
-                            <Skillset item={item} color={props.color} theme={props.theme} />
+                            <Skillset key={item.id} item={item} color={props.color} theme={props.theme} />
                         ))}
                     </SimpleGrid>
                     <Divider bg={props.color} />
@@ -38,7 +38,7 @@ const Skills = (props) => {
                     </Center>
                     <SimpleGrid columns={[1, null, 2]} justifyItems="center">
                         {framework_library.length && framework_library.map((item) => (
-                            <Skillset item={item} color={props.color} theme={props.theme} />
+                            <Skillset key={item.id} item={item} color={props.color} theme={props.theme} />
                         ))}
                     </SimpleGrid>
                 </motion.div>

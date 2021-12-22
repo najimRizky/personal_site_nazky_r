@@ -141,7 +141,7 @@
 }
 
 .progress-bar {
-  height: 2px;
+  height: 3px;
   background-image: linear-gradient(to right, #00e1ff, #00a2ff) !important;
   /* background: rgb(201, 201, 201) !important; */
   width: 0%;

@@ -10,7 +10,7 @@ import "jquery-ui-bundle"
 
 
 const calculateDir = (direction) => {
-    const segmentList = ["home", "profile", "skills", "portfolio", "footer"];
+    const segmentList = ["home", "profile", "skills", "portfolio", "experiences" ,"footer"];
     let currentPos = window.location.hash;
     let currentIndex = segmentList.indexOf(currentPos.substring(1));
     let nextIndex;

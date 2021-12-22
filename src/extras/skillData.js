@@ -10,8 +10,8 @@ export const programming = ([
 ]);
 
 export const framework_library = ([
-    { lang: "Vue js", rank: "Intermediate", levelSkil: "60%", levelIdx: "40%", id: 1 },
-    { lang: "React js", rank: "Intermediate", levelSkil: "40%", levelIdx: "60%", id: 2 },
+    { lang: "React js", rank: "Intermediate", levelSkil: "60%", levelIdx: "40%", id: 1 },
+    { lang: "Vue js", rank: "Intermediate", levelSkil: "40%", levelIdx: "60%", id: 2 },
     { lang: "Laravel", rank: "Intermediate", levelSkil: "50%", levelIdx: "50%", id: 3 },
     { lang: "Codeigniter", rank: "Intermediate", levelSkil: "60%", levelIdx: "40%", id: 4 },
     { lang: "Semantic UI", rank: "Intermediate", levelSkil: "70%", levelIdx: "30%", id: 5 },

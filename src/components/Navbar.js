@@ -148,6 +148,7 @@ const Navbar = (props) => {
                             <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
                             <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
                             <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
+                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("experiences")} cursor="pointer" >Experiences</Text>
                         </Flex>
                     </Box >
 
