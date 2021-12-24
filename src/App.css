@@ -156,3 +156,32 @@
   box-shadow: 0px 0px 10px 1px #636363 !important;
 
 }
+
+
+
+/*Ripple*/
+.ripple {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transform: scale(0);
+  background: rgba(134, 134, 134, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  z-index: 5;
+}
+
+/*Animate Function*/
+.animate {
+  animation: ripple-mo 1s cubic-bezier(0, 0, 0.2, 1);
+}
+@keyframes ripple-mo {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
