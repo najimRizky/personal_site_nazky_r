@@ -80,7 +80,8 @@ const attributes = {
     fontStyle: 'normal',
     fontSize: 37,
     className: "navBarItem",
-    fontFamily: "Raleway"
+    fontFamily: "Raleway",
+    variants: subVariant
 
 }
 
@@ -168,11 +169,11 @@ const Navbar = (props) => {
                         <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="70px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
                             <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
                             <SimpleGrid justifyItems="left">
-                                <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes} variants={subVariant} >Home</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes} variants={subVariant} >Profile</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes} variants={subVariant} >Skills</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes} variants={subVariant} >Portfolio</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#experiences" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} variants={subVariant} >Experiences</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes}  >Home</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes}  >Profile</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes}  >Skills</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes}  >Portfolio</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#experiences" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} >Experiences</MotionHeading>
                             </SimpleGrid>
                         </MotionBox>
                     )}

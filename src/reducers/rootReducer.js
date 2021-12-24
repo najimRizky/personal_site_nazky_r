@@ -10,7 +10,8 @@ const initState = {
     transition: "all ease 0.2s",
     icon: MoonIcon,
     bgWave: WaveDark,
-    color: "#FFFFFF"
+    color: "#FFFFFF",
+    intro: true,
 }
 
 const rootReducer = (state = initState, action) => {
@@ -40,6 +41,11 @@ const rootReducer = (state = initState, action) => {
             bgBox: newBgBox,
             bgWave: newBgWave,
             color: newColor
+        }
+    }else if(action.type === "FINISH_INTRO"){
+        return{
+            ...state,
+            intro: action.intro
         }
     }
     return state;
