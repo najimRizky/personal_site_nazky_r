@@ -5,12 +5,13 @@ import $ from 'jquery';
 import { connect } from "react-redux";
 import { FaMoon, FaSun } from "react-icons/fa";
 import "jquery-ui-bundle"
+import { sectionList } from "../extras/sectionList";
 
 
 
 
 const calculateDir = (direction) => {
-    const segmentList = ["home", "profile", "skills", "portfolio", "experiences" ,"footer"];
+    const segmentList = sectionList
     let currentPos = window.location.hash;
     let currentIndex = segmentList.indexOf(currentPos.substring(1));
     let nextIndex;
@@ -71,7 +72,6 @@ const UpDownNav = (props) => {
             <VStack>
                 <IconButton className="btnUpDownNav" onClick={() => executeScroll("up")} {...Attribute} icon={< FiArrowUp />}  ></IconButton>
                 <IconButton className="btnUpDownNav" onClick={toggleTheme} {...Attribute} icon={props.color !== "#FFFFFF" ? < FaSun /> : <FaMoon/>}  ></IconButton>
-                {/* <Box p="5px" cursor="pointer" w={10} h={10} {...Attribute} borderRadius={5} onClick={toggleTheme}  ><Box w="100%" h="100%" borderRadius={5} bg={props.theme} transition={props.transition} /></Box> */}
                 <IconButton className="btnUpDownNav" onClick={() => executeScroll("down")} {...Attribute} icon={< FiArrowDown />}  ></IconButton>
             </VStack>
         </Box>

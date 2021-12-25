@@ -6,15 +6,16 @@ import { connect } from "react-redux";
 import { Divider } from "@chakra-ui/react";
 import Skillset from "../components/Skillset";
 import { programming, framework_library } from "../extras/skillData";
+import { sectionList } from "../extras/sectionList";
 
 const Skills = (props) => {
     const { ref, inView } = useInView();
-    const id = "skills"
-
+    const id = sectionList[2]
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
+        // eslint-disable-next-line
     }, [inView]);
 
     return (

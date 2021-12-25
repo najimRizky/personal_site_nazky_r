@@ -1,0 +1,1 @@
+export const sectionList = (['home', 'profile', 'skills', 'portfolio', 'experiences', 'footer']);

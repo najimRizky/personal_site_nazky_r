@@ -11,6 +11,7 @@ import { Tooltip } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
 import { hoverOpac, hoverScale, hoverX, hoverY } from "../extras/hoverTypePortfolio";
 import { connect } from "react-redux";
+import { sectionList } from "../extras/sectionList";
 
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
@@ -41,13 +42,14 @@ const childVariant = {
 
 const Portfolio = (props) => {
     const { ref, inView } = useInView();
-    const id = "portfolio"
+    const id = sectionList[3]
     const [detail, showDetail] = useState(0);
 
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
+        // eslint-disable-next-line
     }, [inView]);
 
     const showdetail = (val) => {

@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import Tilt from "react-vanilla-tilt"
 import { connect } from "react-redux";
+import { sectionList } from "../extras/sectionList";
 
 const MotionBox = motion(Box)
 const MotionHeading = motion(Heading)
@@ -107,12 +108,13 @@ const introduction = "A 5th semester of Informatics student at Universitas Multi
 
 const Greetings = (props) => {
     const { ref, inView } = useInView();
-    const id = "home"
+    const id = sectionList[0]
 
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
+        // eslint-disable-next-line
     }, [inView]);
 
     const { scrollY } = useViewportScroll();

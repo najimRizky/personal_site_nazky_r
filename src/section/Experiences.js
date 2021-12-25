@@ -7,14 +7,17 @@ import { connect } from 'react-redux';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { listExperiences } from '../extras/allExperiences';
+import { sectionList } from "../extras/sectionList";
+
 
 const Experiences = (props) => {
     const { ref, inView } = useInView();
-    const id = "experiences"
+    const id = sectionList[4]
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
+        // eslint-disable-next-line
     }, [inView]);
     return (
         <Box id={id} ref={ref} mt="-1px" pb={10} px={[5,5,10,20]} pt={20} backgroundImage={props.bgBox} transition={props.transition} backgroundColor={props.theme} color={props.color}>

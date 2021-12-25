@@ -6,6 +6,7 @@ import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { connect } from "react-redux";
+import { sectionList } from "../extras/sectionList";
 
 
 
@@ -49,12 +50,13 @@ const Aboutme = (props) => {
     }
 
     const { ref, inView } = useInView();
-    const id = "profile"
+    const id = sectionList[1]
 
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
+        // eslint-disable-next-line
     }, [inView]);
 
     return (

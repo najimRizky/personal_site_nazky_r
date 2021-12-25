@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { useInView } from "react-intersection-observer";
 import { connect } from "react-redux";
+import { sectionList } from "../extras/sectionList";
 
 // const MotionIconButton = motion(IconButton)
 
@@ -31,12 +32,13 @@ const openSocMed = (val) => {
 
 const Footer = (props) => {
     const { ref, inView } = useInView();
-    const id = "footer"
+    const id = sectionList[5]
     const { isOpen, onOpen, onClose } = useDisclosure();
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
         }
+        // eslint-disable-next-line
     }, [inView]);
 
     const AttributeBtnSocmed = {
