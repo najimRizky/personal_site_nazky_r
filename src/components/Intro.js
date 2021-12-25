@@ -130,14 +130,13 @@ const Intro = (props) => {
       setIntro(false)
       setTimeout(() => {
         props.changeStatusIntro()
-      }, 2300)
+      }, 2200)
     }
   }
 
   useEffect(() => {
     setTimeout(() => {
       setIntroComplete(true)
-      console.log("kelar", window.screen.width)
     }, 4500)
   }, [])
 

@@ -109,9 +109,6 @@ const Greetings = (props) => {
     const { ref, inView } = useInView();
     const id = "home"
 
-    // setTimeout(() => {
-    //     animation.start("visible");
-    // }, 9100)
     useEffect(() => {
         if (inView) {
             window.history.replaceState(null, "", window.location.origin + "/#" + id);
@@ -120,35 +117,32 @@ const Greetings = (props) => {
 
     const { scrollY } = useViewportScroll();
     const y2 = useTransform(scrollY, [0, 600], [50, 400]);
-
     return (
         <Box color={props.color} bg={props.theme} transition={props.transition} backgroundImage={props.bgBox} id={id} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={[20]} h={["100%", "100%", "500px", "500px"]}>
-            {!props.intro &&
-                <MotionBox variants={BaseVariants} initial="hidden" animate="visible">
-                    <SimpleGrid variants={bridge} columns={[1, null, 2]}>
-                        <MotionBox variants={bridge} w="100%">
-                            <MotionHeading ref={ref} fontFamily="Ubiquitos" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
-                                <motion.span variants={NextVariants}>Hi </motion.span>
-                                <motion.span variants={NextVariants}>I'm </motion.span> <br />
-                                <motion.span variants={NextVariants}>Najim </motion.span> <br />
-                                <motion.span variants={NextVariants}>Rizky</motion.span>
-                            </MotionHeading>
-                            <MotionText w={["100%", "100%", "70%", "70%"]} variants={bridge2} mt={[10]} lineHeight="30px" fontFamily="Raleway" fontWeight="thin" fontSize="14">
-                                {[...introduction].map((char, i) => (
-                                    <motion.span key={i} variants={NextVariants3}>{char}</motion.span>
-                                ))}
-                                <motion.span variants={NextVariants4}>_</motion.span> <br />
-                                <MotionButton variants={NextVariants} className="downloadCVBtn" color="white" onClick={() => window.open("https://bit.ly/najimCv2", "_blank")} my={[10]} >Download CV</MotionButton>
-                            </MotionText>
-                        </MotionBox>
-                        <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
-                            <Tilt className="tiltCard" justify={['left', "left", "end", "center"]}>
-                                <MotionImage style={{ y: window.innerWidth > 768 ? y2 : 10 }} borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["xs", "xs", "sm", "sm"]} />
-                            </Tilt>
-                        </MotionFlex>
-                    </SimpleGrid>
-                </MotionBox>
-            }
+            <MotionBox variants={BaseVariants} initial="hidden" animate={!props.intro ? "visible" : ""}>
+                <SimpleGrid variants={bridge} columns={[1, null, 2]}>
+                    <MotionBox variants={bridge} w="100%">
+                        <MotionHeading ref={ref} fontFamily="Ubiquitos" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
+                            <motion.span variants={NextVariants}>Hi </motion.span>
+                            <motion.span variants={NextVariants}>I'm </motion.span> <br />
+                            <motion.span variants={NextVariants}>Najim </motion.span> <br />
+                            <motion.span variants={NextVariants}>Rizky</motion.span>
+                        </MotionHeading>
+                        <MotionText w={["100%", "100%", "70%", "70%"]} variants={bridge2} mt={[10]} lineHeight="30px" fontFamily="Raleway" fontWeight="thin" fontSize="14">
+                            {[...introduction].map((char, i) => (
+                                <motion.span key={i} variants={NextVariants3}>{char}</motion.span>
+                            ))}
+                            <motion.span variants={NextVariants4}>_</motion.span> <br />
+                            <MotionButton variants={NextVariants} className="downloadCVBtn" color="white" onClick={() => window.open("https://bit.ly/najimCv2", "_blank")} my={[10]} >Download CV</MotionButton>
+                        </MotionText>
+                    </MotionBox>
+                    <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
+                        <Tilt className="tiltCard" justify={['left', "left", "end", "center"]}>
+                            <MotionImage style={{ y: window.innerWidth > 768 ? y2 : 10 }} borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["xs", "xs", "sm", "sm"]} />
+                        </Tilt>
+                    </MotionFlex>
+                </SimpleGrid>
+            </MotionBox>
         </Box>
     );
 }
