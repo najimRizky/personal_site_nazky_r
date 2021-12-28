@@ -20,6 +20,7 @@ import myWeather from "../assets/logoPortfolio/pages/myWeather.jpg"
 export const allPortfolio = ([
     {
         id: 1,
+        type: "vue",
         name: "NYL CINEMA 21",
         desc: "Movie database and detail information",
         status: [
@@ -37,6 +38,7 @@ export const allPortfolio = ([
     },
     {
         id: 2,
+        type: "laravel",
         name: "Findumois",
         desc: "Restaurant online order services (Simulation)",
         status: [
@@ -54,6 +56,7 @@ export const allPortfolio = ([
     },
     {
         id: 3,
+        type: "codeigniter",
         name: "Gema ゲームー",
         desc: "Online Games Store (Simulation)",
         status: [
@@ -71,6 +74,7 @@ export const allPortfolio = ([
     },
     {
         id: 4,
+        type: "vue",
         name: "All You Can Convert",
         desc: "Unit Converter",
         status: [
@@ -78,7 +82,7 @@ export const allPortfolio = ([
         ],
         time: "November 2020",
         tool: [
-            { id: 1, name: "Vue js", logo:  vueLogo},
+            { id: 1, name: "Vue.js", logo:  vueLogo},
             { id: 2, name: "Vuetify", logo: vuetifyLogo },
         ],
         background: converter,
@@ -87,6 +91,7 @@ export const allPortfolio = ([
     },
     {
         id: 5,
+        type: "vue",
         name: "Simple Countdown Timer",
         desc: "Countdown Timer",
         status: [
@@ -94,7 +99,7 @@ export const allPortfolio = ([
         ],
         time: "December 2020",
         tool: [
-            { id: 1, name: "Vue js", logo:  vueLogo},
+            { id: 1, name: "Vue.js", logo:  vueLogo},
             { id: 2, name: "Vuetify", logo: vuetifyLogo },
         ],
         background: countdown,
@@ -103,6 +108,7 @@ export const allPortfolio = ([
     },
     {
         id: 6,
+        type: "react",
         name: "Simple React Calculator",
         desc: "Calculator",
         status: [
@@ -110,7 +116,7 @@ export const allPortfolio = ([
         ],
         time: "December 2020",
         tool: [
-            { id: 1, name: "React js", logo:  react},
+            { id: 1, name: "React.js", logo:  react},
         ],
         background: simpleCalc,
         urlSite: "https://calculator-nr.najimrizky.vercel.app/",
@@ -118,6 +124,7 @@ export const allPortfolio = ([
     },
     {
         id: 7,
+        type: "react",
         name: "Covid-19 Indonesia Info",
         desc: "Real-time updates on Covid-19 cases in Indonesia",
         status: [
@@ -125,7 +132,7 @@ export const allPortfolio = ([
         ],
         time: "January 2021",
         tool: [
-            { id: 1, name: "React js", logo:  react},
+            { id: 1, name: "React.js", logo:  react},
             { id: 2, name: "Material UI", logo:  materialUI},
         ],
         background: covid19,
@@ -134,6 +141,7 @@ export const allPortfolio = ([
     },
     {
         id: 8,
+        type: "codeigniter",
         name: "Lemo",
         desc: "Online Hotel Reservation (Simulation)",
         status: [
@@ -151,6 +159,7 @@ export const allPortfolio = ([
     },
     {
         id: 9,
+        type: "react",
         name: "My Weather",
         desc: "Real-time weather forecasting",
         status: [
@@ -159,7 +168,7 @@ export const allPortfolio = ([
         ],
         time: "August 2021",
         tool: [
-            { id: 1, name: "React", logo: react},
+            { id: 1, name: "React.js", logo: react},
             { id: 2, name: "Semantic UI", logo: semanticUI},
         ],
         background: myWeather,

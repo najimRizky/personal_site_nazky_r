@@ -161,8 +161,8 @@
 
 /*Ripple*/
 .ripple {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   opacity: 0;
   transform: scale(0);
   background: rgba(134, 134, 134, 0.5);
@@ -173,7 +173,7 @@
 
 /*Animate Function*/
 .animate {
-  animation: ripple-mo 1s cubic-bezier(0, 0, 0.2, 1);
+  animation: ripple-mo 0.7s cubic-bezier(0, 0, 0.2, 1);
 }
 @keyframes ripple-mo {
   0% {
@@ -184,4 +184,8 @@
     transform: scale(10);
     opacity: 0;
   }
+}
+
+.filterActive{
+  background-color: gray;
 }
