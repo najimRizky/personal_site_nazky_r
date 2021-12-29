@@ -1,4 +1,4 @@
-import { HamburgerIcon, SmallCloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Box, Flex, Heading, SimpleGrid, Spacer, Text } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
 import '../App.css';
@@ -12,7 +12,7 @@ const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionHamburgerIcon = motion(HamburgerIcon);
-const MotionArrowForwardIcon = motion(SmallCloseIcon);
+const MotionCloseIcon = motion(CloseIcon);
 
 const mobileNavVariants = {
     hidden: {
@@ -53,22 +53,34 @@ const subVariant = {
         }
     },
     dismount: {
-        opacity: 0
+        opacity: 0,
     }
 }
 
 const MenuIconVariants = {
     hidden: {
-        opacity: 0,
-        rotate: 0
+        // scaleY: 0,
+        rotate: -180,
+        opacity: 0
     },
     visible: {
+        // scaleY: 1,
+        rotate: 180,
         opacity: 1,
-        rotate: 180
+        transition: {
+            duration: 0.7,
+            delay: 0.15,
+            type: "linear"
+        }
     },
     dismount: {
-        rotate: 180,
-        opacity: 0
+        opacity: 0,
+        // scaleY: 0,
+        rotate: 540,
+        transition: {
+            duration: 0.7,
+            type: "linear"
+        }
     }
 }
 
@@ -102,7 +114,7 @@ const Navbar = (props) => {
     }
 
     const toggleNav = () => {
-        showNav(nav ? false : true);
+        showNav(!nav);
     }
     const attributesIconMenu = {
         variants: MenuIconVariants,
@@ -110,13 +122,11 @@ const Navbar = (props) => {
         initial: "hidden",
         exit: "dismount",
         position: "fixed",
-        mt: 3,
         onClick: toggleNav,
         zIndex: "3",
         right: "4",
         cursor: "pointer",
-        w: 6,
-        h: 6,
+
     }
 
     const executeMobilenav = (value) => {
@@ -135,10 +145,10 @@ const Navbar = (props) => {
         document.getElementById("myBar").style.width = scrolled + "%";
     }
     document.body.style.overflow = nav ? "hidden" : "visible "
-    
+
     return (
         <>
-            <Box boxShadow={top === 0 ? "none": "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
+            <Box boxShadow={top === 0 ? "none" : "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
                 <Flex>
                     <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
                     {/* <Image  onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" /> */}
@@ -154,16 +164,20 @@ const Navbar = (props) => {
                     </Box >
 
                     <Box className="navMobile" display={["block", "block", "none", "none"]} >
-                        <AnimatePresence>
-                            {!nav ? (
-                                <MotionHamburgerIcon {...attributesIconMenu} />
-                            ) : (
-                                <MotionArrowForwardIcon {...attributesIconMenu} />
+                        <AnimatePresence exitBeforeEnter >
+                            {!nav && (
+                                <MotionHamburgerIcon whileHover={{ scaleY: 1.2, }} mt={3} w={6} h={6} {...attributesIconMenu} />
+                            )}
+                        </AnimatePresence>
+                        <AnimatePresence exitBeforeEnter >
+                            {nav && (
+                                // <></>
+                                <MotionCloseIcon whileHover={{ scaleY: 1.2, }} mt={4} mr={1} w={4} h={4} {...attributesIconMenu} />
                             )}
                         </AnimatePresence>
                     </Box>
                 </Flex>
-                    
+
                 <AnimatePresence>
                     {nav && (
                         <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="70px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
@@ -180,7 +194,7 @@ const Navbar = (props) => {
                 </AnimatePresence>
             </Box>
             <div className="header">
-                <div className="progress-container" style={{backgroundColor: props.theme, transition: props.transition}}>
+                <div className="progress-container" style={{ backgroundColor: props.theme, transition: props.transition }}>
                     <div className="progress-bar" id="myBar"></div>
                 </div>
             </div>
