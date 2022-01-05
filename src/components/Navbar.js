@@ -99,8 +99,10 @@ const attributes = {
 
 
 const Navbar = (props) => {
-    const [nav, showNav] = useState(false);
-    const [top, setTop] = useState(0);
+    const [navMobile, setNavMobile] = useState(false);
+    const [navbar, setShowNavBar] = useState(true);
+    const [oldScrolls, setOldScroll] = useState(0);
+    
     const executeScroll = (id) => {
         if (id === "home") {
             $('html, body').animate({
@@ -114,7 +116,7 @@ const Navbar = (props) => {
     }
 
     const toggleNav = () => {
-        showNav(!nav);
+        setNavMobile(!navMobile);
     }
     const attributesIconMenu = {
         variants: MenuIconVariants,
@@ -141,58 +143,67 @@ const Navbar = (props) => {
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = (winScroll / height) * 100;
-        setTop(scrolled);
+        let oldScroll = oldScrolls
+        let newScroll = scrolled;
+        toggleNavbar(oldScroll, newScroll);
+        setOldScroll(scrolled);
         document.getElementById("myBar").style.width = scrolled + "%";
     }
-    document.body.style.overflow = nav ? "hidden" : "visible "
+    
+    const toggleNavbar = (oldScroll, newScroll) => {
+        setShowNavBar(oldScroll > newScroll ? true : false)
+    }
 
     return (
         <>
-            <Box boxShadow={top === 0 ? "none" : "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
-                <Flex>
-                    <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
-                    {/* <Image  onClick={() => executeScroll("home")} cursor="pointer" src={logo} htmlWidth="150px" objectFit="cover" /> */}
-                    <Spacer />
-                    <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
-                        <Flex fontSize="sm" mt={2}>
-                            <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
-                            <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
-                            <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
-                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
-                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("experiences")} cursor="pointer" >Experiences</Text>
+            <AnimatePresence>
+                {navbar &&
+                    <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -70 }} exit={{ y: -70, transition: { type: "linear" } }} boxShadow={window.scrollY === 0 ? "none" : "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
+                        <Flex>
+                            <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
+                            <Spacer />
+                            <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
+                                <Flex fontSize="sm" mt={2}>
+                                    <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
+                                    <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
+                                    <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
+                                    <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
+                                    <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("experiences")} cursor="pointer" >Experiences</Text>
+                                </Flex>
+                            </Box >
+
+                            <Box className="navMobile" display={["block", "block", "none", "none"]} >
+                                <AnimatePresence exitBeforeEnter >
+                                    {!navMobile && (
+                                        <MotionHamburgerIcon whileHover={{ scaleY: 1.2, }} mt={3} w={6} h={6} {...attributesIconMenu} />
+                                    )}
+                                </AnimatePresence>
+                                <AnimatePresence exitBeforeEnter >
+                                    {navMobile && (
+                                        <MotionCloseIcon whileHover={{ scaleY: 1.2, }} mt={4} mr={1} w={4} h={4} {...attributesIconMenu} />
+                                    )}
+                                </AnimatePresence>
+                            </Box>
                         </Flex>
-                    </Box >
 
-                    <Box className="navMobile" display={["block", "block", "none", "none"]} >
-                        <AnimatePresence exitBeforeEnter >
-                            {!nav && (
-                                <MotionHamburgerIcon whileHover={{ scaleY: 1.2, }} mt={3} w={6} h={6} {...attributesIconMenu} />
+                        <AnimatePresence>
+                            {navMobile && (
+                                <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="70px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
+                                    <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
+                                    <SimpleGrid justifyItems="left">
+                                        <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes}  >Home</MotionHeading>
+                                        <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes}  >Profile</MotionHeading>
+                                        <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes}  >Skills</MotionHeading>
+                                        <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes}  >Portfolio</MotionHeading>
+                                        <MotionHeading style={window.location.hash === "#experiences" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} >Experiences</MotionHeading>
+                                    </SimpleGrid>
+                                </MotionBox>
                             )}
                         </AnimatePresence>
-                        <AnimatePresence exitBeforeEnter >
-                            {nav && (
-                                // <></>
-                                <MotionCloseIcon whileHover={{ scaleY: 1.2, }} mt={4} mr={1} w={4} h={4} {...attributesIconMenu} />
-                            )}
-                        </AnimatePresence>
-                    </Box>
-                </Flex>
+                    </MotionBox>
+                }
+            </AnimatePresence>
 
-                <AnimatePresence>
-                    {nav && (
-                        <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="70px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
-                            <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
-                            <SimpleGrid justifyItems="left">
-                                <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes}  >Home</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes}  >Profile</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes}  >Skills</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes}  >Portfolio</MotionHeading>
-                                <MotionHeading style={window.location.hash === "#experiences" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} >Experiences</MotionHeading>
-                            </SimpleGrid>
-                        </MotionBox>
-                    )}
-                </AnimatePresence>
-            </Box>
             <div className="header">
                 <div className="progress-container" style={{ backgroundColor: props.theme, transition: props.transition }}>
                     <div className="progress-bar" id="myBar"></div>

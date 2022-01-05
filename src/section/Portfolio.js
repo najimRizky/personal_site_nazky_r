@@ -76,8 +76,8 @@ const Portfolio = (props) => {
                 PORTFOLIO
             </Heading>
             <Wrap mb={"20px"}>
-                {tags.map((tag) =>
-                    <WrapItem key={tag.id}>
+                {tags.map((tag, id) =>
+                    <WrapItem key={id}>
                         <Tag onClick={() => setActive(tag.id)} className={filter === tag.id ? "filterActive" : ""} px={"25px"} py={"12px"} cursor={"pointer"} borderRadius='full' size="md" _hover={{ bg: "rgba(0,0,0,0.2)" }} transition={"0.2s"} variant='outline' color={props.color}>
                             <TagLabel >{tag.name}</TagLabel>
                             {tag.id !== "all" &&
@@ -89,8 +89,8 @@ const Portfolio = (props) => {
             </Wrap>
             <SimpleGrid columns={[1, 1, 2, 2]} >
                 <AnimatePresence >
-                    {dataPortfolio.map(item => (
-                        <PortfolioCard detail={detail} showdetail={showdetail} hidedetail={hidedetail} item={item} />
+                    {dataPortfolio.map((item, id) => (
+                        <PortfolioCard key={id} detail={detail} showdetail={showdetail} hidedetail={hidedetail} item={item} />
                     ))}
                 </AnimatePresence>
             </SimpleGrid>
