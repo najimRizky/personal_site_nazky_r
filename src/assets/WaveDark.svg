@@ -1,12 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
-  <g mask="url(&quot;#SvgjsMask1063&quot;)" fill="none">
-    <rect width="1440" height="560" x="0" y="0" fill="#1A202C"></rect>
-    <path d="M 0,260 C 96,234.2 288,152.4 480,131 C 672,109.6 768,155.8 960,153 C 1152,150.2 1344,124.2 1440,117L1440 560L0 560z" fill="#212938" class="wave1"></path>
-    <path d="M 0,406 C 72,413.8 216,448.2 360,445 C 504,441.8 576,392.4 720,390 C 864,387.6 936,430.6 1080,433 C 1224,435.4 1368,408.2 1440,402L1440 560L0 560z" fill="#1A202C" class="wave2"></path>
-  </g>
-  <defs>
-    <mask id="SvgjsMask1063">
-      <rect width="1440" height="560" fill="#ffffff"></rect>
-    </mask>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1100" height="2500" preserveAspectRatio="none" viewBox="0 0 1100 2500">
+    <g mask="url(&quot;#SvgjsMask1534&quot;)" fill="none">
+        <rect width="1100" height="2500" x="0" y="0" fill="rgba(26, 32, 44, 1)"></rect>
+        <path d="M 0,32 C 73.4,71.4 220.2,205.8 367,229 C 513.8,252.2 587.4,139.6 734,148 C 880.6,156.4 1026.8,246.4 1100,271L1100 2500L0 2500z" fill="rgba(33, 41, 56, 1)"></path>
+        <path d="M 0,567 C 73.4,520.8 220.2,344.8 367,336 C 513.8,327.2 587.4,527.4 734,523 C 880.6,518.6 1026.8,355.8 1100,314L1100 2500L0 2500z" fill="rgba(26, 32, 44, 1)"></path>
+        <path d="M 0,749 C 73.4,780 220.2,903.2 367,904 C 513.8,904.8 587.4,747 734,753 C 880.6,759 1026.8,897.8 1100,934L1100 2500L0 2500z" fill="rgba(33, 41, 56, 1)"></path>
+        <path d="M 0,1132 C 73.4,1113.6 220.2,1023.8 367,1040 C 513.8,1056.2 587.4,1211.8 734,1213 C 880.6,1214.2 1026.8,1079.4 1100,1046L1100 2500L0 2500z" fill="rgba(26, 32, 44, 1)"></path>
+        <path d="M 0,1514 C 73.4,1469 220.2,1305 367,1289 C 513.8,1273 587.4,1433.8 734,1434 C 880.6,1434.2 1026.8,1318.8 1100,1290L1100 2500L0 2500z" fill="rgba(33, 41, 56, 1)"></path>
+        <path d="M 0,1859 C 110,1828.2 330,1702.2 550,1705 C 770,1707.8 990,1839.4 1100,1873L1100 2500L0 2500z" fill="rgba(26, 32, 44, 1)"></path>
+        <path d="M 0,2011 C 110,2032 330,2120.4 550,2116 C 770,2111.6 990,2014.4 1100,1989L1100 2500L0 2500z" fill="rgba(33, 41, 56, 1)"></path>
+        <path d="M 0,2408 C 110,2387.4 330,2309.2 550,2305 C 770,2300.8 990,2370.6 1100,2387L1100 2500L0 2500z" fill="rgba(26, 32, 44, 1)"></path>
+    </g>
+    <defs>
+        <mask id="SvgjsMask1534">
+            <rect width="1100" height="2500" fill="#ffffff"></rect>
+        </mask>
+    </defs>
 </svg>

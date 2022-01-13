@@ -56,7 +56,7 @@ const Footer = (props) => {
     }
 
     return (
-        <Box boxShadow= "0px -1px 10px 0px #636363" id="footer" color={props.color} ref={ref} bg={props.theme} transition={props.transition} px={[5, 5, 40, 40]}  pt={10} pb={2} textAlign="center" w="100%" fontFamily="Raleway">
+        <Box borderTop={"1px solid rgba(133, 133, 133, 0.5)"} id="footer" color={props.color} ref={ref} transition={props.transition} px={[5, 5, 40, 40]}  pt={10} pb={2} textAlign="center" w="100%" fontFamily="Raleway">
             <Text textAlign="center" mb={6} fontWeight={1000} fontSize={30} >
                 Thank You for Coming Here
             </Text>

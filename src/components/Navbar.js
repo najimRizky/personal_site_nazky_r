@@ -100,8 +100,8 @@ const attributes = {
 
 const Navbar = (props) => {
     const [navMobile, setNavMobile] = useState(false);
-    const [navbar, setShowNavBar] = useState(true);
-    const [oldScrolls, setOldScroll] = useState(0);
+    // const [navbar, setShowNavBar] = useState(true);
+    // const [oldScrolls, setOldScroll] = useState(0);
     
     const executeScroll = (id) => {
         if (id === "home") {
@@ -143,22 +143,22 @@ const Navbar = (props) => {
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = (winScroll / height) * 100;
-        let oldScroll = oldScrolls
-        let newScroll = scrolled;
-        toggleNavbar(oldScroll, newScroll);
-        setOldScroll(scrolled);
+        // let oldScroll = oldScrolls
+        // let newScroll = scrolled;
+        // toggleNavbar(oldScroll, newScroll);
+        // setOldScroll(scrolled);
         document.getElementById("myBar").style.width = scrolled + "%";
     }
     
-    const toggleNavbar = (oldScroll, newScroll) => {
-        setShowNavBar(oldScroll > newScroll ? true : false)
-    }
+    // const toggleNavbar = (oldScroll, newScroll) => {
+    //     setShowNavBar(oldScroll > newScroll ? true : false)
+    // }
 
     return (
         <>
             <AnimatePresence>
-                {navbar &&
-                    <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -70 }} exit={{ y: -70, transition: { type: "linear" } }} boxShadow={window.scrollY === 0 ? "none" : "lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
+                {/* {navbar && */}
+                    <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -70 }} exit={{ y: -70, transition: { type: "linear" } }} boxShadow={"lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
                         <Flex>
                             <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
                             <Spacer />
@@ -201,7 +201,7 @@ const Navbar = (props) => {
                             )}
                         </AnimatePresence>
                     </MotionBox>
-                }
+                {/* } */}
             </AnimatePresence>
 
             <div className="header">

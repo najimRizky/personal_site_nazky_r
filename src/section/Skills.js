@@ -19,7 +19,7 @@ const Skills = (props) => {
     }, [inView]);
 
     return (
-        <Box id={id} color={props.color} bg={props.theme} backgroundImage={props.bgBox} transition={props.transition} px={[4, 4, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
+        <Box id={id} color={props.color}  transition={props.transition} px={[4, 4, 20, 20]} pb={[10, 10, 30, 30]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} px={[5, 5, 0, 0]} fontWeight={400} fontSize={50} >
                 SKILLS
             </Heading>

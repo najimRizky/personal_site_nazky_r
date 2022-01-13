@@ -20,7 +20,7 @@ const Experiences = (props) => {
         // eslint-disable-next-line
     }, [inView]);
     return (
-        <Box id={id} ref={ref} mt="-1px" pb={10} px={[5,5,10,20]} pt={20} backgroundImage={props.bgBox} transition={props.transition} backgroundColor={props.theme} color={props.color}>
+        <Box id={id} ref={ref} mt="-1px" pb={10} px={[5,5,10,20]} pt={20}  transition={props.transition}  color={props.color}>
             <Heading color={props.color} mb={10} fontWeight={400} fontSize={50} >
                 EXPERIENCES
             </Heading>

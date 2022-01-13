@@ -60,7 +60,7 @@ const Aboutme = (props) => {
     }, [inView]);
 
     return (
-        <Box id={id} bgColor="white" color={props.color} transition={props.transition} bgImage={props.bgWave} bgSize={[1700, 1700, 1700, 1500]} px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
+        <Box id={id} color={props.color} transition={props.transition}  px={[5, 5, 20, 20]} pt={70} fontFamily="Raleway">
             <Heading ref={ref} mb={10} fontWeight={400} fontSize={50} >
                 PROFILE
             </Heading>

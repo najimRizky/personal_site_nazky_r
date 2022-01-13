@@ -120,7 +120,7 @@ const Greetings = (props) => {
     const { scrollY } = useViewportScroll();
     const y2 = useTransform(scrollY, [0, 600], [50, 340]);
     return (
-        <Box color={props.color} bg={props.theme} transition={props.transition} backgroundImage={props.bgBox} id={id} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={["8em"]} h={["100%", "100%", "500px", "500px"]}>
+        <Box color={props.color} transition={props.transition}  id={id} px={[5, 5, 20, 20]} pb={[10, 10, 60, 60]} pt={["8em"]} h={["100%", "100%", "500px", "500px"]}>
             <MotionBox variants={BaseVariants} initial="hidden" animate={!props.intro ? "visible" : ""}>
                 <SimpleGrid variants={bridge} columns={[1, null, 2]}>
                     <MotionBox variants={bridge} w="100%">
@@ -152,7 +152,7 @@ const Greetings = (props) => {
 const getRedux = (state) => {
     return {
         theme: state.theme,
-        bgBox: state.bgBox,
+        // bgBox: state.bgBox,
         transition: state.transition,
         color: state.color,
         intro: state.intro
