@@ -33,6 +33,16 @@
         return false;
       }
     }
+    
+    var drawRipple = function (ev) {
+      var node = document.querySelector(".ripple");
+      var newNode = node.cloneNode(true);
+      newNode.classList.add("animate");
+      newNode.style.left = ev.clientX - 5 + "px";
+      newNode.style.top = ev.clientY - 5 + "px";
+      node.parentNode.replaceChild(newNode, node);
+    };
+    window.addEventListener("click", drawRipple);
   </script>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>

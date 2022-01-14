@@ -205,7 +205,7 @@
 
 /*Animate Function*/
 .animate {
-  animation: ripple-mo 0.7s cubic-bezier(0, 0, 0.2, 1);
+  animation: ripple-mo 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 @keyframes ripple-mo {
   0% {
