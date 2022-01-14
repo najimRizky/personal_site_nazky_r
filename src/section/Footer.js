@@ -43,12 +43,13 @@ const Footer = (props) => {
 
     const AttributeBtnSocmed = {
         bgGradient: `linear(to-l, ${props.color}, ${props.color}, ${props.color}, #7407f1, #196ad4)`,
-        transition: "all ease 0.4s",
+        transition: "0.4s",
         bgSize: "350%",
         bgPosition: "right",
         _hover: {
             bgPosition: "left",
-            // boxShadow: "2px 2px 2px #888888"
+            // boxShadow: `2px 2px 2px ${props.color}`,
+            color: "#fff"
         },
         fontSize: "xl",
         color: props.theme,
@@ -72,7 +73,7 @@ const Footer = (props) => {
                 </ButtonGroup>
             </Center>
             
-            <Button size="xs" my={5} bg={props.color} color={props.theme} onClick={onOpen}>Disclaimer</Button>
+            <Button size="xs" my={5}  className={props.color !== "#FFFFFF" ? "btnLight" : "btnDark"} onClick={onOpen}>Disclaimer</Button>
             <Divider colorScheme="gray"/>
             <Text fontFamily="Roboto" my={2} fontSize="xs">
                 Copyright © {new Date().getFullYear()} NAZKY &nbsp; || &nbsp; Build using React.js

@@ -135,7 +135,7 @@ const Greetings = (props) => {
                                 <motion.span key={i} variants={NextVariants3}>{char}</motion.span>
                             ))}
                             <motion.span variants={NextVariants4}>_</motion.span> <br />
-                            <MotionButton variants={NextVariants} className="downloadCVBtn" color="white" onClick={() => window.open("https://bit.ly/najimCv2", "_blank")} my={[10]} >Download CV</MotionButton>
+                            <MotionButton variants={NextVariants} className={props.color !== "#FFFFFF" ? "btnLight" : "btnDark"} onClick={() => window.open("https://bit.ly/najimCv2", "_blank")} my={[10]} >Download CV</MotionButton>
                         </MotionText>
                     </MotionBox>
                     <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >

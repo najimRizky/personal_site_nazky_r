@@ -41,8 +41,8 @@ const Aboutme = (props) => {
         bgPosition: "right",
         _hover: {
             bgPosition: "left",
-            boxShadow: `2px 2px 2px ${props.color}`,
-            color: props.color
+            // boxShadow: `2px 2px 2px ${props.color}`,
+            color: "#fff"
         },
         fontSize: "xl",
         color: props.theme,
@@ -77,7 +77,7 @@ const Aboutme = (props) => {
 
             {/* <Text>(+62)895604565752</Text> */}
 
-            <ButtonGroup w="100%" mb="0px" py={5}>
+            <ButtonGroup w="100%" mb="0px" py={5} spacing={"5"}>
                 <IconButton {...AttributeBtnSocmed} onClick={() => { openSocMed('Github') }} icon={< FiGithub />}  ></IconButton>
                 <IconButton {...AttributeBtnSocmed} onClick={() => { openSocMed('Linkedin') }} icon={< FiLinkedin />} ></IconButton>
                 <IconButton {...AttributeBtnSocmed} onClick={() => { openSocMed('Instagram') }} icon={< FiInstagram />}  ></IconButton>

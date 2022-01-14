@@ -113,15 +113,47 @@
   box-shadow: none;
 }
 
-.downloadCVBtn{
+.btnLight{
   /* background-image: "linear(to-r, #ff00d4, #7407f1, #196ad4)"; */
-  background-image: linear-gradient(to right, #ff00d4, #7407f1, #196ad4) !important;
-  background-size: 200% !important;
-  transition: 0.4s !important;
+  background-image: linear-gradient(to right, #7407f1, #196ad4, #212938, #212938) !important;
+  background-size: 250% !important;
+  transition: 0.4s ease-out !important;
+  border-radius: 0% !important;
+  box-shadow: 0.3em 0.3em 0 0 white,
+              0.3em 0.3em 0 1px #212938,
+              -0.3em -0.3em 0 0 white,
+              -0.3em -0.3em 0 1px #196ad4;
+  left: 10px;
+  transform: scale(1);
+  color: white;
 }
 
-.downloadCVBtn:hover{
+.btnLight:hover{
   background-position: right !important;
+  box-shadow: none;
+  transform: scale(1.1) !important;
+  color: white;
+}
+
+.btnDark{
+  background-image: linear-gradient(to right, #7407f1, #196ad4, white, white) !important;
+  background-size: 250% !important;
+  transition: 0.4s ease-out !important;
+  border-radius: 0% !important;
+  box-shadow: 0.3em 0.3em 0 0 #212938,
+              0.3em 0.3em 0 1px white,
+              -0.3em -0.3em 0 0 #212938,
+              -0.3em -0.3em 0 1.3px #196ad4;
+  transition: 0.3s;
+  left: 10px;
+  transform: scale(1);
+}
+
+.btnDark:hover{
+  background-position: right !important;
+  box-shadow: none;
+  transform: scale(1.1) !important;
+  color: black;
 }
 
 
