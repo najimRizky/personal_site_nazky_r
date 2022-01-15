@@ -24,8 +24,11 @@ const BaseVariants = {
     }
   },
   dismount: {
-    opacity: 0,
+    // opacity: 0,
+    x: "-100%",
     transition: {
+      duration: 0.8,
+      type: "linear",
       when: "afterChildren",
       staggerChildren: 0.1
     }
@@ -125,15 +128,17 @@ const Intro = (props) => {
   const [intro, setIntro] = useState(true);
   const [introComplete, setIntroComplete] = useState(false)
 
+  // Exit Intro
   const exitIntro = () => {
     if (introComplete) {
       setIntro(false)
       setTimeout(() => {
         props.changeStatusIntro()
-      }, 2200)
+      }, 2800)
     }
   }
 
+  // Wait for intro animation done
   useEffect(() => {
     setTimeout(() => {
       setIntroComplete(true)
