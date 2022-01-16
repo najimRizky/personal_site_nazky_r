@@ -1,6 +1,6 @@
 export const hoverY = {
     hidden:{
-        y: -240, 
+        // y: -240, 
     },
     visible: { 
         y: 0, 
@@ -11,7 +11,7 @@ export const hoverY = {
         }
     }, 
     exit: { 
-        y: -200, 
+        // y: -200, 
         transition: { 
             type: "linear" ,
             when: "afterChildren",
@@ -21,7 +21,7 @@ export const hoverY = {
 
 export const hoverX = {
     hidden:{
-        x: -400, 
+        // x: -400, 
     },
     visible: { 
         x: 0, 
@@ -32,7 +32,7 @@ export const hoverX = {
         }
     }, 
     exit: { 
-        x: -400, 
+        // x: -400, 
         transition: { 
             type: "linear" ,
             when: "afterChildren",

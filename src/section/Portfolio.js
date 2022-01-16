@@ -2,7 +2,6 @@ import { Box, Heading, SimpleGrid } from "@chakra-ui/layout";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { Image } from "@chakra-ui/image";
-import { AnimatePresence } from "framer-motion";
 import { allPortfolio } from "../extras/portfolioData";
 import { Tag, TagLabel } from "@chakra-ui/react";
 import { connect } from "react-redux";
@@ -88,11 +87,9 @@ const Portfolio = (props) => {
                 )}
             </Wrap>
             <SimpleGrid columns={[1, 1, 2, 2]} >
-                <AnimatePresence >
                     {dataPortfolio.map((item, id) => (
                         <PortfolioCard key={id} detail={detail} showdetail={showdetail} hidedetail={hidedetail} item={item} />
                     ))}
-                </AnimatePresence>
             </SimpleGrid>
         </Box>
     );
