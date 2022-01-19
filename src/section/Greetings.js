@@ -1,5 +1,5 @@
 import { Image } from "@chakra-ui/image";
-import Me from "../assets/Me2.webp";
+import Me from "../assets/Me2.jpg";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
