@@ -7,15 +7,15 @@ import semanticUI from "../assets/logoPortfolio/semanticUI.png"
 import react from "../assets/logoPortfolio/react.png"
 import materialUI from "../assets/logoPortfolio/materialUI.png"
 
-import nyl from '../assets/logoPortfolio/pages/nyl.jpg'
-import findumois from "../assets/logoPortfolio/pages/findumois.jpg"
-import gema from "../assets/logoPortfolio/pages/gema.jpg"
-import converter from "../assets/logoPortfolio/pages/allUCanConvert.jpg"
-import countdown from "../assets/logoPortfolio/pages/timer.jpg"
-import simpleCalc from "../assets/logoPortfolio/pages/simpleCalc.jpg"
-import covid19 from "../assets/logoPortfolio/pages/covidIndo.jpg"
-import lemo from "../assets/logoPortfolio/pages/lemo.jpg"
-import myWeather from "../assets/logoPortfolio/pages/myWeather.jpg"
+import nyl from '../assets/logoPortfolio/pages/nyl.webp'
+import findumois from "../assets/logoPortfolio/pages/findumois.webp"
+import gema from "../assets/logoPortfolio/pages/gema.webp"
+import converter from "../assets/logoPortfolio/pages/allUCanConvert.webp"
+import countdown from "../assets/logoPortfolio/pages/timer.webp"
+import simpleCalc from "../assets/logoPortfolio/pages/simpleCalc.webp"
+import covid19 from "../assets/logoPortfolio/pages/covidIndo.webp"
+import lemo from "../assets/logoPortfolio/pages/lemo.webp"
+import myWeather from "../assets/logoPortfolio/pages/myWeather.webp"
 
 export const allPortfolio = ([
     {
