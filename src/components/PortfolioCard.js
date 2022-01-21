@@ -34,7 +34,7 @@ const PortfolioCard = ({ item, showdetail, hidedetail, detail }) => {
     }
     const portfolioItem = {
         hidden: {
-            x: 200,
+            // x: 200,
             opacity: 0,
         },
         visible: {
@@ -46,7 +46,7 @@ const PortfolioCard = ({ item, showdetail, hidedetail, detail }) => {
             }
         },
         exit: {
-            x: -120,
+            // x: -120,
             opacity: 0,
             transition: {
                 duration: 0.3,
@@ -59,10 +59,10 @@ const PortfolioCard = ({ item, showdetail, hidedetail, detail }) => {
     }
     return (
         <AnimatePresence exitBeforeEnter>
-            <MotionBox variants={portfolioItem} initial="hidden" animate="visible" exit="exit" my={5} w={["100%", "450px", "320px", "405px"]} onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} height={["170px", "255px", "185px", "230px"]} key={item.id} className="flip-card">
+            <MotionBox variants={portfolioItem} initial="hidden" animate="visible" exit="exit" my={5} w={["100%", "450px", "320px", "405px"]} onMouseEnter={() => showdetail(item.id)} onMouseLeave={hidedetail} height={["170px", "255px", "185px", "230px"]} className="flip-card">
                 <Box className="flip-card-inner">
                     <Box borderRadius={"10px"} overflow={"hidden"} className="flip-card-front" >
-                        <Image width={"100%"} height={"100%"} src={item.background} />
+                        <Image width={"100%"} height={"105%"} src={item.background} />
                     </Box>
                     <AnimatePresence>
                         {detail === item.id && (
@@ -92,17 +92,15 @@ const PortfolioCard = ({ item, showdetail, hidedetail, detail }) => {
                                             </Tooltip>
                                         ))}
                                     </MotionHStack>
-                                    <MotionButton variants={childVariant} className="downloadCVBtn" my={[10]} w="100%" mb={[3, 5, 3, 5]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Visit Site</MotionButton>
-                                    <MotionButton variants={childVariant} w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlRepo)} >Visit Repo</MotionButton>
+                                    <MotionButton variants={childVariant} className="downloadCVBtn" my={[10]} w="100%" mb={[3, 5, 3, 5]} mt={[2, 4, 2, 4]} onClick={() => goToLink(item.urlSite)} size="xs" colorScheme="purple">Open Project</MotionButton>
+                                    <MotionButton variants={childVariant} w="100%" size="xs" colorScheme="teal" onClick={() => goToLink(item.urlRepo)} >Repository</MotionButton>
                                 </Box>
                             </MotionBox>
                         )}
                     </AnimatePresence>
                 </Box>
-
             </MotionBox >
-        </AnimatePresence>
-
+         </AnimatePresence>
     )
 }
 
