@@ -1,8 +1,8 @@
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Box, Flex, Heading, SimpleGrid, Spacer, Text } from "@chakra-ui/layout";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
 import '../App.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import $ from 'jquery';
 import { connect } from "react-redux";
 import "jquery-ui-bundle"
@@ -100,9 +100,18 @@ const attributes = {
 
 const Navbar = (props) => {
     const [navMobile, setNavMobile] = useState(false);
-    // const [navbar, setShowNavBar] = useState(true);
+    const [hidden, setHidden] = useState(false);
+    const { scrollY } = useViewportScroll();
     // const [oldScrolls, setOldScroll] = useState(0);
-    
+
+    const update = () => {
+        if (scrollY?.current < scrollY?.prev) {
+            setHidden(false);
+        } else if (scrollY?.current > 100 && scrollY?.current > scrollY?.prev) {
+            setHidden(true);
+        }
+    }
+
     const executeScroll = (id) => {
         if (id === "home") {
             $('html, body').animate({
@@ -130,6 +139,7 @@ const Navbar = (props) => {
         cursor: "pointer",
 
     }
+    console.log(scrollY.prev, scrollY.current)
 
     const executeMobilenav = (value) => {
         toggleNav();
@@ -138,71 +148,72 @@ const Navbar = (props) => {
         }, 600)
     }
 
-    window.onscroll = function () { myFunction() };
-    function myFunction() {
+    window.onscroll = function () { updateProgress() };
+    function updateProgress() {
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = (winScroll / height) * 100;
-        // let oldScroll = oldScrolls
-        // let newScroll = scrolled;
-        // toggleNavbar(oldScroll, newScroll);
-        // setOldScroll(scrolled);
         document.getElementById("myBar").style.width = scrolled + "%";
     }
-    
-    // const toggleNavbar = (oldScroll, newScroll) => {
-    //     setShowNavBar(oldScroll > newScroll ? true : false)
-    // }
+
+    const navbarVariants = {
+        show: {
+            y: 0, opacity: 1, transition: { type: "linear", duration: "0.5" }
+        },
+        hide: {
+            y: -70, opacity: 0, transition: { type: "linear", duration: "0.5" }
+        }
+    }
+
+    useEffect(() => {
+        return scrollY.onChange(() => update());
+    });
 
     return (
         <>
-            <AnimatePresence>
-                {/* {navbar && */}
-                    <MotionBox animate={{ y: 0, transition: { type: "linear" } }} initial={{ y: -70 }} exit={{ y: -70, transition: { type: "linear" } }} boxShadow={"lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
-                        <Flex>
-                            <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
-                            <Spacer />
-                            <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
-                                <Flex fontSize="sm" mt={2}>
-                                    <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
-                                    <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
-                                    <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
-                                    <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
-                                    <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("experiences")} cursor="pointer" >Experiences</Text>
-                                </Flex>
-                            </Box >
-
-                            <Box className="navMobile" display={["block", "block", "none", "none"]} >
-                                <AnimatePresence exitBeforeEnter >
-                                    {!navMobile && (
-                                        <MotionHamburgerIcon whileHover={{ scaleY: 1.2, }} mt={3} w={6} h={6} {...attributesIconMenu} />
-                                    )}
-                                </AnimatePresence>
-                                <AnimatePresence exitBeforeEnter >
-                                    {navMobile && (
-                                        <MotionCloseIcon whileHover={{ scaleY: 1.2, }} mt={4} mr={1} w={4} h={4} {...attributesIconMenu} />
-                                    )}
-                                </AnimatePresence>
-                            </Box>
+            <MotionBox animate={hidden ? "hide" : "show"} variants={navbarVariants} boxShadow={"lg"} className="navBar" bg={props.theme} transition={props.transition} px={8} pb={2} pt={4} color={props.color} w="100%">
+                <Flex>
+                    <Heading fontWeight={500} fontSize="41px" color={props.color} fontFamily="lequire" onClick={() => executeScroll("home")} cursor="pointer">nazky</Heading>
+                    <Spacer />
+                    <Box className="navDesktop" fontFamily="Raleway" fontWeight={700} display={["none", "none", "block", "block"]}>
+                        <Flex fontSize="sm" mt={2}>
+                            <Text className="navBarItem navItemhome" mx={1} onClick={() => executeScroll("home")} cursor="pointer" >Home</Text>
+                            <Text className="navBarItem navItemprofile" mx={1} onClick={() => executeScroll("profile")} cursor="pointer" >Profile</Text>
+                            <Text className="navBarItem navItemskills" mx={1} onClick={() => executeScroll("skills")} cursor="pointer" >Skills</Text>
+                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("portfolio")} cursor="pointer" >Portfolio</Text>
+                            <Text className="navBarItem navItemportfolio" mx={1} onClick={() => executeScroll("experiences")} cursor="pointer" >Experiences</Text>
                         </Flex>
+                    </Box >
 
-                        <AnimatePresence>
-                            {navMobile && (
-                                <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="70px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
-                                    <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
-                                    <SimpleGrid justifyItems="left">
-                                        <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes}  >Home</MotionHeading>
-                                        <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes}  >Profile</MotionHeading>
-                                        <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes}  >Skills</MotionHeading>
-                                        <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes}  >Portfolio</MotionHeading>
-                                        <MotionHeading style={window.location.hash === "#experiences" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} >Experiences</MotionHeading>
-                                    </SimpleGrid>
-                                </MotionBox>
+                    <Box className="navMobile" display={["block", "block", "none", "none"]} >
+                        <AnimatePresence exitBeforeEnter >
+                            {!navMobile && (
+                                <MotionHamburgerIcon whileHover={{ scaleY: 1.2, }} mt={3} w={6} h={6} {...attributesIconMenu} />
                             )}
                         </AnimatePresence>
-                    </MotionBox>
-                {/* } */}
-            </AnimatePresence>
+                        <AnimatePresence exitBeforeEnter >
+                            {navMobile && (
+                                <MotionCloseIcon whileHover={{ scaleY: 1.2, }} mt={4} mr={1} w={4} h={4} {...attributesIconMenu} />
+                            )}
+                        </AnimatePresence>
+                    </Box>
+                </Flex>
+
+                <AnimatePresence>
+                    {navMobile && (
+                        <MotionBox fontFamily="Raleway" py={10} px={6} color={props.color} variants={mobileNavVariants} animate="visible" initial="hidden" exit="dismount" top="70px" left="0" bg={props.theme} zIndex="-3" pos="fixed" w="100%" h="100%">
+                            <MotionText ml={3} variants={subVariant} mb={5}>Menu</MotionText>
+                            <SimpleGrid justifyItems="left">
+                                <MotionHeading style={window.location.hash === "#home" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("home")} {...attributes}  >Home</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#profile" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("profile")} {...attributes}  >Profile</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#skills" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("skills")} {...attributes}  >Skills</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#portfolio" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("portfolio")} {...attributes}  >Portfolio</MotionHeading>
+                                <MotionHeading style={window.location.hash === "#experiences" ? { textDecorationLine: "underline" } : {}} onClick={() => executeMobilenav("experiences")} {...attributes} >Experiences</MotionHeading>
+                            </SimpleGrid>
+                        </MotionBox>
+                    )}
+                </AnimatePresence>
+            </MotionBox>
 
             <div className="header">
                 <div className="progress-container" style={{ backgroundColor: props.theme, transition: props.transition }}>
