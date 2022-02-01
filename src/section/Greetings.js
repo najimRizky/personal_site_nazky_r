@@ -124,7 +124,7 @@ const Greetings = (props) => {
             <MotionBox variants={BaseVariants} initial="hidden" animate={!props.intro ? "visible" : ""}>
                 <SimpleGrid variants={bridge} columns={[1, null, 2]}>
                     <MotionBox variants={bridge} w="100%">
-                        <MotionHeading ref={ref} fontFamily="Ubiquitos" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
+                        <MotionHeading as="h1" ref={ref} fontFamily="Ubiquitos" fontSize="70px" style={{ fontWeight: '500' }} lineHeight="70px" >
                             <motion.span variants={NextVariants}>Hi </motion.span>
                             <motion.span variants={NextVariants}>I'm </motion.span> <br />
                             <motion.span variants={NextVariants}>Najim </motion.span> <br />
