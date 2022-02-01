@@ -104,7 +104,7 @@ const NextVariants4 = {
     }
 }
 
-const introduction = "A 5th semester of Informatics student at Universitas Multimedia Nusantara."
+const introduction = "A 6th semester Informatics student at Universitas Multimedia Nusantara."
 
 const Greetings = (props) => {
     const { ref, inView } = useInView();
