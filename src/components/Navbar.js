@@ -139,7 +139,7 @@ const Navbar = (props) => {
         cursor: "pointer",
 
     }
-    console.log(scrollY.prev, scrollY.current)
+    // console.log(scrollY.prev, scrollY.current)
 
     const executeMobilenav = (value) => {
         toggleNav();
