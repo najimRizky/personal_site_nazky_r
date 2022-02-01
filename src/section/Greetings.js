@@ -140,7 +140,7 @@ const Greetings = (props) => {
                     </MotionBox>
                     <MotionFlex mt={[0, 0, 10, 10]} variants={NextVariants2} justify={['left', "left", "end", "center"]} color="white" w="100%" >
                         <Tilt className="tiltCard" justify={['left', "left", "end", "center"]}>
-                            <MotionImage style={{ y: window.innerWidth > 768 ? y2 : 10 }} borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["xs", "xs", "sm", "sm"]} />
+                            <MotionImage style={{ y: window.innerWidth > 768 ? y2 : 10 }} borderRadius={10} src={Me}  /*{htmlWidth={["100%", "100%", "90px", "80px"]}}*/ width={["xs", "xs", "sm", "sm"]} alt="najim rizky" />
                         </Tilt>
                     </MotionFlex>
                 </SimpleGrid>
