@@ -1,4 +1,4 @@
-import { faGraduationCap, faTasks } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase, faGraduationCap, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 // const randomBorderColor = () => {
 //     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -7,7 +7,15 @@ import { faGraduationCap, faTasks } from "@fortawesome/free-solid-svg-icons";
 
 export const listExperiences = ([
     {
-        id: 1,
+        place: "PT. Hashmicro Solusi Indonesia",
+        division: "Front End Developer",
+        job: "Internship",
+        date: "Feb 2022 - Present",
+        topLine: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+        icon: faBriefcase,
+        type: "education"
+    },
+    {
         place: "Universitas Multimedia Nusantara",
         division: "Informatics",
         job: "Student (College)",
@@ -17,16 +25,14 @@ export const listExperiences = ([
         type: "education"
     },
     {
-        id: 2,
         place: "Game Expo (G2x) 2022",
         division: "Event Division",
         job: "Comittee",
-        date: "Aug 2021 - Present",
+        date: "Aug 2021 - Feb 2022",
         topLine: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
         icon: faTasks
     },
     {
-        id: 3,
         place: "IF Gathering UMN 2021",
         division: "Accomodation Division",
         job: "Comittee",
@@ -36,7 +42,6 @@ export const listExperiences = ([
         type: "volunteer"
     },
     {
-        id: 4,
         place: "SMAN 2 Kota Tangerang Selatan",
         division: "Science",
         job: "Student (Junior High School)",
@@ -47,7 +52,6 @@ export const listExperiences = ([
 
     },
     {
-        id: 5,
         place: "Moonzher Scout Competition (MSC)",
         division: "Event Division",
         job: "Coordinator",
@@ -57,7 +61,6 @@ export const listExperiences = ([
         type: "volunteer"
     },
     {
-        id: 6,
         place: "Moonzher Civics Competition (MCC)",
         division: "Event Division",
         job: "Coordinator",

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { connect } from "react-redux";
 import { sectionList } from "../extras/sectionList";
+import moment from "moment";
 
 
 
@@ -73,7 +74,7 @@ const Aboutme = (props) => {
             <Text fontWeight="bold">Email: </Text>
             <Text>najimajim1@gmail.com</Text>
             <Text fontWeight="bold">Age:</Text>
-            <Text>20 Years</Text>
+            <Text>{moment().diff('2001-01-16', 'years')} Years</Text>
 
             {/* <Text>(+62)895604565752</Text> */}
 

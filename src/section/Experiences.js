@@ -24,16 +24,17 @@ const Experiences = (props) => {
             <Heading color={props.color} mb={10} fontWeight={400} fontSize={50} >
                 EXPERIENCES
             </Heading>
-            <VerticalTimeline lineColor={props.color}>
-                {listExperiences.map((experience) =>
+            <VerticalTimeline lineColor={props.color} layout={"2-columns"}>
+                {listExperiences.map((experience, id) =>
                     <VerticalTimelineElement
-                        key={experience.id}
+                        key={id}
                         className="horizontal-timeline-element--work"
                         contentStyle={{ borderTop: `2px solid ${experience.topLine}`, borderBottom: "none", background: props.theme === "#FFFFFF" ? "#edeff2" : "#242c3d" }}
                         contentArrowStyle={{ borderRight: `7px solid  ${props.theme === "#FFFFFF" ? "#edeff2" : "#242c3d"}` }}
                         date={experience.date}
                         iconStyle={{ background: experience.type === "education" ? "#287099" : "#242c3d", color: '#fff' }}
                         icon={<FontAwesomeIcon icon={experience.icon} size="lg" />}
+                        
                     >
                         <h1 className="vertical-timeline-element-title" style={{ fontSize: "20px" }}>{experience.place}</h1>
                         <h4 className="vertical-timeline-element-subtitle" style={{ fontSize: "18px" }}>{experience.division}</h4>
